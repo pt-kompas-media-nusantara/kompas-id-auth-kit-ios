@@ -1,3 +1,12 @@
+############
+# Configs
+############
+
+configs:
+  Staging Debug: debug
+  Production Debug: debug
+  Staging Release: release
+  Production Release: release
 
 targets:
 
@@ -31,6 +40,14 @@ targets:
         group: Modules/CommunicationsCore
       - path: Configs/Info.plist
         group: Modules/CommunicationsCore
+      - path: Configs/xcconfig
+        group: App/Configs
+
+    configFiles:
+      Staging Debug: Configs/xcconfig/Common.xcconfig
+      Staging Release: Configs/xcconfig/Common.xcconfig
+      Production Debug: Configs/xcconfig/Common.xcconfig
+      Production Release: Configs/xcconfig/Common.xcconfig
 
   ############
   # Tests
@@ -44,6 +61,10 @@ targets:
       INFOPLIST_FILE: CommunicationsCore/Configs/Info-Test.plist
       PRODUCT_BUNDLE_IDENTIFIER: "id.kompas.app.auth.communicationscore.test"
       CODE_SIGN_STYLE: Manual
+
+      base:
+        MARKETING_VERSION: $(MYAPP_APP_VERSION)
+        
     sources:
       - path: Tests
         group: Modules/CommunicationsCore

@@ -1,4 +1,13 @@
+############
+# Configs
+############
 
+configs:
+  Staging Debug: debug
+  Production Debug: debug
+  Staging Release: release
+  Production Release: release
+  
 targets:
 
   ############
@@ -14,6 +23,9 @@ targets:
       PRODUCT_BUNDLE_IDENTIFIER: "id.kompas.app.auth.uicore"
       INFOPLIST_FILE: UICore/Configs/Info.plist
 
+    base:
+      MARKETING_VERSION: $(MYAPP_APP_VERSION)
+
     # dependencies:
       # - package: Kingfisher # nurirppan: tidak di pakai karna tidak ada thirdparty untuk UI
     
@@ -24,7 +36,14 @@ targets:
         group: Modules/UICore
       - path: Configs/Info.plist
         group: Modules/UICore
+      - path: Configs/xcconfig
+        group: App/Configs
 
+    configFiles:
+      Staging Debug: Configs/xcconfig/Common.xcconfig
+      Staging Release: Configs/xcconfig/Common.xcconfig
+      Production Debug: Configs/xcconfig/Common.xcconfig
+      Production Release: Configs/xcconfig/Common.xcconfig
   ############
   # Tests
   ############
