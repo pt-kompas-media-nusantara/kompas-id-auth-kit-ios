@@ -1,0 +1,56 @@
+
+targets:
+
+  ############
+  # Framework
+  ############
+
+  CommunicationsCore:
+    name: CommunicationsCore
+    type: framework
+    platform: iOS
+
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: "id.kompas.app.auth.communicationscore"
+      INFOPLIST_FILE: CommunicationsCore/Configs/Info.plist
+
+    scheme:
+      gatherCovergageData: true
+      testTargets:
+        - name: CommunicationsCore_Tests
+          parallelizable: true
+          randomExecutionOrder: true
+
+    # dependencies:
+      # - package: Kingfisher
+    
+    sources:
+      - path: Sources
+        group: Modules/CommunicationsCore
+      - path: Resources
+        group: Modules/CommunicationsCore
+      - path: Configs/Info.plist
+        group: Modules/CommunicationsCore
+
+  ############
+  # Tests
+  ############
+
+  CommunicationsCore_Tests:
+    name: CommunicationsCore_Tests
+    type: bundle.unit-test
+    platform: iOS
+    settings:
+      INFOPLIST_FILE: CommunicationsCore/Configs/Info-Test.plist
+      PRODUCT_BUNDLE_IDENTIFIER: "id.kompas.app.auth.communicationscore.test"
+      CODE_SIGN_STYLE: Manual
+    sources:
+      - path: Tests
+        group: Modules/CommunicationsCore
+    dependencies:
+      - target: CommunicationsCore
+
+    scheme:
+      testTargets:
+        - CommunicationsCore_Tests
+      gatherCoverageData: true

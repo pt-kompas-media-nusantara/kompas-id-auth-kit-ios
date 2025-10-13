@@ -1,0 +1,7 @@
+
+//// Common Configuration
+#include "App/Configs/xcconfig/Production.xcconfig"
+
+MYAPP_CODE_SIGN_IDENTITY = iPhone Developer
+MYAPP_PROVISIONING_PROFILE_SPECIFIER = YourProfileIdOrNameHere
+MYAPP_NOTIFICATION_PROVISIONING_PROFILE_SPECIFIER = YourNotExtensionProfileIdOrNameHere

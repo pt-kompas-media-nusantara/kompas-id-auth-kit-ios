@@ -1,0 +1,39 @@
+# 
+# Main file specification. 
+# 
+# In this file we will include:
+# - Base min XcodeGen version configuration
+# - Base iOS deploymentTarget
+# - Name of our base Project
+# - All the yaml files that we want to import when Xcodegen start parsing. 
+#   The final yaml will include all the yml references from here.
+# - ... other base options that could be useful
+
+
+############
+## Project 
+name: KompasIdAuth
+
+
+############
+## Options
+options:
+  minimumXcodeGenVersion: 2.44.1
+  generateEmptyDirectories: true
+
+
+#############
+## Settings
+
+settings:
+    IPHONEOS_DEPLOYMENT_TARGET: 16.0
+
+
+############
+## Imports
+
+include:
+  - packages.yml
+  - UICore/config.yml
+  - CommunicationsCore/config.yml
+  - App/config.yml

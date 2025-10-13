@@ -1,0 +1,78 @@
+
+############
+# Configs
+############
+
+configs:
+  Staging Debug: debug
+  Production Debug: debug
+  Staging Release: release
+  Production Release: release
+
+
+targets:
+
+  ############
+  # Application
+  ############
+
+  MyApplication:
+
+    type: application
+    platform: iOS
+    deploymentTarget: 16.0
+
+    sources:
+      - path: Sources
+        group: App
+      - path: Resources
+        group: App
+      - path: Configs/xcconfig
+        group: App/Configs
+      - path: Configs/entitlements
+        group: App/Configs
+      - path: Configs/google
+        group: App/Configs
+      - path: Configs/Info.plist
+        group: App/Configs
+
+    configFiles:
+      Staging Debug: Configs/xcconfig/Staging-Debug.xcconfig
+      Staging Release: Configs/xcconfig/Staging-Release.xcconfig
+      Production Debug: Configs/xcconfig/Production-Debug.xcconfig
+      Production Release: Configs/xcconfig/Production-Release.xcconfig
+
+    settings:
+      base:
+        INFOPLIST_FILE: App/Configs/Info.plist
+        PRODUCT_BUNDLE_IDENTIFIER: $(MYAPP_BUNDLE_IDENTIFIER)
+        MARKETING_VERSION: $(MYAPP_APP_VERSION)
+        CURRENT_PROJECT_VERSION: $(MYAPP_BUILD_VERSION)
+        ASSETCATALOG_COMPILER_APPICON_NAME: $(MYAPP_APP_ICON)
+        CODE_SIGN_STYLE: $(MYAPP_CODE_SIGN_STYLE)
+        DEVELOPMENT_TEAM: $(MYAPP_TEAM_ID)
+        CODE_SIGN_ENTITLEMENTS: $(MYAPP_CODE_SIGN_ENTITLEMENTS)
+        CODE_SIGN_IDENTITY: $(MYAPP_CODE_SIGN_IDENTITY)
+        PROVISIONING_PROFILE_SPECIFIER: $(MYAPP_PROVISIONING_PROFILE_SPECIFIER)
+        OTHER_SWIFT_FLAGS: 
+          - $(inherited)
+
+    dependencies:
+
+      # Internal Dependencies
+      - target: UICore
+      - target: CommunicationsCore
+
+      # SPM dependencies
+      - package: Firebase
+        product: FirebaseAnalytics
+      - package: Firebase
+        product: FirebaseCrashlytics
+
+    scheme:
+      configVariants:
+        - Staging
+        - Production
+      commandLineArguments:
+        -FIRAnalyticsDebugEnabled: false
+        -FIRDebugDisabled: false
