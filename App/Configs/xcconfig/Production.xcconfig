@@ -11,6 +11,6 @@ MYAPP_CODE_SIGN_ENTITLEMENTS = App/Configs/entitlements/production.entitlements
 
 //// Firebase Configuration
 
-GOOGLESERVICE_PLIST_NAME = GoogleServiceAppStore-Info
-GOOGLESERVICE_INFO_PLIST_DIR = ${SRCROOT}/App/Configs/GoogleServiceAppStore-Info.plist
+GOOGLESERVICE_PLIST_NAME = GoogleService-Info.plist
+GOOGLESERVICE_INFO_PLIST_DIR = ${SRCROOT}/App/Configs/GoogleService-Info.plist
 

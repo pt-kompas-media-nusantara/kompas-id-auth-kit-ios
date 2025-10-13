@@ -3,7 +3,7 @@
 #include "App/Configs/xcconfig/Common.xcconfig"
 
 MYAPP_APP_NAME = MyApp Debug
-MYAPP_APP_ICON = AppIconDev
+MYAPP_APP_ICON = AppIcon_Debug
 MYAPP_BUNDLE_IDENTIFIER = id.kompas.app.auth
 MYAPP_TEAM_ID = MyDevTeamIdHere
 
@@ -11,6 +11,6 @@ MYAPP_CODE_SIGN_ENTITLEMENTS = App/Configs/entitlements/staging.entitlements
 
 //// Firebase Configuration
 
-GOOGLESERVICE_PLIST_NAME = GoogleServiceBeta-Info
-GOOGLESERVICE_INFO_PLIST_DIR = ${SRCROOT}/App/Configs/GoogleServiceBeta-Info.plist
+GOOGLESERVICE_PLIST_NAME = GoogleService-Info.plist
+GOOGLESERVICE_INFO_PLIST_DIR = ${SRCROOT}/App/Configs/GoogleService-Info.plist
 

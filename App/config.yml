@@ -16,7 +16,7 @@ targets:
   # Application
   ############
 
-  MyApplication:
+  KompasIdAuth:
 
     type: application
     platform: iOS
@@ -35,6 +35,10 @@ targets:
         group: App/Configs
       - path: Configs/Info.plist
         group: App/Configs
+
+    resources:
+      - path: Resources/Assets.xcassets
+      - path: Resources/Colors.xcassets
 
     configFiles:
       Staging Debug: Configs/xcconfig/Staging-Debug.xcconfig

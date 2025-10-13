@@ -6,7 +6,3 @@ struct Button: View {
         Text("Hello, World!")
     }
 }
-
-#Preview {
-    Button()
-}
