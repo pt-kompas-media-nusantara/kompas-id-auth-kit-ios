@@ -6,6 +6,8 @@
   <string>en</string>
   <key>CFBundleIdentifier</key>
   <string>${PRODUCT_BUNDLE_IDENTIFIER}</string> <!-- nurirppan: ini maksudnya apa -->
+  <key>CFBundleDisplayName</key>
+  <string>${CF_BUNDLE_DISPLAY_NAME}</string>
   <key>CFBundleInfoDictionaryVersion</key>
   <string>6.0</string>
   <key>CFBundleName</key>

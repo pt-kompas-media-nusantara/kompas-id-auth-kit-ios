@@ -49,6 +49,7 @@ targets:
     settings:
       base:
         INFOPLIST_FILE: App/Configs/Info.plist
+        CF_BUNDLE_DISPLAY_NAME: $(MYAPP_APP_NAME)
         PRODUCT_BUNDLE_IDENTIFIER: $(MYAPP_BUNDLE_IDENTIFIER)
         MARKETING_VERSION: $(MYAPP_APP_VERSION)
         CURRENT_PROJECT_VERSION: $(MYAPP_BUILD_VERSION)
@@ -78,5 +79,5 @@ targets:
         - Staging
         - Production
       commandLineArguments:
-        -FIRAnalyticsDebugEnabled: false
-        -FIRDebugDisabled: false
+        -FIRAnalyticsDebugEnabled: true
+        -FIRDebugDisabled: true
