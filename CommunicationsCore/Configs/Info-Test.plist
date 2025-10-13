@@ -13,7 +13,7 @@
   <key>CFBundleName</key>
   <string>${PRODUCT_NAME}</string>
   <key>CFBundlePackageType</key>
-  <string>BNDL</string> <!-- nurirppan: ini maksudnya apa -->
+  <string>APPL</string>  <!-- <string>BNDL</string> -->
   <key>CFBundleShortVersionString</key>
   <string>1.0</string> <!-- nurirppan: ini maksudnya apa -->
   <key>CFBundleSignature</key>
@@ -22,5 +22,12 @@
   <string>1</string>
   <key>NSPrincipalClass</key> <!-- nurirppan: ini maksudnya apa -->
   <string></string>
+  <key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
 </dict>
 </plist>

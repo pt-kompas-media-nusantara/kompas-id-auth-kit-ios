@@ -47,6 +47,7 @@ targets:
       Production Release: Configs/xcconfig/Production-Release.xcconfig
 
     settings:
+      DEBUG_INFORMATION_FORMAT: $(MYAPP_DEBUG_INFORMATION_FORMAT)
       base:
         INFOPLIST_FILE: App/Configs/Info.plist
         CF_BUNDLE_DISPLAY_NAME: $(MYAPP_APP_NAME)
@@ -61,6 +62,7 @@ targets:
         PROVISIONING_PROFILE_SPECIFIER: $(MYAPP_PROVISIONING_PROFILE_SPECIFIER)
         OTHER_SWIFT_FLAGS: 
           - $(inherited)
+          
 
     dependencies:
 
@@ -81,3 +83,4 @@ targets:
       commandLineArguments:
         -FIRAnalyticsDebugEnabled: true
         -FIRDebugDisabled: true
+

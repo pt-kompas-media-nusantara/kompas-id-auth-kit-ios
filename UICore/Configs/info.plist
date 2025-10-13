@@ -15,7 +15,7 @@
   <key>CFBundleName</key>
   <string>${PRODUCT_NAME}</string>
   <key>CFBundlePackageType</key> <!-- nurirppan:  -->
-  <string>FMWK</string>
+  <string>APPL</string>  <!-- <string>FMWK</string> -->
   <key>CFBundleShortVersionString</key>
   <string>${MARKETING_VERSION}</string>
   <key>CFBundleSignature</key> <!-- nurirppan:  -->
@@ -24,5 +24,12 @@
   <string>${CURRENT_PROJECT_VERSION}</string>
   <key>NSPrincipalClass</key>
   <string></string>
+  <key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
 </dict>
 </plist>
