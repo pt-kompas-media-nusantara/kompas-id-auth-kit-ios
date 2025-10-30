@@ -4,3 +4,36 @@ MYAPP_BUILD_VERSION = 1
 MYAPP_CODE_SIGN_STYLE = Manual
 MYAPP_DEBUG_INFORMATION_FORMAT = dwarf-with-dsym
 
+MY_DEVELOPMENT_LANGUAGE = en
+MY_EXECUTABLE_NAME = MY_EXECUTABLE_NAME
+
+MY_PRODUCT_NAME = Kompas.id
+MY_CF_BUNDLE_DISPLAY_NAME = MY_CF_BUNDLE_DISPLAY_NAME
+MY_PRODUCT_BUNDLE_IDENTIFIER = id.kompas.app
+MY_ASSETCATALOG_COMPILER_APPICON_NAME = MY_ASSETCATALOG_COMPILER_APPICON_NAME
+MY_CODE_SIGN_ENTITLEMENTS = MY_CODE_SIGN_ENTITLEMENTS
+MY_MARKETING_VERSION = 3.56.1
+MY_CURRENT_PROJECT_VERSION = 118
+
+MY_PRODUCT_BUNDLE_PACKAGE_TYPE = MY_PRODUCT_BUNDLE_PACKAGE_TYPE
+
+MY_NS_CAMERA_USAGE_DESCRIPTION = We need access to your camera to take photos.
+MY_NS_LOCATION_ALWAYS_AND_WHEN_IN_USE_USAGE_DESCRIPTION= To provide you with the most relevant news and information, we may collect your location data when you use our application. We may use this information to customize the content displayed on the app to your local area or city.
+MY_NS_LOCATION_WHEN_IN_USE_USAGE_DESCRIPTION= To provide you with the most relevant news and information, we may collect your location data when you use our application. We may use this information to customize the content displayed on the app to your local area or city.
+MY_NS_MICROPHONE_USAGE_DESCRIPTION= Need microphone access for uploading videos
+MY_NS_PHOTO_LIBRARY_USAGE_DESCRIPTION= Need photo library access for uploading images
+MY_NS_USER_TRACKING_USAGE_DESCRIPTION= Your data will be used to deliver personalized ads to you.
+
+
+
+
+
+
+
+
+
+
+
+
+
+

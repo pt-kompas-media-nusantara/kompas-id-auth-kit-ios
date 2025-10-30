@@ -2,7 +2,7 @@
 //// Common Configuration
 #include "App/Configs/xcconfig/Common.xcconfig"
 
-MYAPP_APP_NAME = Kompas.id Auth
+MY_CF_BUNDLE_DISPLAY_NAME = Kompas.id Auth
 MYAPP_APP_ICON = AppIcon
 MYAPP_BUNDLE_IDENTIFIER = id.kompas.app.auth
 MYAPP_TEAM_ID = MyClientTeamIdHere
