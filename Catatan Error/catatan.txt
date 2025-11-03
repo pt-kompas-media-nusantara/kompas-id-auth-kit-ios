@@ -1,0 +1,11 @@
+Upload Symbols Failed
+The archive did not include a dSYM for the FirebaseAnalytics.framework with the UUIDs [F86BF7ED-D076-3058-9550-63CE3E93F617]. Ensure that the archive's dSYM folder includes a DWARF file for FirebaseAnalytics.framework with the expected UUIDs.
+
+Upload Symbols Failed
+The archive did not include a dSYM for the GoogleAdsOnDeviceConversion.framework with the UUIDs [C598364F-25C8-3D59-B900-EC4E98C29005]. Ensure that the archive's dSYM folder includes a DWARF file for GoogleAdsOnDeviceConversion.framework with the expected UUIDs.
+
+Upload Symbols Failed
+The archive did not include a dSYM for the GoogleAppMeasurement.framework with the UUIDs [52EE8D92-D6CE-38F4-875A-A7D291C6D152]. Ensure that the archive's dSYM folder includes a DWARF file for GoogleAppMeasurement.framework with the expected UUIDs.
+
+Upload Symbols Failed
+The archive did not include a dSYM for the GoogleAppMeasurementIdentitySupport.framework with the UUIDs [6B8DCEB8-312F-3F39-BDB0-7F443B7E498B]. Ensure that the archive's dSYM folder includes a DWARF file for GoogleAppMeasurementIdentitySupport.framework with the expected UUIDs.
