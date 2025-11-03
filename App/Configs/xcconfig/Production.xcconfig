@@ -1,16 +1,9 @@
-
 //// Common Configuration
 #include "App/Configs/xcconfig/Common.xcconfig"
 
-MY_CF_BUNDLE_DISPLAY_NAME = Kompas.id Auth
-MYAPP_APP_ICON = AppIcon
-MYAPP_BUNDLE_IDENTIFIER = id.kompas.app.auth
-MYAPP_TEAM_ID = MyClientTeamIdHere
+CODE_SIGN_STYLE = Automatic
+DEBUG_INFORMATION_FORMAT = dwarf-with-dsym
+ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon
 
-MYAPP_CODE_SIGN_ENTITLEMENTS = App/Configs/entitlements/production.entitlements
-
-//// Firebase Configuration
-
-GOOGLESERVICE_PLIST_NAME = GoogleService-Info.plist
-GOOGLESERVICE_INFO_PLIST_DIR = ${SRCROOT}/App/Configs/GoogleService-Info.plist
-
+CODE_SIGN_ENTITLEMENTS = App/Configs/entitlements/production.entitlements
+CODE_SIGN_IDENTITY = iPhone Distribution
