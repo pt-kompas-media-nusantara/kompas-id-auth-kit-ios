@@ -9,7 +9,7 @@ protocol FirebaseConfiguration {
 struct FirebaseConfigurationImpl: FirebaseConfiguration {
     
     func configure() async {
-        let key = "FIREBASE_SERVICE_PLIST_NAME"
+        let key = "GOOGLE_SERVICE_INFO_PLIST_NAME"
         guard let firebaseName = Bundle.app.object(forInfoDictionaryKey: key) as? String,
               let plistLocation = Bundle.app.path(forResource: firebaseName, ofType: "plist"),
               let options = FirebaseOptions(contentsOfFile: plistLocation) else { return }

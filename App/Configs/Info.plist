@@ -113,6 +113,16 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>FIREBASE_ANALYTICS_COLLECTION_ENABLED</key>
+	<true/>
+	<key>FirebaseAutomaticScreenReportingEnabled</key>
+	<true/>
+	<key>GOOGLE_ANALYTICS_IDFV_COLLECTION_ENABLED</key>
+	<true/>
+	<key>GOOGLE_ANALYTICS_REGISTRATION_WITH_AD_NETWORK_ENABLED</key>
+	<true/>
+	<key>GOOGLE_SERVICE_INFO_PLIST_NAME</key>
+	<string>$(GOOGLE_SERVICE_INFO_PLIST)</string>
 </dict>
 </plist>
 

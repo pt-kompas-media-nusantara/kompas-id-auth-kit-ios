@@ -8,8 +8,11 @@ CF_BUNDLE_PACKAGE_TYPE = APPL
 CF_BUNDLE_SHORT_VERSION_STRING = 1.2.0
 CF_BUNDLE_VERSION = 1
 
-APP_STORE_CONNECT_TEAM_ID="8668801"
-DEVELOPER_PORTAL_TEAM_ID="ZX8X7SH43D"
+APP_STORE_CONNECT_TEAM_ID=8668801
+DEVELOPER_PORTAL_TEAM_ID=ZX8X7SH43D
+
+GOOGLE_SERVICE_INFO_PLIST=GoogleService-Info
+GOOGLE_SERVICE_INFO_PLIST_DIR = ${SRCROOT}/App/Configs/GoogleService-Info.plist
 
 NS_CAMERA_USAGE_DESCRIPTION = We need access to your camera to take photos.
 NS_LOCATION_ALWAYS_AND_WHEN_IN_USE_USAGE_DESCRIPTION = To provide you with the most relevant news and information, we may collect your location data when you use our application. We may use this information to customize the content displayed on the app to your local area or city.
