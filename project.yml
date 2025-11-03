@@ -34,6 +34,6 @@ settings:
 
 include:
   - packages.yml
-  - UICore/config.yml
-  - CommunicationsCore/config.yml
+  # - UICore/config.yml
+  # - CommunicationsCore/config.yml
   - App/config.yml
