@@ -1,3 +1,18 @@
 
 //// Common Configuration
 #include "App/Configs/xcconfig/Staging.xcconfig"
+
+CF_BUNDLE_DISPLAY_NAME = K AuthSD
+ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_KAuthSD
+
+// 
+// PENGATURAN KHUSUS DEBUG
+// 
+// Tidak ada optimasi (agar gampang di-debug)
+SWIFT_OPTIMIZATION_LEVEL = -Onone
+
+// Menambahkan flag "DEBUG" yang bisa Anda cek di kode Swift (mis: #if DEBUG)
+OTHER_SWIFT_FLAGS = $(inherited) -DDEBUG
+
+// Menambahkan flag "DEBUG" untuk Objective-C
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) DEBUG=1

@@ -1,3 +1,15 @@
 
 //// Common Configuration
 #include "App/Configs/xcconfig/Staging.xcconfig"
+
+CF_BUNDLE_DISPLAY_NAME = K AuthSR
+ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_KAuthSR
+
+// 
+// PENGATURAN KHUSUS RELEASE ("ENCRYPT")
+// 
+// Optimasi untuk kecepatan (ini yang Anda maksud "encrypt")
+SWIFT_OPTIMIZATION_LEVEL = -O
+
+// Optimasi level tinggi, mengompilasi semua file Swift bersamaan
+SWIFT_COMPILATION_MODE = wholemodule
