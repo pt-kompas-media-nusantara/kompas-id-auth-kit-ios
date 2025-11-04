@@ -9,3 +9,5 @@ packages:
     url: https://github.com/firebase/firebase-ios-sdk.git
     minorVersion: 12.4.0
 
+
+# https://github.com/SwiftGen/SwiftGen

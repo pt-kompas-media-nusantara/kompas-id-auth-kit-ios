@@ -1,0 +1,5 @@
+The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
+
+  #   make swiftgen_generate
+  # swiftgen_generate:
+#   swiftgen config run --config Config/swiftgen.yml
