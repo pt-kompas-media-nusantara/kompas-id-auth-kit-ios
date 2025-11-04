@@ -88,3 +88,6 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots/**/*.png
 fastlane/test_output
+Pods
+Podfile.lock
+KompasIdAuth.xcworkspace
