@@ -3,3 +3,11 @@ The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update yo
   #   make swiftgen_generate
   # swiftgen_generate:
 #   swiftgen config run --config Config/swiftgen.yml
+
+
+
+jadi rulesnya gimana penggunaakn makefile dan xcode gen ini, contohnya
+- jika saya hanya pindah file ke folder lain namun masih di dalam folder "App", apa yang harus saya lakukan. apakah perlu xcodegen generate atau make init_project atau ada hal lain
+- jika saya menambahkan library baru atau ubah versi library di SPM, apa yang harus saya lakukan
+- jika saya menambahkan library baru atau ubah versi library di podfile, apa yang harus saya lakukan
+- atau ada hal lain yang saya tidak saya ketahui

@@ -4,9 +4,10 @@
 # Cukup jalankan: make init_project
 # ===================================================================
 .PHONY: init_project
-init_project: xcodegen_generate resolve_spm install_pods
-	@echo "✅ Selesai! Membuka KompasIdAuth.xcworkspace..."
-	@open KompasIdAuth.xcworkspace
+# URUTAN DIPERBAIKI: xcodegen DULU, lalu pods (buat workspace), lalu spm
+init_project: xcodegen_generate install_pods
+	@echo "✅ Selesai! Proyek Anda siap."
+	@echo "   Buka file 'KompasIdAuth.xcworkspace'"
 
 # ===================================================================
 # LANGKAH 1: Membuat file .xcodeproj (WAJIB PERTAMA)
@@ -17,32 +18,24 @@ xcodegen_generate:
 	@xcodegen -s project.yml --quiet
 
 # ===================================================================
-# LANGKAH 2: Mengunduh paket Swift Package Manager (SPM)
-# ===================================================================
-.PHONY: resolve_spm
-resolve_spm:
-	@echo "➡️  2/3: Mengunduh dependencies SPM (Firebase, etc.)..."
-	# Sekarang xcodebuild akan menemukan .xcodeproj yang baru dibuat
-	@xcodebuild -resolvePackageDependencies -quiet
-
-# ===================================================================
-# LANGKAH 3: Mengunduh dependencies CocoaPods
-# (Hapus target ini jika Anda TIDAK pakai CocoaPods)
+# LANGKAH 2: Menginstall CocoaPods (Membuat .xcworkspace)
 # ===================================================================
 .PHONY: install_pods
 install_pods:
-	@echo "➡️  3/3: Menginstall dependencies CocoaPods..."
+	@echo "➡️  2/3: Menginstall dependencies CocoaPods..."
 	@bundle install
-	@bundle exec pod install --verbose
+	@bundle exec pod install --verbose --repo-update
 
 # ===================================================================
-# Perintah Tambahan
+# Perintah Tambahan (TARGET CLEAN DIPERBARUI)
 # ===================================================================
 .PHONY: clean
 clean:
 	@echo "🧹 Membersihkan file cache dan proyek lama..."
-	@xcodegen clean
 	@rm -rf *.xcodeproj
 	@rm -rf *.xcworkspace
 	@rm -f Package.resolved
+	@rm -f Podfile.lock
+	@rm -rf Pods
+	@rm -rf ~/Library/Developer/Xcode/DerivedData/*
 	@echo "✅ Bersih."

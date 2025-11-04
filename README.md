@@ -32,6 +32,7 @@ Untuk panduan lebih lanjut mengenai struktur dan konfigurasi XcodeGen, lu bisa m
 * **Panduan Mendalam XcodeGen:**
     * [XcodeGen: First Steps](https://medium.com/@daviddvd19/xcodegen-first-steps-%EF%B8%8F-a2d4655ced86)
     * [XcodeGen: Getting Deeper](https://medium.com/@daviddvd19/xcodegen-getting-deeper-2932474a5b59)
+    * [XcodeGen & SwiftGen: Optimized](https://medium.com/@pj.gilangsinawang/optimizing-your-ios-project-setup-with-xcodegen-and-swiftgen-b3fcb97e1773)
 
 ---
 
