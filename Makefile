@@ -4,8 +4,8 @@
 # Cukup jalankan: make init_project
 # ===================================================================
 .PHONY: init_project
-# URUTAN DIPERBAIKI: xcodegen DULU, lalu pods (buat workspace), lalu spm
-init_project: xcodegen_generate install_pods
+# URUTAN BARU: xcodegen -> spm -> pods (terakhir)
+init_project: xcodegen_generate resolve_spm install_pods
 	@echo "✅ Selesai! Proyek Anda siap."
 	@echo "   Buka file 'KompasIdAuth.xcworkspace'"
 
@@ -18,16 +18,27 @@ xcodegen_generate:
 	@xcodegen -s project.yml --quiet
 
 # ===================================================================
-# LANGKAH 2: Menginstall CocoaPods (Membuat .xcworkspace)
+# LANGKAH 2: Mengunduh paket Swift Package Manager (SPM)
+# ===================================================================
+.PHONY: resolve_spm
+resolve_spm:
+	@echo "➡️  2/3: Mengunduh dependencies SPM (Firebase, etc.)..."
+	# Kita perintahkan xcodebuild untuk bekerja di .xcodeproj
+	# (SEBELUM workspace dibuat)
+	@xcodebuild -project KompasIdAuth.xcodeproj -scheme "KompasIdAuth Staging" -resolvePackageDependencies -quiet
+
+# ===================================================================
+# LANGKAH 3: Menginstall CocoaPods (TERAKHIR)
 # ===================================================================
 .PHONY: install_pods
 install_pods:
-	@echo "➡️  2/3: Menginstall dependencies CocoaPods..."
+	@echo "➡️  3/3: Menginstall dependencies CocoaPods..."
+	# Pod install sekarang akan membungkus .xcodeproj yang sudah berisi SPM
 	@bundle install
 	@bundle exec pod install --verbose --repo-update
 
 # ===================================================================
-# Perintah Tambahan (TARGET CLEAN DIPERBARUI)
+# Perintah Tambahan
 # ===================================================================
 .PHONY: clean
 clean:
