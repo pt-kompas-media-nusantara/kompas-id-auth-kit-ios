@@ -1,6 +1,5 @@
-
-//// Common Configuration
 #include "App/Configs/xcconfig/Production.xcconfig"
+#include "Pods/Target Support Files/Pods-KompasIdAuth/Pods-KompasIdAuth.production debug.xcconfig"
 
 CF_BUNDLE_DISPLAY_NAME = K AuthPD
 ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_KAuthPD
