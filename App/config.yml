@@ -70,4 +70,4 @@ targets:
       commandLineArguments:
         -FIRAnalyticsDebugEnabled: true
         # -FIRDebugDisabled: true
-
+    
