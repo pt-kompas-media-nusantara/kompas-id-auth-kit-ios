@@ -136,6 +136,15 @@ def lane_select_app_identifiers_by_configuration
     UI.user_error!("No App ID found for group '#{group_suffix}' (expected ENV key: #{app_id_key} or fallback to DEVELOPER_APP_ID)")
   end
 
+  case selected_key
+  when "KompasIdAuth Staging"
+    configuration_name = "Staging Debug"
+  when "KompasIdAuth Production"
+    configuration_name = "Production Release"
+  else
+    UI.user_error!("Skema tidak dikenal: '#{selected_key}'.")
+  end
+
   # Simpan ke lane_context
   lane_context[:SELECTED_CONFIGURATION_KEY] = selected_key
   lane_context[:SELECTED_CONFIGURATION] = selected_value
@@ -144,6 +153,7 @@ def lane_select_app_identifiers_by_configuration
   lane_context[:APP_IDENTIFIERS] = identifier_values
   lane_context[:APP_IDENTIFIER] = identifier_values[0]
   lane_context[:DEVELOPER_APP_ID] = app_id
+  lane_context[:CONFIGURATION_NAME] = configuration_name
 
   puts "save SELECTED_CONFIGURATION_KEY: #{selected_value}"
   puts "save SELECTED_CONFIGURATION: #{selected_key}"
@@ -152,6 +162,7 @@ def lane_select_app_identifiers_by_configuration
   puts "save APP_IDENTIFIERS: #{identifier_values[0]}"
   puts "save APP_IDENTIFIERS: #{identifier_values}"
   puts "save DEVELOPER_APP_ID: #{app_id}"
+  puts "save CONFIGURATION_NAME: #{configuration_name}"
 end
 
 # Enter the number(s) of configuration(s) to select (comma-separated):

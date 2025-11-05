@@ -6,9 +6,12 @@ platform :ios do
   # load VERSION_NUMBER: 3.52.0
   desc "lane_get_version_number_from_xcode"
   lane :lane_get_version_number_from_xcode do
+    configuration_name = lane_context[:CONFIGURATION_NAME]
+
     get_version_number(
       xcodeproj: XCODEPROJ_APP,
-      target: TARGET_BY
+      target: TARGET_BY,
+      configuration: configuration_name
     )
     puts "save VERSION_NUMBER: #{lane_context[SharedValues::VERSION_NUMBER]}"
   end
