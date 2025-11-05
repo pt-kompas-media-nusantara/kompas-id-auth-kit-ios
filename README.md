@@ -33,6 +33,8 @@ Untuk panduan lebih lanjut mengenai struktur dan konfigurasi XcodeGen, lu bisa m
     * [XcodeGen: First Steps](https://medium.com/@daviddvd19/xcodegen-first-steps-%EF%B8%8F-a2d4655ced86)
     * [XcodeGen: Getting Deeper](https://medium.com/@daviddvd19/xcodegen-getting-deeper-2932474a5b59)
     * [XcodeGen & SwiftGen: Optimized](https://medium.com/@pj.gilangsinawang/optimizing-your-ios-project-setup-with-xcodegen-and-swiftgen-b3fcb97e1773)
+    * [Fastlane x Github Action CICD 1](https://litoarias.medium.com/continuous-delivery-for-ios-using-fastlane-and-github-actions-edf62ee68ecc)
+    * [Fastlane x Github Action CICD 2](https://www.runway.team/blog/how-to-set-up-a-ci-cd-pipeline-for-your-ios-app-fastlane-github-actions)
 
 ---
 
@@ -44,3 +46,4 @@ Gunakan perintah berikut untuk mengkloning proyek ini:
 
 ```bash
 git clone [https://github.com/pt-kompas-media-nusantara/kompas-id-auth-kit-ios.git](https://github.com/pt-kompas-media-nusantara/kompas-id-auth-kit-ios.git)
+

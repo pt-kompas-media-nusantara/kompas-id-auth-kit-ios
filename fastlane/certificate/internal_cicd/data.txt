@@ -1,0 +1,13 @@
+NAME : internal_cicd
+KEY ID : X57FD2X246
+Base 64 AuthKey_X57FD2X246.p8 : LS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tCk1JR1RBZ0VBTUJNR0J5cUdTTTQ5QWdFR0NDcUdTTTQ5QXdFSEJIa3dkd0lCQVFRZ3dUM0llSldmcmM2NHNIQlgKY3J4T2VMRFQ3WXpLOGQzcEh3T3pzSDVLOFBXZ0NnWUlLb1pJemowREFRZWhSQU5DQUFSQnUrODFTVWY4S1dCdwpNeTdYdSs5YlNjQXRqTzNWaVVYSkNuNWlFdHQyd1FZVzJ3akQvWVhYeUViOGpOQU5Cd3I2S0tQRzNvVEF6cTlKCng0cXg5d051Ci0tLS0tRU5EIFBSSVZBVEUgS0VZLS0tLS0=
+konversi dari p8 ke base64 menggunakan website ini : https://base64.guru/converter/encode/file
+
+
+bundle exec fastlane match appstore
+
+bundle exec fastlane match nuke distribution
+bundle exec fastlane match nuke development
+bundle exec fastlane match nuke enterprise
+bundle exec fastlane match nuke --type all
+Please run `fastlane match nuke [type], allowed values: development, distribution and enterprise. For the 'adhoc' type, please use 'distribution' instead.
