@@ -8,33 +8,33 @@ platform :ios do
     lane_show_github_values
 
     lane_select_app_identifiers_by_configuration
-    lane_select_deployment_type
-    lane_add_notes
+    # lane_select_deployment_type
+    # lane_add_notes
 
-    unless GITHUB_DEPLOYMENT_TYPE.to_s.strip.empty?
-      exec_clear_cache_pods
-    end    
+    # unless GITHUB_DEPLOYMENT_TYPE.to_s.strip.empty?
+    #   exec_clear_cache_pods
+    # end    
 
-    # setup_produce
-    delete_temp_keychain
-    setup_credentials
-    setup_match_app_identifier
-    increment_build_number_from_latest_testflight_auto
-    load_gym_configuration
-    deployment_type
-    delete_temp_keychain
+    # # setup_produce
+    # delete_temp_keychain
+    # setup_credentials
+    # setup_match_app_identifier
+    # increment_build_number_from_latest_testflight_auto
+    # load_gym_configuration
+    # deployment_type
+    # delete_temp_keychain
 
-    # LOG OUTPUT
-    send_to_logger_get_app_identifiers_by_config_selection
-    send_to_logger_get_selected_deployment_type
-    send_to_logger_get_notes
-    send_to_logger_get_keychain
-    send_to_logger_get_app_store_connect_api_key
-    send_to_logger_lane_get_match
-    send_to_logger_lane_get_latest_testflight_build_number
-    send_to_logger_lane_get_version_number
-    send_to_logger_lane_get_increment_build_number
-    send_to_logger_lane_get_gym
+    # # LOG OUTPUT
+    # send_to_logger_get_app_identifiers_by_config_selection
+    # send_to_logger_get_selected_deployment_type
+    # send_to_logger_get_notes
+    # send_to_logger_get_keychain
+    # send_to_logger_get_app_store_connect_api_key
+    # send_to_logger_lane_get_match
+    # send_to_logger_lane_get_latest_testflight_build_number
+    # send_to_logger_lane_get_version_number
+    # send_to_logger_lane_get_increment_build_number
+    # send_to_logger_lane_get_gym
   end
 
   # multiple

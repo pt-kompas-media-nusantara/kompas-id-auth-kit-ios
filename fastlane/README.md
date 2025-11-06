@@ -103,6 +103,14 @@ bundle exec fastlane lane_get_gym
 
 lane_get_version_number_from_xcode
 
+### ios lane_get_version_manually_from_xcconfig
+
+```sh
+[bundle exec] fastlane ios lane_get_version_manually_from_xcconfig
+```
+
+bundle exec fastlane lane_get_version_number
+
 ### ios lane_get_version_number
 
 ```sh
