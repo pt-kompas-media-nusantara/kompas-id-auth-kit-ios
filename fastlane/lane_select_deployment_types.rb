@@ -1,6 +1,9 @@
 default_platform(:ios)
 
 platform :ios do
+
+# save SELECTED_DEPLOYMENT_KEY: PRODUCTION_BY_DELIVER
+# save SELECTED_DEPLOYMENT_VALUE: Deliver
   desc "bundle exec fastlane lane_select_deployment_type"
   lane :lane_select_deployment_type do
     selected_key = ""
