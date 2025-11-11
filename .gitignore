@@ -92,3 +92,4 @@ Pods
 Podfile.lock
 KompasIdAuth.xcworkspace
 automation
+.env
