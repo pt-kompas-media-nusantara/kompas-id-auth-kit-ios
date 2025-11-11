@@ -79,6 +79,22 @@ Setup Credentials
 
 bundle exec fastlane lane_get_keychain
 
+### ios upload_by_pilot
+
+```sh
+[bundle exec] fastlane ios upload_by_pilot
+```
+
+Upload IPA by Pilot
+
+### ios upload_by_deliver
+
+```sh
+[bundle exec] fastlane ios upload_by_deliver
+```
+
+Upload IPA by Deliver
+
 ### ios load_gym_configuration
 
 ```sh
