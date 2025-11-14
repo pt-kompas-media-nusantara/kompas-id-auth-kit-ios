@@ -20,7 +20,6 @@ targets:
     platform: iOS
 
     settings:
-      PRODUCT_BUNDLE_IDENTIFIER: "id.kompas.app.auth.communicationscore"
       INFOPLIST_FILE: CommunicationsCore/Configs/Info.plist
 
     scheme:
@@ -59,11 +58,6 @@ targets:
     platform: iOS
     settings:
       INFOPLIST_FILE: CommunicationsCore/Configs/Info-Test.plist
-      PRODUCT_BUNDLE_IDENTIFIER: "id.kompas.app.auth.communicationscore.test"
-      CODE_SIGN_STYLE: Manual
-
-      base:
-        MARKETING_VERSION: $(MYAPP_APP_VERSION)
         
     sources:
       - path: Tests
