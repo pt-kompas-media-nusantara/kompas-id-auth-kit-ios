@@ -1,5 +1,6 @@
 
 import SwiftUI
+@_exported import UICore
 
 @main
 struct App: SwiftUI.App {
