@@ -1,11 +1,8 @@
-Upload Symbols Failed
-The archive did not include a dSYM for the FirebaseAnalytics.framework with the UUIDs [F86BF7ED-D076-3058-9550-63CE3E93F617]. Ensure that the archive's dSYM folder includes a DWARF file for FirebaseAnalytics.framework with the expected UUIDs.
+- bagaimana caranya agar ui core tidak perlu import communication core lagi. karna kalau import lagi akan redudansi dengan yang ada di auth kit core. -> ini belum saya cari tahu dampaknya jika import berulang jika scopenya besar
+- saat ini project luar dapat import UICore, dan pastinya dapat import AuthKitCore karna UICore dan AuthKitCore sama rata. pekerjaan rumah kedepannya AuthKit.swift menjadi pengganti App.swift @mail, karna saya mikirnya AuthKit.swift nanti akan ada callback ke root project lain untuk push atau present dari luar (bukan dari librarynya)
+- saat ini kita sudah dapat import framework menggunakan SPM url github (pakai branch), namun kedepannya harus pakai versi tag 
+- setelah Auth kit core sudah bisa digunaka di luar project dan bisa digunakan sepenuhnya di dalam project, selanjutnya adalah deploy ipa menggunakan fastlane local
+- setup CICD menggunakan github runner
+- setup CICD menggunakan github self hosted
+- library TCA harus di masukkan juga kah di internal project yang external project (coba cari tahu apakah bisa di jadikan 1 saja agar versinya sama di setiap repo nya) namun kekurangannya adalah perubahannya sangat besar
 
-Upload Symbols Failed
-The archive did not include a dSYM for the GoogleAdsOnDeviceConversion.framework with the UUIDs [C598364F-25C8-3D59-B900-EC4E98C29005]. Ensure that the archive's dSYM folder includes a DWARF file for GoogleAdsOnDeviceConversion.framework with the expected UUIDs.
-
-Upload Symbols Failed
-The archive did not include a dSYM for the GoogleAppMeasurement.framework with the UUIDs [52EE8D92-D6CE-38F4-875A-A7D291C6D152]. Ensure that the archive's dSYM folder includes a DWARF file for GoogleAppMeasurement.framework with the expected UUIDs.
-
-Upload Symbols Failed
-The archive did not include a dSYM for the GoogleAppMeasurementIdentitySupport.framework with the UUIDs [6B8DCEB8-312F-3F39-BDB0-7F443B7E498B]. Ensure that the archive's dSYM folder includes a DWARF file for GoogleAppMeasurementIdentitySupport.framework with the expected UUIDs.
