@@ -54,7 +54,7 @@ targets:
     dependencies:
 
       # Internal Dependencies
-      # - target: UICore
+      - target: UICore
       - target: CommunicationsCore
 
       # SPM dependencies

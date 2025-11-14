@@ -20,11 +20,7 @@ targets:
     platform: iOS
 
     settings:
-      PRODUCT_BUNDLE_IDENTIFIER: "id.kompas.app.auth.uicore"
       INFOPLIST_FILE: UICore/Configs/Info.plist
-
-    base:
-      MARKETING_VERSION: $(MYAPP_APP_VERSION)
 
     # dependencies:
       # - package: Kingfisher # nurirppan: tidak di pakai karna tidak ada thirdparty untuk UI
