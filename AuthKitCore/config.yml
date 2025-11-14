@@ -1,0 +1,45 @@
+############
+# Configs
+############
+
+configs:
+  Staging Debug: debug
+  Production Debug: debug
+  Staging Release: release
+  Production Release: release
+  
+targets:
+
+  ############
+  # Framework
+  ############
+  
+  AuthKitCore:
+    name: AuthKitCore
+    type: framework
+    platform: iOS
+
+    settings:
+      INFOPLIST_FILE: AuthKitCore/Configs/Info.plist
+
+    # dependencies:
+      # - package: Kingfisher # nurirppan: tidak di pakai karna tidak ada thirdparty untuk UI
+    
+    sources:
+      - path: Sources
+        group: Modules/AuthKitCore
+      - path: Resources
+        group: Modules/AuthKitCore
+      - path: Configs/Info.plist
+        group: Modules/AuthKitCore
+      - path: Configs/xcconfig
+        group: App/Configs
+
+    configFiles:
+      Staging Debug: Configs/xcconfig/Common.xcconfig
+      Staging Release: Configs/xcconfig/Common.xcconfig
+      Production Debug: Configs/xcconfig/Common.xcconfig
+      Production Release: Configs/xcconfig/Common.xcconfig
+  ############
+  # Tests
+  ############

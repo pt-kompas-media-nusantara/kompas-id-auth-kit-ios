@@ -1,6 +1,7 @@
 
 import SwiftUI
 @_exported import UICore
+// @_exported import AuthKitCore
 
 @main
 struct App: SwiftUI.App {

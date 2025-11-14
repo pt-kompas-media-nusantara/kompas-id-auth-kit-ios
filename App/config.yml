@@ -54,6 +54,7 @@ targets:
     dependencies:
 
       # Internal Dependencies
+      - target: AuthKitCore
       - target: UICore
       - target: CommunicationsCore
 

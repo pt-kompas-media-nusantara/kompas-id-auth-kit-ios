@@ -95,7 +95,8 @@ automation
 .env
 
 App/Configs/Info.plist
+AuthKitCore/Configs/Info.plist
 CommunicationsCore/Configs/Info.plist
 CommunicationsCore/Configs/Info-Test.plist
 UICore/Configs/Info.plist
-Info.plist
+# Info.plist

@@ -15,7 +15,10 @@ let package = Package(
             targets: ["UICore"]),
         .library(
             name: "CommunicationsCore",
-            targets: ["CommunicationsCore"])
+            targets: ["CommunicationsCore"]),
+        .library(
+            name: "AuthKitCore",
+            targets: ["AuthKitCore"])
     ],
     
     // Masukkan SEMUA dependency SPM Anda di sini
@@ -33,8 +36,7 @@ let package = Package(
             path: "UICore/Sources"
             // Kita tidak perlu .process("Resources")
             // jika 'Resources' ada di dalam 'Sources'
-        ),
-        
+        ),        
         .target(
             name: "CommunicationsCore",
             dependencies: [
@@ -43,6 +45,15 @@ let package = Package(
                 // .target(name: "UICore")
             ],
             path: "CommunicationsCore/Sources"
+        ),        
+        .target(
+            name: "AuthKitCore",
+            dependencies: [
+                // Contoh jika CommCore butuh Firebase & AuthKitCore
+                // .product(name: "FirebaseAnalytics", package: "firebase-ios-sdk"),
+                // .target(name: "AuthKitCore")
+            ],
+            path: "AuthKitCore/Sources"
         )
         
         // Kita TIDAK memasukkan 'App' di sini,

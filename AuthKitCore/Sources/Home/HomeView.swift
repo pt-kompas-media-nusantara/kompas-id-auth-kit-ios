@@ -1,8 +1,11 @@
 
 import SwiftUI
 
-struct HomeView: View {
-    var body: some View {
+public struct HomeView: View {
+    
+    public init() {}
+    
+    public var body: some View {
         VStack {
             Text("Hello, World!")
             
