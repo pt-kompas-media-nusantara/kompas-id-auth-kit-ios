@@ -7,6 +7,7 @@ CF_BUNDLE_EXECUTABLE_AUTH_COMMUNICATIONS_KIT = XAuthCommunicationsKit
 CF_BUNDLE_EXECUTABLE_AUTH_COMMUNICATIONS_KIT_TEST = XAuthCommunicationsKit_Tests
 
 masih ada yang _core nya, harusnya di ganti
+coba ganti juga dari <string>$( jadi <string>${
 CF_BUNDLE_IDENTIFIER = id.kompas.app.auth
 CF_BUNDLE_IDENTIFIER_AUTH_KIT_CORE = id.kompas.app.auth.xauthkit
 CF_BUNDLE_IDENTIFIER_UI_CORE = id.kompas.app.auth.xauthuikit
