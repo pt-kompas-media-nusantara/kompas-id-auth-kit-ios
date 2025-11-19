@@ -17,6 +17,10 @@ Dir["#{File.dirname(__FILE__)}/*.rb"].each do |file|
   import file
 end
 
+if File.exist?(".env.secret")
+  Dotenv.load(".env.secret")
+end
+
 default_platform(:ios)
 
 platform :ios do
