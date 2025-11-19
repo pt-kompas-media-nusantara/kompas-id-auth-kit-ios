@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(CF_BUNDLE_DEVELOPMENT_REGION)</string>
 	<key>CFBundleExecutable</key>
-	<string>$(CF_BUNDLE_EXECUTABLE_AUTH_UI_KIT)</string>
+	<string>$(CF_BUNDLE_EXECUTABLE)</string>
 	<key>CFBundleIcons</key>
 	<dict>
 		<key>CFBundlePrimaryIcon</key>

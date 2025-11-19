@@ -1,11 +1,12 @@
 CF_BUNDLE_DEVELOPMENT_REGION = en
-
-CF_BUNDLE_EXECUTABLE = XAuth
+cek lagi disini hadeuh masih ada yang salah
+CF_BUNDLE_EXECUTABLE = XAuth 4 di bawah ini kayanya nggak ke pake
 CF_BUNDLE_EXECUTABLE_AUTH_KIT = XAuthKit
 CF_BUNDLE_EXECUTABLE_AUTH_UI_KIT = XAuthUIKit
 CF_BUNDLE_EXECUTABLE_AUTH_COMMUNICATIONS_KIT = XAuthCommunicationsKit
 CF_BUNDLE_EXECUTABLE_AUTH_COMMUNICATIONS_KIT_TEST = XAuthCommunicationsKit_Tests
 
+masih ada yang _core nya, harusnya di ganti
 CF_BUNDLE_IDENTIFIER = id.kompas.app.auth
 CF_BUNDLE_IDENTIFIER_AUTH_KIT_CORE = id.kompas.app.auth.xauthkit
 CF_BUNDLE_IDENTIFIER_UI_CORE = id.kompas.app.auth.xauthuikit
