@@ -14,24 +14,24 @@ targets:
   # Framework
   ############
   
-  AuthKitCore:
-    name: AuthKitCore
+  XAuthKit:
+    name: XAuthKit
     type: framework
     platform: iOS
 
     settings:
-      INFOPLIST_FILE: AuthKitCore/Configs/Info.plist
+      INFOPLIST_FILE: XAuthKit/Configs/Info.plist
 
     # dependencies:
       # - package: Kingfisher # nurirppan: tidak di pakai karna tidak ada thirdparty untuk UI
     
     sources:
       - path: Sources
-        group: Modules/AuthKitCore
+        group: Modules/XAuthKit
       - path: Resources
-        group: Modules/AuthKitCore
+        group: Modules/XAuthKit
       - path: Configs/Info.plist
-        group: Modules/AuthKitCore
+        group: Modules/XAuthKit
       - path: Configs/xcconfig
         group: App/Configs
 

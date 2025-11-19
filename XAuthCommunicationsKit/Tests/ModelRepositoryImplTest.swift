@@ -1,6 +1,6 @@
 
 import XCTest
-@testable import CommunicationsCore
+@testable import XAuthCommunicationsKit
 
 class ModelRepositoryImplTest: XCTestCase {
     

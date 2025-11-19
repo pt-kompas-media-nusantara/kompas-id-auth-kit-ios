@@ -72,7 +72,7 @@ end
 # App Identifier 1: id.kompas.app.auth
 # save SELECTED_CONFIGURATION_KEY: DEBUG_CONFIGURATION
 # save SELECTED_CONFIGURATION: Staging Debug
-# save SELECTED_SCHEME: KompasIdAuth Staging
+# save SELECTED_SCHEME: XAuth Staging
 # save CONFIGURATION_GROUP: DEFAULT
 # save APP_IDENTIFIERS: id.kompas.app.auth
 # save APP_IDENTIFIERS: ["id.kompas.app.auth"]
@@ -109,7 +109,7 @@ def lane_select_app_identifiers_by_configuration
   # 1. Buat nama key untuk scheme-nya
   scheme_key = selected_key.gsub("CONFIGURATION", "SCHEME")
   
-  # 2. Ambil value scheme dari ENV (Contoh: ENV["DEBUG_SCHEME"] -> "KompasIdAuth Staging")
+  # 2. Ambil value scheme dari ENV (Contoh: ENV["DEBUG_SCHEME"] -> "XAuth Staging")
   selected_scheme_value = ENV[scheme_key]
 
   # 3. Validasi (jaga-jaga)
@@ -149,7 +149,7 @@ def lane_select_app_identifiers_by_configuration
   lane_context[:SELECTED_CONFIGURATION] = selected_value # Ini adalah nama konfigurasi, mis: "Staging Debug"
   
   # --- PERBAIKAN DI SINI ---
-  lane_context[:SELECTED_SCHEME] = selected_scheme_value # Ini adalah nama scheme, mis: "KompasIdAuth Staging"
+  lane_context[:SELECTED_SCHEME] = selected_scheme_value # Ini adalah nama scheme, mis: "XAuth Staging"
   # -------------------------
 
   lane_context[:CONFIGURATION_GROUP] = group_suffix

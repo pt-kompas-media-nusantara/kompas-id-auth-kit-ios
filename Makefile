@@ -7,7 +7,7 @@
 # URUTAN BARU: xcodegen -> spm -> pods (terakhir)
 init_project: xcodegen_generate resolve_spm install_pods
 	@echo "✅ Selesai! Proyek Anda siap."
-	@echo "   Buka file 'KompasIdAuth.xcworkspace'"
+	@echo "   Buka file 'XAuth.xcworkspace'"
 
 # ===================================================================
 # LANGKAH 1: Membuat file .xcodeproj (WAJIB PERTAMA)
@@ -25,7 +25,7 @@ resolve_spm:
 	@echo "➡️  2/3: Mengunduh dependencies SPM (Firebase, etc.)..."
 	# Kita perintahkan xcodebuild untuk bekerja di .xcodeproj
 	# (SEBELUM workspace dibuat)
-	@xcodebuild -project KompasIdAuth.xcodeproj -scheme "KompasIdAuth Staging" -resolvePackageDependencies -quiet
+	@xcodebuild -project XAuth.xcodeproj -scheme "XAuth Staging" -resolvePackageDependencies -quiet
 
 # ===================================================================
 # LANGKAH 3: Menginstall CocoaPods (TERAKHIR)

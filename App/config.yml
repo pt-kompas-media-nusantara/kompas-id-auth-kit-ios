@@ -16,7 +16,7 @@ targets:
   # Application
   ############
 
-  KompasIdAuth:
+  XAuth:
     type: application
     platform: iOS
     deploymentTarget: 16.0
@@ -54,9 +54,9 @@ targets:
     dependencies:
 
       # Internal Dependencies
-      - target: AuthKitCore
-      - target: UICore
-      - target: CommunicationsCore
+      - target: XAuthKit
+      - target: XAuthUIKit
+      - target: XAuthCommunicationsKit
 
       # SPM dependencies
       - package: Firebase

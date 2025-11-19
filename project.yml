@@ -12,7 +12,7 @@
 
 ############
 ## Project 
-name: KompasIdAuth
+name: XAuth
 
 
 ############
@@ -34,8 +34,9 @@ settings:
 
 include:
   - packages.yml
-  - AuthKitCore/config.yml
-  - UICore/config.yml
-  - CommunicationsCore/config.yml
   - App/config.yml
+  - XAuthKit/config.yml
+  - XAuthUIKit/config.yml
+  - XAuthCommunicationsKit/config.yml
+  
 

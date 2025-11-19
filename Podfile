@@ -2,10 +2,10 @@ ENV['sub'] = '1'
 
 platform :ios, '16.0'
 
-target 'KompasIdAuth' do
+target 'XAuth' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for KompasIdAuth
+  # Pods for XAuth
 
 end

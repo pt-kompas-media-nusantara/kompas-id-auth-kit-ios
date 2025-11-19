@@ -1,6 +1,6 @@
 
 #include "App/Configs/xcconfig/Staging.xcconfig"
-#include "Pods/Target Support Files/Pods-KompasIdAuth/Pods-KompasIdAuth.staging debug.xcconfig"
+#include "Pods/Target Support Files/Pods-XAuth/Pods-XAuth.staging debug.xcconfig"
 
 
 CF_BUNDLE_DISPLAY_NAME = K AuthSD

@@ -14,18 +14,18 @@ targets:
   # Framework
   ############
 
-  CommunicationsCore:
-    name: CommunicationsCore
+  XAuthCommunicationsKit:
+    name: XAuthCommunicationsKit
     type: framework
     platform: iOS
 
     settings:
-      INFOPLIST_FILE: CommunicationsCore/Configs/Info.plist
+      INFOPLIST_FILE: XAuthCommunicationsKit/Configs/Info.plist
 
     scheme:
       gatherCovergageData: true
       testTargets:
-        - name: CommunicationsCore_Tests
+        - name: XAuthCommunicationsKit_Tests
           parallelizable: true
           randomExecutionOrder: true
 
@@ -34,11 +34,11 @@ targets:
     
     sources:
       - path: Sources
-        group: Modules/CommunicationsCore
+        group: Modules/XAuthCommunicationsKit
       - path: Resources
-        group: Modules/CommunicationsCore
+        group: Modules/XAuthCommunicationsKit
       - path: Configs/Info.plist
-        group: Modules/CommunicationsCore
+        group: Modules/XAuthCommunicationsKit
       - path: Configs/xcconfig
         group: App/Configs
 
@@ -52,20 +52,20 @@ targets:
   # Tests
   ############
 
-  CommunicationsCore_Tests:
-    name: CommunicationsCore_Tests
+  XAuthCommunicationsKit_Tests:
+    name: XAuthCommunicationsKit_Tests
     type: bundle.unit-test
     platform: iOS
     settings:
-      INFOPLIST_FILE: CommunicationsCore/Configs/Info-Test.plist
+      INFOPLIST_FILE: XAuthCommunicationsKit/Configs/Info-Test.plist
         
     sources:
       - path: Tests
-        group: Modules/CommunicationsCore
+        group: Modules/XAuthCommunicationsKit
     dependencies:
-      - target: CommunicationsCore
+      - target: XAuthCommunicationsKit
 
     scheme:
       testTargets:
-        - CommunicationsCore_Tests
+        - XAuthCommunicationsKit_Tests
       gatherCoverageData: true
