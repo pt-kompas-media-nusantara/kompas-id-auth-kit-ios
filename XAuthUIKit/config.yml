@@ -24,6 +24,11 @@ targets:
       DEFINES_MODULE: YES
 
     # dependencies:
+    #   # Internal Dependencies
+    #   - target: XAuthKit
+    #   - target: XAuthCommunicationsKit
+
+    # dependencies:
       # - package: Kingfisher # nurirppan: tidak di pakai karna tidak ada thirdparty untuk UI
     
     sources:

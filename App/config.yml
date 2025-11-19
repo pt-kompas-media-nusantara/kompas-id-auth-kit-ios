@@ -52,7 +52,6 @@ targets:
           - $(inherited)
           
     dependencies:
-
       # Internal Dependencies
       - target: XAuthKit
       - target: XAuthUIKit

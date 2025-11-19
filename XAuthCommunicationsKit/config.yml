@@ -23,6 +23,11 @@ targets:
       INFOPLIST_FILE: XAuthCommunicationsKit/Configs/Info.plist
       DEFINES_MODULE: YES
 
+    # dependencies:
+    #   # Internal Dependencies
+    #   - target: XAuthKit
+    #   - target: XAuthUIKit
+
     scheme:
       gatherCovergageData: true
       testTargets:

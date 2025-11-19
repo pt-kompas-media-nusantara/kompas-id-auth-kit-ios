@@ -25,6 +25,11 @@ targets:
 
     # dependencies:
       # - package: Kingfisher # nurirppan: tidak di pakai karna tidak ada thirdparty untuk UI
+
+    dependencies:
+      # Internal Dependencies
+      - target: XAuthUIKit
+      - target: XAuthCommunicationsKit
     
     sources:
       - path: Sources
