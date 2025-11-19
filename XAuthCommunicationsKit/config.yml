@@ -21,6 +21,7 @@ targets:
 
     settings:
       INFOPLIST_FILE: XAuthCommunicationsKit/Configs/Info.plist
+      DEFINES_MODULE: YES
 
     scheme:
       gatherCovergageData: true

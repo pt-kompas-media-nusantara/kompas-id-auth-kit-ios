@@ -33,10 +33,10 @@ settings:
 ## Imports
 
 include:
-  - packages.yml
-  - App/config.yml
+  - packages.yml  
   - XAuthKit/config.yml
   - XAuthUIKit/config.yml
-  - XAuthCommunicationsKit/config.yml
+  - XAuthCommunicationsKit/config.yml  
+  - App/config.yml # ini wajib di akhir karna modulenya dulu yang di genere baru root nya
   
 
