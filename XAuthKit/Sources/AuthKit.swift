@@ -11,5 +11,5 @@
 // ke siapa pun yang mengimpor AuthKit.
 import SwiftUI
 
-@_exported import XAuthUIKit
 @_exported import XAuthCommunicationsKit
+@_exported import XAuthUIKit
