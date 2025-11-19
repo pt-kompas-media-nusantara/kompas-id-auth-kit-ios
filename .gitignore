@@ -84,7 +84,7 @@ Carthage/Build/
 # For more information about the recommended setup visit:
 # https://docs.fastlane.tools/best-practices/source-control/#source-control
 
-fastlane/.env.secret
+# fastlane/.env.secret
 fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots/**/*.png
@@ -93,7 +93,7 @@ Pods
 Podfile.lock
 XAuth.xcworkspace
 automation
-.env
+# .env
 
 App/Configs/Info.plist
 XAuthKit/Configs/Info.plist
