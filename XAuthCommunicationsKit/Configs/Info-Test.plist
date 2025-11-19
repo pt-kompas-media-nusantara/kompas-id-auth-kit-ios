@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(CF_BUNDLE_DEVELOPMENT_REGION)</string>
 	<key>CFBundleExecutable</key>
-	<string>$(CF_BUNDLE_EXECUTABLE)</string>
+	<string>$(CF_BUNDLE_EXECUTABLE_AUTH_COMMUNICATIONS_KIT_TEST)</string>
 	<key>CFBundleIcons</key>
 	<dict>
 		<key>CFBundlePrimaryIcon</key>
@@ -19,13 +19,13 @@
 		</dict>
 	</dict>
 	<key>CFBundleIdentifier</key>
-	<string>$(CF_BUNDLE_IDENTIFIER_COMMUNICATION_CORE_TEST)</string>
+	<string>$(CF_BUNDLE_IDENTIFIER_AUTH_COMMUNICATIONS_KIT_TEST)</string>
 	<key>CFBundleDisplayName</key>
 	<string>$(CF_BUNDLE_DISPLAY_NAME)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>$(CF_BUNDLE_INFO_DICTIONARY_VERSION)</string>
 	<key>CFBundleName</key>
-	<string>$(CF_BUNDLE_NAME)</string>
+	<string>$(CF_BUNDLE_NAME_AUTH_COMMUNICATIONS_KIT_TEST)</string>
 	<key>CFBundlePackageType</key>
 	<string>$(CF_BUNDLE_PACKAGE_TYPE_AUTH_COMMUNICATIONS_KIT_TEST)</string>
 	<key>CFBundleShortVersionString</key>

@@ -1,6 +1,5 @@
 CF_BUNDLE_DEVELOPMENT_REGION = en
-cek lagi disini hadeuh masih ada yang salah
-CF_BUNDLE_EXECUTABLE = XAuth 4 di bawah ini kayanya nggak ke pake
+CF_BUNDLE_EXECUTABLE = XAuth
 CF_BUNDLE_EXECUTABLE_AUTH_KIT = XAuthKit
 CF_BUNDLE_EXECUTABLE_AUTH_UI_KIT = XAuthUIKit
 CF_BUNDLE_EXECUTABLE_AUTH_COMMUNICATIONS_KIT = XAuthCommunicationsKit
@@ -9,10 +8,10 @@ CF_BUNDLE_EXECUTABLE_AUTH_COMMUNICATIONS_KIT_TEST = XAuthCommunicationsKit_Tests
 masih ada yang _core nya, harusnya di ganti
 coba ganti juga dari <string>$( jadi <string>${
 CF_BUNDLE_IDENTIFIER = id.kompas.app.auth
-CF_BUNDLE_IDENTIFIER_AUTH_KIT_CORE = id.kompas.app.auth.xauthkit
-CF_BUNDLE_IDENTIFIER_UI_CORE = id.kompas.app.auth.xauthuikit
-CF_BUNDLE_IDENTIFIER_COMMUNICATION_CORE = id.kompas.app.auth.xauthcommunicationskit
-CF_BUNDLE_IDENTIFIER_COMMUNICATION_CORE_TEST = id.kompas.app.auth.xauthcommunicationskit.test
+CF_BUNDLE_IDENTIFIER_AUTH_KIT = id.kompas.app.auth.xauthkit
+CF_BUNDLE_IDENTIFIER_AUTH_UI_KIT = id.kompas.app.auth.xauthuikit
+CF_BUNDLE_IDENTIFIER_AUTH_COMMUNICATIONS_KIT = id.kompas.app.auth.xauthcommunicationskit
+CF_BUNDLE_IDENTIFIER_AUTH_COMMUNICATIONS_KIT_TEST = id.kompas.app.auth.xauthcommunicationskit.test
 
 CF_BUNDLE_INFO_DICTIONARY_VERSION = 6.0
 
@@ -27,6 +26,8 @@ CF_BUNDLE_PACKAGE_TYPE_AUTH_UI_KIT = FMWK
 
 CF_BUNDLE_NAME_AUTH_COMMUNICATIONS_KIT = XAuthCommunicationsKit
 CF_BUNDLE_PACKAGE_TYPE_AUTH_COMMUNICATIONS_KIT = FMWK
+
+CF_BUNDLE_NAME_AUTH_COMMUNICATIONS_KIT_TEST = XAuthCommunicationsKit_Tests
 CF_BUNDLE_PACKAGE_TYPE_AUTH_COMMUNICATIONS_KIT_TEST = BNDL
 
 CF_BUNDLE_SHORT_VERSION_STRING = 1.0.1
