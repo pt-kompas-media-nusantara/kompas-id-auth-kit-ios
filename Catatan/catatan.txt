@@ -1,3 +1,5 @@
+BACKLOG:
+- fastlane match appstore belum di buat karna mempengaruhi CICD project yang lain. kita coba buat di akhir
 - bagaimana caranya agar ui core tidak perlu import communication core lagi. karna kalau import lagi akan redudansi dengan yang ada di auth kit core. -> ini belum saya cari tahu dampaknya jika import berulang jika scopenya besar
 - saat ini project luar dapat import XAuthUIKit, dan pastinya dapat import XAuthKit karna XAuthUIKit dan XAuthKit sama rata. pekerjaan rumah kedepannya AuthKit.swift menjadi pengganti App.swift @mail, karna saya mikirnya AuthKit.swift nanti akan ada callback ke root project lain untuk push atau present dari luar (bukan dari librarynya)
 - saat ini kita sudah dapat import framework menggunakan SPM url github (pakai branch), namun kedepannya harus pakai versi tag 
@@ -8,5 +10,8 @@
 - swiftlint
 - swift format
 - di info.plist coba ganti juga dari <string>$( jadi <string>${. karna valuenya tidak muncul tapi masih bisa
+
+PROSES:
+- bikin tag github dari local fastlane untuk dapat di coba dari local
 
 
