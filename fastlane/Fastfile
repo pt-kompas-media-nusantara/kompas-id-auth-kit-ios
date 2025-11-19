@@ -17,8 +17,14 @@ Dir["#{File.dirname(__FILE__)}/*.rb"].each do |file|
   import file
 end
 
+# if File.exist?(".env.secret")
+#   Dotenv.load(".env.secret")
+# end
+
+# Gunakan .overload, BUKAN .load
 if File.exist?(".env.secret")
-  Dotenv.load(".env.secret")
+  # "overload" artinya: Timpa nilai yang sudah ada di memori dengan yang ada di file ini
+  Dotenv.overload(".env.secret") 
 end
 
 default_platform(:ios)
