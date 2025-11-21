@@ -39,6 +39,14 @@ bundle exec fastlane exec_multi_build_ipa
 
 fastlane exec_clear_cache_pods
 
+### ios exec_create_tag_release
+
+```sh
+[bundle exec] fastlane ios exec_create_tag_release
+```
+
+bundle exec fastlane exec_create_tag_release
+
 ### ios load_app_store_connect_api_key
 
 ```sh
