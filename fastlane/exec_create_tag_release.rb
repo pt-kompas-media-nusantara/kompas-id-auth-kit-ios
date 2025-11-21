@@ -4,21 +4,9 @@ platform :ios do
   
   # Create Git Tag & GitHub Release
   desc "bundle exec fastlane exec_create_tag_release"
-  lane :exec_create_tag_release do |options|
+  lane :exec_create_tag_release do 
 
-    configuration_name = lane_context[:CONFIGURATION_NAME]
-    
-    ensure_git_status_clean(show_diff: true)
-
-    current_version = get_version_number(
-      xcodeproj: XCODEPROJ_APP,
-      target: TARGET_BY,
-      configuration: configuration_name
-    )
-    
-    version_number = options[:version] || current_version
-    
-    tag_name = "v#{version_number}"
+    tag_name = "v#{lane_get_version_manually_from_xcconfig}"
     puts "tag_name: #{tag_name}"
 
     # Cek apakah tag sudah ada (mencegah error duplicate)
@@ -27,29 +15,31 @@ platform :ios do
       next
     end
 
-    # # Bikin Git Tag Lokal
-    # add_git_tag(
-    #   tag: tag_name,
-    #   message: "v#{tag_name}"
-    # )
+    # Bikin Git Tag Lokal
+    add_git_tag(
+      tag: tag_name,
+      message: "v#{tag_name}"
+    )
 
-    # # 5. Push Tag ke GitHub
-    # push_to_git_remote(
-    #   tags: true,
-    #   remote: "origin" # Pastikan remote name lu 'origin' (standar)
-    # )
+    # 5. Push Tag ke GitHub
+    push_to_git_remote(
+      tags: true,
+      remote: "origin" # Pastikan remote name lu 'origin' (standar)
+    )
 
-    # # 6. (Opsional & Keren) Bikin Release Note di Halaman GitHub
-    # set_github_release(
-    #   repository_name: "pt-kompas-media-nusantara/kompas-id-auth-kit-ios",
-    #   api_token: GITHUB_API_TOKEN,
-    #   name: "Release #{tag_name}",
-    #   tag_name: tag_name,
-    #   description: "Rilis versi #{tag_name} dari Fastlane 🚀", # Bisa diganti changelog otomatis
-    #   is_draft: false,
-    #   is_prerelease: false
-    # )
+    # 6. (Opsional & Keren) Bikin Release Note di Halaman GitHub
+    set_github_release(
+      repository_name: "pt-kompas-media-nusantara/kompas-id-auth-kit-ios",
+      api_token: GITHUB_API_TOKEN,
+      name: "Release #{tag_name}",
+      tag_name: tag_name,
+      description: "Rilis versi #{tag_name} dari Fastlane 🚀", # Bisa diganti changelog otomatis
+      is_draft: false,
+      is_prerelease: false
+    )
     
-    # UI.success("✅ Berhasil rilis #{tag_name} ke GitHub!")
+    UI.success("✅ Berhasil rilis #{tag_name} ke GitHub!")
   end
+
+
 end
