@@ -5,11 +5,15 @@ platform :ios do
   # Create Git Tag & GitHub Release
   desc "bundle exec fastlane exec_create_tag_release"
   lane :exec_create_tag_release do |options|
+
+    configuration_name = lane_context[:CONFIGURATION_NAME]
     
     ensure_git_status_clean(show_diff: true)
+
     current_version = get_version_number(
       xcodeproj: XCODEPROJ_APP,
-      target: TARGET_BY
+      target: TARGET_BY,
+      configuration: configuration_name
     )
     
     version_number = options[:version] || current_version
