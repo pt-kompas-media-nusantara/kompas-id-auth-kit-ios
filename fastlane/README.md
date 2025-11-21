@@ -47,6 +47,14 @@ fastlane exec_clear_cache_pods
 
 bundle exec fastlane exec_create_tag_release
 
+### ios exec_delete_bad_releaseOne
+
+```sh
+[bundle exec] fastlane ios exec_delete_bad_releaseOne
+```
+
+bundle exec fastlane exec_delete_bad_releaseOne
+
 ### ios exec_delete_bad_release
 
 ```sh
