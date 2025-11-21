@@ -27,13 +27,18 @@ platform :ios do
       remote: "origin" # Pastikan remote name lu 'origin' (standar)
     )
 
+    changelog = changelog_from_git_commits(
+      commits_count: 10, # Atau merge_commit_filtering: "exclude_merges"
+      pretty: "- %s"
+    )
+
     # 6. (Opsional & Keren) Bikin Release Note di Halaman GitHub
     set_github_release(
       repository_name: "pt-kompas-media-nusantara/kompas-id-auth-kit-ios",
       api_token: GITHUB_API_TOKEN,
       name: "Release #{tag_name}",
       tag_name: tag_name,
-      description: "Rilis versi #{tag_name} dari Fastlane 🚀", # Bisa diganti changelog otomatis
+      description: "Changes:\n#{changelog}",
       is_draft: false,
       is_prerelease: false
     )
