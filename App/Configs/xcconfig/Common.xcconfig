@@ -39,8 +39,8 @@ GOOGLE_SERVICE_INFO_PLIST=GoogleService-Info
 GOOGLE_SERVICE_INFO_PLIST_DIR = ${SRCROOT}/App/Configs/GoogleService-Info.plist
 
 NS_CAMERA_USAGE_DESCRIPTION = We need access to your camera to take photos.
-NS_LOCATION_ALWAYS_AND_WHEN_IN_USE_USAGE_DESCRIPTION = To provide you with the most relevant news and information, we may collect your location data when you use our application. We may use this information to customize the content displayed on the app to your local area or city.
-NS_LOCATION_WHEN_IN_USE_USAGE_DESCRIPTION = To provide you with the most relevant news and information, we may collect your location data when you use our application. We may use this information to customize the content displayed on the app to your local area or city.
+NS_LOCATION_ALWAYS_AND_WHEN_IN_USE_USAGE_DESCRIPTION = To provide you with the most relevant news and information, we may collect your location data when you use our application We may use this information to customize the content displayed on the app to your local area or city.
+NS_LOCATION_WHEN_IN_USE_USAGE_DESCRIPTION = To provide you with the most relevant news and information, we may collect your location data when you use our application We may use this information to customize the content displayed on the app to your local area or city.
 NS_MICROPHONE_USAGE_DESCRIPTION = Need microphone access for uploading videos
 NS_PHOTO_LIBRARY_USAGE_DESCRIPTION = Need photo library access for uploading images
 NS_USER_TRACKING_USAGE_DESCRIPTION = Your data will be used to deliver personalized ads to you.

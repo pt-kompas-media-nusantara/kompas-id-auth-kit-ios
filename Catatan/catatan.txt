@@ -16,5 +16,5 @@ LAST BACKLOG:
 
 
 PROSES:
-- di info.plist coba ganti juga dari <string>$( jadi <string>${. karna valuenya tidak muncul tapi masih bisa
+- di info.plist coba ganti juga dari <string>${ jadi <string>${. karna valuenya tidak muncul tapi masih bisa
 
