@@ -18,7 +18,7 @@ platform :ios do
     # Bikin Git Tag Lokal
     add_git_tag(
       tag: tag_name,
-      message: "v#{tag_name}"
+      message: "#{tag_name}"
     )
 
     # 5. Push Tag ke GitHub
