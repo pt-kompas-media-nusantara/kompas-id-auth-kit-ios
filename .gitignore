@@ -101,3 +101,4 @@ XAuthCommunicationsKit/Configs/Info.plist
 XAuthCommunicationsKit/Configs/Info-Test.plist
 XAuthUIKit/Configs/Info.plist
 Info.plist
+Gemfile.lock
