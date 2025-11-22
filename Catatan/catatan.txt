@@ -1,10 +1,10 @@
 
 BACKLOG:
+- swiftlint
+- swift format
 - setup CICD menggunakan github runner
 - setup CICD menggunakan github self hosted
 - library TCA harus di masukkan juga kah di internal project yang external project (coba cari tahu apakah bisa di jadikan 1 saja agar versinya sama di setiap repo nya) namun kekurangannya adalah perubahannya sangat besar
-- swiftlint
-- swift format
 - firebase google service info untuk bundle id module blm di create baru yang preview project
 - info.plist ke ganti karna menjalankan fastlane local dan blm di ignore juga untuk keamanan
 
@@ -17,4 +17,10 @@ LAST BACKLOG:
 
 PROSES:
 - di info.plist coba ganti juga dari <string>${ jadi <string>${. karna valuenya tidak muncul tapi masih bisa
+referensi 
+https://github.com/yonaskolb/XcodeGen/blob/master/Docs/ProjectSpec.md -> CURRENT_PROJECT_VERSION
+https://github.com/yonaskolb/XcodeGen/blob/master/Docs/Usage.md
+https://github.com/yonaskolb/XcodeGen/blob/master/Docs/Examples.md -> ini sudah di clone, ada di folder Contoh XcodeGen
+ada yang salah juga ketika include nya harusnya nggak perlu lengkap filenya. ada di contoh project yang udah di clone
+gue takutnya nggak bisa di taruh di common atau mungkin harus di petakan di config.ymlnya biar info.plistnya bisa ambil
 
