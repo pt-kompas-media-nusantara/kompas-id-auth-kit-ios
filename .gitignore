@@ -95,10 +95,10 @@ XAuth.xcworkspace
 automation
 # .env
 
-App/Configs/Info.plist
-XAuthKit/Configs/Info.plist
-XAuthCommunicationsKit/Configs/Info.plist
-XAuthCommunicationsKit/Configs/Info-Test.plist
-XAuthUIKit/Configs/Info.plist
-Info.plist
+# App/Configs/Info.plist
+# XAuthKit/Configs/Info.plist
+# XAuthCommunicationsKit/Configs/Info.plist
+# XAuthCommunicationsKit/Configs/Info-Test.plist
+# XAuthUIKit/Configs/Info.plist
+# Info.plist
 Gemfile.lock

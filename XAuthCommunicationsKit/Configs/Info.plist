@@ -33,7 +33,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>10</string>
+	<string>$(CF_BUNDLE_VERSION)</string>
 	<key>NSPrincipalClass</key>
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>
