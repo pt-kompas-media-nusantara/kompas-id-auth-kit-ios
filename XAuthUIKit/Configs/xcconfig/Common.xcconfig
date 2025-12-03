@@ -1,1 +1,6 @@
 #include "App/Configs/xcconfig/Common.xcconfig"
+
+PRODUCT_BUNDLE_IDENTIFIER = id.kompas.app.auth.xauthuikit
+
+PRODUCT_NAME = XAuthUIKit
+PRODUCT_BUNDLE_PACKAGE_TYPE = FMWK
