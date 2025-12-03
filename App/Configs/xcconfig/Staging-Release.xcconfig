@@ -1,4 +1,4 @@
-#include "App/Configs/xcconfig/Staging.xcconfig"
+#include "Staging.xcconfig"
 #include "Pods/Target Support Files/Pods-XAuth/Pods-XAuth.staging release.xcconfig"
 
 CF_BUNDLE_DISPLAY_NAME = K AuthSR

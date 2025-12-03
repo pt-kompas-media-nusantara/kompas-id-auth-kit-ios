@@ -1,4 +1,4 @@
-#include "App/Configs/xcconfig/Production.xcconfig"
+#include "Production.xcconfig"
 #include "Pods/Target Support Files/Pods-XAuth/Pods-XAuth.production debug.xcconfig"
 
 CF_BUNDLE_DISPLAY_NAME = K AuthPD
