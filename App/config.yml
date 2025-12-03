@@ -1,4 +1,3 @@
-
 ############
 # Configs
 ############
@@ -50,7 +49,7 @@ targets:
         INFOPLIST_FILE: App/Configs/Info.plist
         OTHER_SWIFT_FLAGS: 
           - $(inherited)
-            
+        
     dependencies:
       # Internal Dependencies
       - target: XAuthKit
@@ -70,6 +69,3 @@ targets:
       commandLineArguments:
         -FIRAnalyticsDebugEnabled: true
         # -FIRDebugDisabled: true
-
-
-    

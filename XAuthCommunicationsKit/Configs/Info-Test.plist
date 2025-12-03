@@ -22,10 +22,10 @@
 	<string>id.kompas.app.auth.xauthcommunicationskit.test</string>
 	<key>CFBundleDisplayName</key>
 	<string>XAuthCommunicationsKit_Tests</string>
-	<key>CFBundleInfoDictionaryVersion</key>
-	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>XAuthCommunicationsKit_Tests</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
