@@ -21,7 +21,7 @@
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleDisplayName</key>
-	<string>$(PRODUCT_NAME)</string>
+	<string>$(APP_DISPLAY_NAME)</string>
 	<key>CFBundleName</key>
 	<string>XAuthKit_App</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -129,3 +129,8 @@
 </plist>
 
 
+<!-- masih ada masalah disini -->
+<!-- <key>CFBundleDisplayName</key>
+<string>$(PRODUCT_NAME)</string>
+<key>CFBundleName</key>
+<string>$(PRODUCT_NAME)</string> -->

@@ -1,7 +1,7 @@
 #include "Production.xcconfig"
 #include "Pods/Target Support Files/Pods-XAuth/Pods-XAuth.production release.xcconfig"
 
-PRODUCT_NAME = Auth_PR
+APP_DISPLAY_NAME = Auth_PR
 ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_KAuthPR
 
 // 
