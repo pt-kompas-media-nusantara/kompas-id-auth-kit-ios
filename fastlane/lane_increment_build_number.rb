@@ -35,8 +35,8 @@ platform :ios do
     # 3. Baca file baris per baris
     File.foreach(full_path) do |line|
       # 4. Cari baris yang kita inginkan
-      if line.include?("CF_BUNDLE_SHORT_VERSION_STRING")
-        # Jika ketemu (misal: "CF_BUNDLE_SHORT_VERSION_STRING = 1.0.1")
+      if line.include?("MARKETING_VERSION")
+        # Jika ketemu (misal: "MARKETING_VERSION = 1.0.1")
         # Ambil nilainya (bagian setelah "=")
         version_number = line.split("=").last.strip
         break # Keluar dari loop karena sudah ketemu
@@ -49,7 +49,7 @@ platform :ios do
       lane_context[SharedValues::VERSION_NUMBER] = version_number
       next version_number
     else
-      UI.user_error!("Tidak bisa menemukan 'CF_BUNDLE_SHORT_VERSION_STRING' di dalam #{config_path}")
+      UI.user_error!("Tidak bisa menemukan 'MARKETING_VERSION' di dalam #{config_path}")
       next nil
     end
   end

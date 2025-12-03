@@ -15,9 +15,9 @@
 	<key>CFBundlePackageType</key>
 	<string>$(CF_BUNDLE_PACKAGE_TYPE_AUTH_UI_KIT)</string>
 	<key>CFBundleShortVersionString</key>
-	<string>$(CF_BUNDLE_SHORT_VERSION_STRING)</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
-	<string>$(CF_BUNDLE_VERSION)</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>NSPrincipalClass</key>
 	<string></string>
 </dict>
