@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>$(CF_BUNDLE_DEVELOPMENT_REGION)</string>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
-	<string>$(CF_BUNDLE_EXECUTABLE_AUTH_UI_KIT)</string>
+	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
-	<string>$(CF_BUNDLE_IDENTIFIER_AUTH_UI_KIT)</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
-	<string>$(CF_BUNDLE_INFO_DICTIONARY_VERSION)</string>
+	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>$(CF_BUNDLE_NAME_AUTH_UI_KIT)</string>
+	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundlePackageType</key>
-	<string>$(CF_BUNDLE_PACKAGE_TYPE_AUTH_UI_KIT)</string>
+	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>

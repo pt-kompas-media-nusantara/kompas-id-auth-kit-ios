@@ -48,7 +48,6 @@ targets:
     settings:
       base:
         INFOPLIST_FILE: App/Configs/Info.plist
-        MARKETING_VERSION: $(MARKETING_VERSION)
         OTHER_SWIFT_FLAGS: 
           - $(inherited)
             

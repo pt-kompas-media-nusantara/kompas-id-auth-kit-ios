@@ -1,7 +1,7 @@
 #include "Production.xcconfig"
 #include "Pods/Target Support Files/Pods-XAuth/Pods-XAuth.production debug.xcconfig"
 
-CF_BUNDLE_DISPLAY_NAME = K AuthPD
+PRODUCT_NAME = K AuthPD
 ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_KAuthPD
 
 // 
