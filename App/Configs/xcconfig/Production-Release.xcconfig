@@ -10,5 +10,8 @@ ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_KAuthPR
 // Optimasi untuk kecepatan (ini yang Anda maksud "encrypt")
 SWIFT_OPTIMIZATION_LEVEL = -O
 
+// Flags: Hanya PRODUCTION
+OTHER_SWIFT_FLAGS = $(inherited) -DPRODUCTION
+
 // Optimasi level tinggi, mengompilasi semua file Swift bersamaan
 SWIFT_COMPILATION_MODE = wholemodule
