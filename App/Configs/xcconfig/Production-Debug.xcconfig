@@ -1,9 +1,8 @@
 #include "Production.xcconfig"
 #include "Pods/Target Support Files/Pods-XAuth/Pods-XAuth.production debug.xcconfig"
 
-APP_DISPLAY_NAME = Auth_PD
 ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_KAuthPD
-INFOPLIST_KEY_CFBundleDisplayName = XAuth_PD
+INFOPLIST_KEY_CFBundleDisplayName = XAuth_App_PD
 
 // 
 // PENGATURAN KHUSUS DEBUG

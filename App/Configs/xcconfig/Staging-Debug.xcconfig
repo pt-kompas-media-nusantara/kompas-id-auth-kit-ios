@@ -3,9 +3,8 @@
 #include "Pods/Target Support Files/Pods-XAuth/Pods-XAuth.staging debug.xcconfig"
 
 
-APP_DISPLAY_NAME = Auth_SD
 ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_KAuthSD
-INFOPLIST_KEY_CFBundleDisplayName = XAuth_SD
+INFOPLIST_KEY_CFBundleDisplayName = XAuth_App_SD
 
 // 
 // PENGATURAN KHUSUS DEBUG

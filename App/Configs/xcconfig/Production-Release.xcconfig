@@ -1,9 +1,8 @@
 #include "Production.xcconfig"
 #include "Pods/Target Support Files/Pods-XAuth/Pods-XAuth.production release.xcconfig"
 
-APP_DISPLAY_NAME = Auth_PR
 ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_KAuthPR
-INFOPLIST_KEY_CFBundleDisplayName = XAuth_PR
+INFOPLIST_KEY_CFBundleDisplayName = XAuth_App_PR
 
 // 
 // PENGATURAN KHUSUS RELEASE ("ENCRYPT")

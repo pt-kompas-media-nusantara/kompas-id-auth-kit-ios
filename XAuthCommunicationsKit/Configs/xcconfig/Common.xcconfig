@@ -1,6 +1,7 @@
 #include "App/Configs/xcconfig/Common.xcconfig"
 
+PRODUCT_NAME = XAuthCommunicationsKit
+
 PRODUCT_BUNDLE_IDENTIFIER = id.kompas.app.auth.xauthcommunicationskit
 
-APP_DISPLAY_NAME = XAuthCommunicationsKit
 PRODUCT_BUNDLE_PACKAGE_TYPE = FMWK

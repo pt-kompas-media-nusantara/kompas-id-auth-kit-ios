@@ -1,9 +1,8 @@
 #include "Staging.xcconfig"
 #include "Pods/Target Support Files/Pods-XAuth/Pods-XAuth.staging release.xcconfig"
 
-APP_DISPLAY_NAME = Auth_SR
 ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_KAuthSR
-INFOPLIST_KEY_CFBundleDisplayName = XAuth_SR
+INFOPLIST_KEY_CFBundleDisplayName = XAuth_App_SR
 
 // 
 // PENGATURAN KHUSUS RELEASE ("ENCRYPT")
