@@ -25,7 +25,7 @@ resolve_spm:
 	@echo "➡️  2/3: Mengunduh dependencies SPM (Firebase, etc.)..."
 	# Kita perintahkan xcodebuild untuk bekerja di .xcodeproj
 	# (SEBELUM workspace dibuat)
-	@xcodebuild -project XAuth.xcodeproj -scheme "XAuth Staging" -resolvePackageDependencies -quiet
+	@xcodebuild -project XAuth.xcodeproj -scheme "XAuth Staging Debug" -resolvePackageDependencies -quiet
 
 # ===================================================================
 # LANGKAH 3: Menginstall CocoaPods (TERAKHIR)
@@ -50,3 +50,31 @@ clean:
 	@rm -rf Pods
 	@rm -rf ~/Library/Developer/Xcode/DerivedData/*
 	@echo "✅ Bersih."
+
+# xcodegen generate --spec App/config.yml
+# xcodebuild -list -project XAuth.xcodeproj
+# Information about project "XAuth":
+#     Targets:
+#         XAuth
+#         XAuthCommunicationsKit
+#         XAuthCommunicationsKit_Tests
+#         XAuthKit
+#         XAuthUIKit
+
+#     Build Configurations:
+#         Production Debug
+#         Production Release
+#         Staging Debug
+#         Staging Release
+
+#     If no build configuration is specified and -scheme is not passed then "Production Debug" is used.
+
+#     Schemes:
+#         XAuth Production Debug
+#         XAuth Production Release
+#         XAuth Staging Debug
+#         XAuth Staging Release
+#         XAuthCommunicationsKit
+#         XAuthCommunicationsKit_Tests
+#         XAuthKit
+#         XAuthUIKit

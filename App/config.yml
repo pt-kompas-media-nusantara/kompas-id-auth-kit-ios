@@ -62,10 +62,72 @@ targets:
       - package: Firebase
         product: FirebaseCrashlytics
 
-    scheme:
-      configVariants:
-        - Staging
-        - Production
+schemes:
+  # 1. Scheme Staging Debug
+  XAuth Staging Debug:
+    build:
+      targets:
+        XAuth: all
+    run:
+      config: Staging Debug
       commandLineArguments:
         -FIRAnalyticsDebugEnabled: true
-        # -FIRDebugDisabled: true
+    test:
+      config: Staging Debug
+    profile:
+      config: Staging Debug
+    analyze:
+      config: Staging Debug
+    archive:
+      config: Staging Debug
+
+  # 2. Scheme Production Debug
+  XAuth Production Debug:
+    build:
+      targets:
+        XAuth: all
+    run:
+      config: Production Debug
+      commandLineArguments:
+        -FIRAnalyticsDebugEnabled: true
+    test:
+      config: Production Debug
+    profile:
+      config: Production Debug
+    analyze:
+      config: Production Debug
+    archive:
+      config: Production Debug
+
+  # 3. Scheme Staging Release
+  XAuth Staging Release:
+    build:
+      targets:
+        XAuth: all
+    run:
+      config: Staging Release
+    test:
+      config: Staging Release
+    profile:
+      config: Staging Release
+    analyze:
+      config: Staging Release
+    archive:
+      config: Staging Release
+
+  # 4. Scheme Production Release
+  XAuth Production Release:
+    build:
+      targets:
+        XAuth: all
+    run:
+      config: Production Release
+    test:
+      config: Production Release
+    profile:
+      config: Production Release
+    analyze:
+      config: Production Release
+    archive:
+      config: Production Release
+    
