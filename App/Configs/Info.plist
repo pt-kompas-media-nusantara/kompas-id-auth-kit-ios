@@ -20,12 +20,10 @@
 	</dict>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
-	<key>CFBundleDisplayName</key>
-	<string>$(APP_DISPLAY_NAME)</string>
-	<key>CFBundleName</key>
-	<string>XAuthKit_App</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundlePackageType</key>
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
@@ -38,8 +36,6 @@
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>LSApplicationCategoryType</key>
-	<string>$(PRODUCT_CATEGORY)</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoadsInWebContent</key>
@@ -128,9 +124,3 @@
 </dict>
 </plist>
 
-
-<!-- masih ada masalah disini -->
-<!-- <key>CFBundleDisplayName</key>
-<string>$(PRODUCT_NAME)</string>
-<key>CFBundleName</key>
-<string>$(PRODUCT_NAME)</string> -->
