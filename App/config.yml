@@ -40,9 +40,8 @@ targets:
       base:
         INFOPLIST_FILE: App/Configs/Info.plist
         SWIFT_ACTIVE_COMPILATION_CONDITIONS: $(inherited)
-        OTHER_SWIFT_FLAGS: 
-          - $(inherited)
-        
+        OTHER_SWIFT_FLAGS: $(inherited)
+
     dependencies:
       # Internal Dependencies
       - target: XAuthKit

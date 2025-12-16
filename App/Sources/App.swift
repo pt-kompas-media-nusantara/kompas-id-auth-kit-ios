@@ -11,9 +11,44 @@ struct App: SwiftUI.App {
         }
     }
     
+    var environmentName: String {
+#if STAGING
+        return "STAGING"
+#elseif PRODUCTION
+        return "PRODUCTION"
+#else
+        return "UNKNOWN environmentName"
+#endif
+    }
+    
+    var modeName: String {
+#if DEBUG
+        return "DEBUG"
+#elseif RELEASE
+        return "RELEASE"
+#else
+        return "UNKNOWN modeName"
+#endif
+    }
+    
     var body: some Scene {
         WindowGroup {
             HomeView()
+                .onAppear {
+                    print("App \(environmentName) - \(modeName)")
+                    
+#if PRODUCTION_DEBUG
+                    print("App PRODUCTION_DEBUG")
+#elseif PRODUCTION_RELEASE
+                    print("#App elseif PRODUCTION_RELEASE")
+#elseif STAGING_DEBUG
+                    print("App STAGING_DEBUG")
+#elseif STAGING_RELEASE
+                    print("App STAGING_RELEASE")
+#else
+                    print("App UNKNOWN LANGSUNG")
+#endif
+                }
         }
     }
 }

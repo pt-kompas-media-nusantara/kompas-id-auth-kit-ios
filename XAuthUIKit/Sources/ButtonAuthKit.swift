@@ -28,24 +28,23 @@ public struct ButtonAuthKit: View {
     
     // 2. Body-nya WAJIB public
     public var body: some View {
-        Button {
-            print("")
-        } label: {
-            VStack {
-                Text("\(environmentName) - \(modeName)")
-                
+        VStack {
+            Text("\(environmentName) - \(modeName)")
+        }
+        .onAppear {
+            print("XAuthUIKit \(environmentName) - \(modeName)")
+            
 #if PRODUCTION_DEBUG
-                Text("PRODUCTION_DEBUG")
+            print("XAuthUIKit PRODUCTION_DEBUG")
 #elseif PRODUCTION_RELEASE
-                Text("#elseif PRODUCTION_RELEASE")
+            print("#XAuthUIKit elseif PRODUCTION_RELEASE")
 #elseif STAGING_DEBUG
-                Text("STAGING_DEBUG")
+            print("XAuthUIKit STAGING_DEBUG")
 #elseif STAGING_RELEASE
-                Text("STAGING_RELEASE")
+            print("XAuthUIKit STAGING_RELEASE")
 #else
-                Text("UNKNOWN LANGSUNG")
+            print("XAuthUIKit UNKNOWN LANGSUNG")
 #endif
-            }
         }
         
     }
