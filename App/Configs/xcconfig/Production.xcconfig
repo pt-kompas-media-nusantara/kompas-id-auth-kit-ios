@@ -1,5 +1,6 @@
 //// Common Configuration
 #include "Common.xcconfig"
+#include "Share-Common.xcconfig"
 
 CODE_SIGN_STYLE = Automatic
 DEBUG_INFORMATION_FORMAT = dwarf-with-dsym

@@ -1,5 +1,3 @@
-#include "Production.xcconfig"
-
 ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_KAuthPD
 
 SWIFT_OPTIMIZATION_LEVEL = -Onone

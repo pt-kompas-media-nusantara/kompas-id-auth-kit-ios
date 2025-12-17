@@ -20,9 +20,9 @@ targets:
     platform: iOS
 
     settings:
-      INFOPLIST_FILE: XAuthUIKit/Configs/Info.plist
       DEFINES_MODULE: YES
       base:
+        INFOPLIST_FILE: XAuthUIKit/Configs/Info.plist
         SWIFT_ACTIVE_COMPILATION_CONDITIONS: $(inherited)
         OTHER_SWIFT_FLAGS: $(inherited)
 

@@ -1,5 +1,3 @@
-#include "Staging.xcconfig"
-
 ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_KAuthSR
 
 SWIFT_OPTIMIZATION_LEVEL = -Onone

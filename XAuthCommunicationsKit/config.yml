@@ -20,8 +20,11 @@ targets:
     platform: iOS
 
     settings:
-      INFOPLIST_FILE: XAuthCommunicationsKit/Configs/Info.plist
       DEFINES_MODULE: YES
+      base:
+        INFOPLIST_FILE: XAuthCommunicationsKit/Configs/Info.plist
+        SWIFT_ACTIVE_COMPILATION_CONDITIONS: $(inherited)
+        OTHER_SWIFT_FLAGS: $(inherited)
 
     # dependencies:
     #   # Internal Dependencies
@@ -49,10 +52,10 @@ targets:
         group: App/Configs
 
     configFiles:
-      Staging Debug: Configs/xcconfig/Common.xcconfig
-      Staging Release: Configs/xcconfig/Common.xcconfig
-      Production Debug: Configs/xcconfig/Common.xcconfig
-      Production Release: Configs/xcconfig/Common.xcconfig
+      Staging Debug: Configs/xcconfig/Staging-Debug.xcconfig
+      Staging Release: Configs/xcconfig/Staging-Release.xcconfig
+      Production Debug: Configs/xcconfig/Production-Debug.xcconfig
+      Production Release: Configs/xcconfig/Production-Release.xcconfig
 
   ############
   # Tests

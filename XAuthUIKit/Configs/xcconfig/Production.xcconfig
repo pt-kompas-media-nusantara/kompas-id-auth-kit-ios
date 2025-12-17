@@ -1,1 +1,2 @@
 #include "Common.xcconfig"
+#include "App/Configs/xcconfig/Share-Common.xcconfig"
