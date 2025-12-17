@@ -2,10 +2,6 @@
 #include "Common.xcconfig"
 #include "Share-Common.xcconfig"
 
-CODE_SIGN_STYLE = Automatic
-DEBUG_INFORMATION_FORMAT = dwarf-with-dsym
-DEVELOPMENT_TEAM = $(DEVELOPER_PORTAL_TEAM_ID)
-
 CODE_SIGN_ENTITLEMENTS = App/Configs/entitlements/production.entitlements
 //// CODE_SIGN_IDENTITY = iPhone Distribution
 
