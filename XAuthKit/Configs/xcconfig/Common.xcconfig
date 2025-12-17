@@ -1,5 +1,3 @@
-#include "App/Configs/xcconfig/Common.xcconfig"
-
 PRODUCT_NAME = XAuthKit
 
 PRODUCT_BUNDLE_IDENTIFIER = id.kompas.app.auth.xauthkit

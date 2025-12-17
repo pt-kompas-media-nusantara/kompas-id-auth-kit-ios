@@ -1,1 +1,1 @@
-#include "App/Configs/xcconfig/Staging.xcconfig"
+#include "Common.xcconfig"

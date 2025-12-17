@@ -1,1 +1,7 @@
-#include "App/Configs/xcconfig/Production-Release.xcconfig"
+#include "Production.xcconfig"
+
+SWIFT_OPTIMIZATION_LEVEL = -O
+SWIFT_COMPILATION_MODE = wholemodule
+
+SWIFT_ACTIVE_COMPILATION_CONDITIONS = $(inherited) PRODUCTION PRODUCTION_RELEASE
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) PRODUCTION=1 PRODUCTION_RELEASE=1

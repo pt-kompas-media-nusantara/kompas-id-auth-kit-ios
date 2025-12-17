@@ -1,1 +1,6 @@
-#include "App/Configs/xcconfig/Staging-Debug.xcconfig"
+#include "Staging.xcconfig"
+
+SWIFT_OPTIMIZATION_LEVEL = -Onone
+
+SWIFT_ACTIVE_COMPILATION_CONDITIONS = $(inherited) DEBUG STAGING STAGING_DEBUG
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) DEBUG=1 STAGING=1 STAGING_DEBUG=1

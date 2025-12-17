@@ -1,1 +1,6 @@
-#include "App/Configs/xcconfig/Production-Debug.xcconfig"
+#include "Production.xcconfig"
+
+SWIFT_OPTIMIZATION_LEVEL = -Onone
+
+SWIFT_ACTIVE_COMPILATION_CONDITIONS = $(inherited) DEBUG PRODUCTION PRODUCTION_DEBUG
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) DEBUG=1 PRODUCTION=1 PRODUCTION_DEBUG=1
