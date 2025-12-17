@@ -18,8 +18,8 @@ platform :ios do
     
   desc "bundle exec fastlane lane_get_version_number"
   lane :lane_get_version_manually_from_xcconfig do  
-    # 1. Tentukan lokasi file "sumber kebenaran" Anda
-    config_path = File.join(__dir__, "..", "App/Configs/xcconfig/Common.xcconfig")
+    # 1. Tentukan lokasi file "source" Anda
+    config_path = File.join(__dir__, "..", "App/Configs/xcconfig/Share-Common.xcconfig")
     full_path = File.expand_path(config_path)
     
     # 2. Pastikan file-nya ada
@@ -119,7 +119,7 @@ platform :ios do
   lane :lane_get_increment_build_number do
       build_number = lane_context[SharedValues::BUILD_NUMBER]
       
-      puts "build_number: #{build_number}"
+      puts "load BUILD_NUMBER: #{build_number}"
 
       if !GITHUB_DEPLOYMENT_TYPE.to_s.strip.empty?
         sh("echo FASTLANE_BUILD_NUMBER=#{build_number} >> $GITHUB_ENV")
