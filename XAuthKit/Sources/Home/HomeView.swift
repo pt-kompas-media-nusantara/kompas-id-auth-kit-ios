@@ -42,7 +42,7 @@ public struct HomeView: View {
 #if PRODUCTION_DEBUG
             print("XAuthKit PRODUCTION_DEBUG")
 #elseif PRODUCTION_RELEASE
-            print("#XAuthKit elseif PRODUCTION_RELEASE")
+            print("XAuthKit elseif PRODUCTION_RELEASE")
 #elseif STAGING_DEBUG
             print("XAuthKit STAGING_DEBUG")
 #elseif STAGING_RELEASE

@@ -40,7 +40,7 @@ struct App: SwiftUI.App {
 #if PRODUCTION_DEBUG
                     print("App PRODUCTION_DEBUG")
 #elseif PRODUCTION_RELEASE
-                    print("#App elseif PRODUCTION_RELEASE")
+                    print("App elseif PRODUCTION_RELEASE")
 #elseif STAGING_DEBUG
                     print("App STAGING_DEBUG")
 #elseif STAGING_RELEASE
