@@ -26,7 +26,10 @@ targets:
         SWIFT_ACTIVE_COMPILATION_CONDITIONS: $(inherited)
         OTHER_SWIFT_FLAGS: $(inherited)
 
-    # dependencies:
+    dependencies:
+      - package: SwiftLint
+        product: SwiftLintBuildToolPlugin
+        kind: XcodeBuildToolPlugin
     #   # Internal Dependencies
     #   - target: XAuthKit
     #   - target: XAuthUIKit

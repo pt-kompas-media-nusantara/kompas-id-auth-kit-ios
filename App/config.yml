@@ -54,8 +54,8 @@ targets:
       - package: Firebase
         product: FirebaseCrashlytics
       - package: SwiftLint
-        product: SwiftLintPlugin
-        kind: plugin
+        product: SwiftLintBuildToolPlugin
+        kind: XcodeBuildToolPlugin
 
 schemes:
   # 1. Scheme Staging Debug

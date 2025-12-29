@@ -33,6 +33,10 @@ targets:
       # Internal Dependencies
       - target: XAuthUIKit
       - target: XAuthCommunicationsKit
+
+      - package: SwiftLint
+        product: SwiftLintBuildToolPlugin
+        kind: XcodeBuildToolPlugin
     
     sources:
       - path: Sources

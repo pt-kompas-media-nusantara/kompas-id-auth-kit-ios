@@ -34,6 +34,9 @@ disabled_rules:
   - identifier_name # Biar variabel pendek kayak 'x', 'y', 'id' gak kena warning
   - todo # Biar 'TODO:' di code gak dianggap warning (opsional)
   - type_name # Kadang nama type library luar aneh-aneh
+  - type_body_length
+  - trailing_whitespace
+  - trailing_comma
 
 # Aturan TAMBAHAN yang bagus dinyalakan (Opt-in)
 opt_in_rules:

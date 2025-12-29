@@ -25,7 +25,7 @@ let package = Package(
     // (Firebase, dll. dari 'packages.yml')
     dependencies: [
         .package(url: "https://github.com/firebase/firebase-ios-sdk.git", from: "12.6.0"),
-        .package(url: "https://github.com/realm/SwiftLint", exact: "0.62.2")
+        .package(url: "https://github.com/realm/SwiftLint.git", exact: "0.62.2")
         // ... tambahkan yang lain jika ada
     ],
     
@@ -36,7 +36,7 @@ let package = Package(
             dependencies: [], // Jika XAuthUIKit butuh Firebase, tambahkan di sini
             path: "XAuthUIKit/Sources",
             plugins: [
-                .plugin(name: "SwiftLintPlugin", package: "SwiftLint")
+                .plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLint")
             ]
             // Kita tidak perlu .process("Resources")
             // jika 'Resources' ada di dalam 'Sources'
@@ -48,10 +48,10 @@ let package = Package(
                 // .product(name: "FirebaseAnalytics", package: "firebase-ios-sdk"),
                 // .target(name: "XAuthUIKit")
             ],
+            path: "XAuthCommunicationsKit/Sources",
             plugins: [
-                .plugin(name: "SwiftLintPlugin", package: "SwiftLint")
+                .plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLint")
             ]
-            path: "XAuthCommunicationsKit/Sources"
         ),        
         .target(
             name: "XAuthKit",
@@ -60,10 +60,10 @@ let package = Package(
                 // .product(name: "FirebaseAnalytics", package: "firebase-ios-sdk"),
                 // .target(name: "XAuthKit")
             ],
+            path: "XAuthKit/Sources",
             plugins: [
-                .plugin(name: "SwiftLintPlugin", package: "SwiftLint")
+                .plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLint")
             ]
-            path: "XAuthKit/Sources"
         )
         
         // Kita TIDAK memasukkan 'App' di sini,
