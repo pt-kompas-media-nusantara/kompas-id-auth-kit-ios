@@ -1,41 +1,75 @@
 # ===================================================================
+# MODE CEPAT: Update Project (Tanpa Download Ulang)
+# Gunakan ini kalau cuma nambah file Swift atau ubah setting Project.yml
+# ===================================================================
+.PHONY: update
+update:
+	@echo "⚡️ Mode Cepat: Regenerate Project Only..."
+	@xcodegen -s project.yml
+	@echo "✅ Project file (.xcodeproj) berhasil diperbarui!"
+
+
+# ===================================================================
+# MODE SEDANG
+# ===================================================================
+.PHONY: super_update
+super_update: xcodegen_generate resolve_spm quick_pods
+	@echo "✅ Selesai! Proyek Anda siap."
+	@echo "   Buka file 'XAuth.xcworkspace'"
+
+# ===================================================================
 # Perintah Utama: Menginisialisasi seluruh proyek
 #
 # Cukup jalankan: make init_project
 # ===================================================================
 .PHONY: init_project
-# URUTAN BARU: xcodegen -> spm -> pods (terakhir)
+# URUTAN: xcodegen -> spm -> pods
 init_project: xcodegen_generate resolve_spm install_pods
 	@echo "✅ Selesai! Proyek Anda siap."
 	@echo "   Buka file 'XAuth.xcworkspace'"
 
 # ===================================================================
-# LANGKAH 1: Membuat file .xcodeproj (WAJIB PERTAMA)
+# LANGKAH 1: Membuat file .xcodeproj
 # ===================================================================
 .PHONY: xcodegen_generate
 xcodegen_generate:
 	@echo "➡️  1/3: Membuat project dengan XcodeGen..."
-	@xcodegen -s project.yml --quiet
+	# REVISI: Menghapus '--quiet' agar log XcodeGen terlihat
+	xcodegen -s project.yml
 
 # ===================================================================
 # LANGKAH 2: Mengunduh paket Swift Package Manager (SPM)
 # ===================================================================
 .PHONY: resolve_spm
 resolve_spm:
-	@echo "➡️  2/3: Mengunduh dependencies SPM (Firebase, etc.)..."
-	# Kita perintahkan xcodebuild untuk bekerja di .xcodeproj
-	# (SEBELUM workspace dibuat)
-	@xcodebuild -project XAuth.xcodeproj -scheme "XAuth Staging Debug" -resolvePackageDependencies -quiet
+	@echo "➡️  2/3: Mengunduh dependencies SPM (Firebase, SwiftLint)..."
+	@echo "    (Proses ini mungkin lama saat pertama kali karena download repo SwiftLint)"
+	# REVISI: 
+	# 1. Menghapus '@' di depan perintah agar command aslinya terlihat
+	# 2. Mengganti '-quiet' menjadi '-verbose' agar kelihatan progress download-nya
+	xcodebuild -project XAuth.xcodeproj -scheme "XAuth Staging Debug" -resolvePackageDependencies -verbose
 
 # ===================================================================
-# LANGKAH 3: Menginstall CocoaPods (TERAKHIR)
+# LANGKAH 3: Menginstall CocoaPods
 # ===================================================================
 .PHONY: install_pods
 install_pods:
 	@echo "➡️  3/3: Menginstall dependencies CocoaPods..."
-	# Pod install sekarang akan membungkus .xcodeproj yang sudah berisi SPM
 	@bundle install
+	# Bagian ini sudah oke pakai --verbose
 	@bundle exec pod install --verbose --repo-update
+
+
+# ===================================================================
+# Flag --repo-update itu memaksa CocoaPods mengecek server pusat (master specs) setiap kali jalan. Itu bisa makan waktu 1-5 menit sendiri.
+# ===================================================================
+.PHONY: quick_pods
+quick_pods:
+	@echo "➡️  Update Pods (Tanpa update repo)..."
+	@bundle install
+	@bundle exec pod install	
+
+
 
 # ===================================================================
 # Perintah Tambahan
@@ -48,33 +82,15 @@ clean:
 	@rm -f Package.resolved
 	@rm -f Podfile.lock
 	@rm -rf Pods
-	@rm -rf ~/Library/Developer/Xcode/DerivedData/*
 	@echo "✅ Bersih."
 
-# xcodegen generate --spec App/config.yml
-# xcodebuild -list -project XAuth.xcodeproj
-# Information about project "XAuth":
-#     Targets:
-#         XAuth
-#         XAuthCommunicationsKit
-#         XAuthCommunicationsKit_Tests
-#         XAuthKit
-#         XAuthUIKit
-
-#     Build Configurations:
-#         Production Debug
-#         Production Release
-#         Staging Debug
-#         Staging Release
-
-#     If no build configuration is specified and -scheme is not passed then "Production Debug" is used.
-
-#     Schemes:
-#         XAuth Production Debug
-#         XAuth Production Release
-#         XAuth Staging Debug
-#         XAuth Staging Release
-#         XAuthCommunicationsKit
-#         XAuthCommunicationsKit_Tests
-#         XAuthKit
-#         XAuthUIKit
+.PHONY: super_clean
+super_clean:
+	@echo "🧹 Membersihkan file cache dan proyek lama..."
+	@rm -rf *.xcodeproj
+	@rm -rf *.xcworkspace
+	@rm -f Package.resolved
+	@rm -f Podfile.lock
+	@rm -rf Pods
+	@rm -rf ~/Library/Developer/Xcode/DerivedData/*
+	@echo "✅ Bersih."

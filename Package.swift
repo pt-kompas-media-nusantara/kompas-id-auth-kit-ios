@@ -24,7 +24,8 @@ let package = Package(
     // Masukkan SEMUA dependency SPM Anda di sini
     // (Firebase, dll. dari 'packages.yml')
     dependencies: [
-        .package(url: "https://github.com/firebase/firebase-ios-sdk.git", from: "12.6.0")
+        .package(url: "https://github.com/firebase/firebase-ios-sdk.git", from: "12.6.0"),
+        .package(url: "https://github.com/realm/SwiftLint", exact: "0.62.2")
         // ... tambahkan yang lain jika ada
     ],
     
@@ -33,7 +34,10 @@ let package = Package(
         .target(
             name: "XAuthUIKit",
             dependencies: [], // Jika XAuthUIKit butuh Firebase, tambahkan di sini
-            path: "XAuthUIKit/Sources"
+            path: "XAuthUIKit/Sources",
+            plugins: [
+                .plugin(name: "SwiftLintPlugin", package: "SwiftLint")
+            ]
             // Kita tidak perlu .process("Resources")
             // jika 'Resources' ada di dalam 'Sources'
         ),        
@@ -44,6 +48,9 @@ let package = Package(
                 // .product(name: "FirebaseAnalytics", package: "firebase-ios-sdk"),
                 // .target(name: "XAuthUIKit")
             ],
+            plugins: [
+                .plugin(name: "SwiftLintPlugin", package: "SwiftLint")
+            ]
             path: "XAuthCommunicationsKit/Sources"
         ),        
         .target(
@@ -53,6 +60,9 @@ let package = Package(
                 // .product(name: "FirebaseAnalytics", package: "firebase-ios-sdk"),
                 // .target(name: "XAuthKit")
             ],
+            plugins: [
+                .plugin(name: "SwiftLintPlugin", package: "SwiftLint")
+            ]
             path: "XAuthKit/Sources"
         )
         

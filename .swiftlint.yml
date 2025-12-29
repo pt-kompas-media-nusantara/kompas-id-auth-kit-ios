@@ -1,0 +1,71 @@
+# ============================================
+# KONFIGURASI UMUM
+# ============================================
+
+# Folder yang AKAN dicek (Sesuai struktur folder kamu)
+included:
+  - App/Sources
+  - XAuthKit/Sources
+  - XAuthUIKit/Sources
+  - XAuthCommunicationsKit/Sources
+  # Tambahkan folder test jika ingin dicek juga:
+  # - XAuthKit/Tests 
+
+# Folder yang DIABAIKAN (Penting biar gak scan library lain/file sampah)
+excluded:
+  - Pods
+  - Carthage
+  - fastlane
+  - .bundle
+  - .build
+  - *.generated.swift # Abaikan file hasil generate XcodeGen/Mock
+  - DerivedData
+
+# ============================================
+# ATURAN (RULES)
+# ============================================
+
+# Aturan yang DIMATIKAN (Seringkali ganggu / terlalu strict)
+disabled_rules:
+  - trailing_whitespace # Biar Xcode aja yang handle trim whitespace
+  - force_try # Kadang oke dipake buat parsing URL statis
+  - force_cast # Kadang perlu buat UI casting
+  - line_length # Kita atur manual di bawah
+  - identifier_name # Biar variabel pendek kayak 'x', 'y', 'id' gak kena warning
+  - todo # Biar 'TODO:' di code gak dianggap warning (opsional)
+  - type_name # Kadang nama type library luar aneh-aneh
+
+# Aturan TAMBAHAN yang bagus dinyalakan (Opt-in)
+opt_in_rules:
+  - empty_count # Pakai .isEmpty daripada count == 0 (lebih performant)
+  - empty_string # Pakai .isEmpty daripada == ""
+  - force_unwrapping # Hindari '!' (force unwrap) sebisa mungkin
+
+# ============================================
+# KUSTOMISASI PARAMETER
+# ============================================
+
+# Batas Panjang Baris (Biar enak dibaca di laptop kecil/GitHub)
+line_length:
+  warning: 140
+  error: 200
+
+# Batas Panjang Function (Biar gak spaghetti code)
+function_body_length:
+  warning: 60
+  error: 100
+
+# Batas Panjang File
+file_length:
+  warning: 500
+  error: 1000
+
+# Kompleksitas Code (Cyclomatic Complexity - biar gak kebanyakan if/else)
+cyclomatic_complexity:
+  warning: 10
+  error: 20
+
+# ============================================
+# FORMATTING
+# ============================================
+reporter: "xcode" # Output format biar muncul rapi di Issue Navigator Xcode
