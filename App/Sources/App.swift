@@ -11,52 +11,37 @@ struct App: SwiftUI.App {
         }
     }
     
-    var environmentName: String {
-#if STAGING
-        return "STAGING"
-#elseif PRODUCTION
-        return "PRODUCTION"
-#else
-        return "UNKNOWN environmentName"
-#endif
-    }
-    
-    var modeName: String {
-#if DEBUG
-        return "DEBUG"
-#elseif RELEASE
-        return "RELEASE"
-#else
-        return "UNKNOWN modeName"
-#endif
-    }
     
     var body: some Scene {
         WindowGroup {
             HomeView()
                 .onAppear {
-                    print("App \(environmentName) - \(modeName)")
-                    
-#if PRODUCTION_DEBUG
-                    print("App PRODUCTION_DEBUG")
-#elseif PRODUCTION_RELEASE
-                    print("App elseif PRODUCTION_RELEASE")
-#elseif STAGING_DEBUG
-                    print("App STAGING_DEBUG")
-#elseif STAGING_RELEASE
-                    print("App STAGING_RELEASE")
-#else
-                    print("App UNKNOWN LANGSUNG")
-#endif
+                    setupConfiguration()
                 }
+        }
+    }
+    
+    func setupConfiguration() {
+        // CONTOH PENGGUNAAN:
+        // Cukup panggil BuildConfiguration.currentFlavor
+        // Tidak perlu callback/closure.
+        
+        switch BuildConfiguration.currentFlavor {
+        case .development:
+            print("👨‍💻 Setup untuk Developer (Log aktif, API Dev)")
+            // Setup tools debug khusus dev...
+            
+        case .uat:
+            print("🧪 Setup untuk QA (Log minimal, API Dev)")
+            // Setup tools reporting crash...
+            
+        case .production:
+            print("🚀 Setup untuk App Store (Log mati, API Prod)")
+            // Nyalakan Analytics beneran...
+            
+        case .diagnostic:
+            print("🚑 Setup Debug Production")
         }
     }
 }
 
-
-//XAuthKit PRODUCTION - DEBUG
-//XAuthKit PRODUCTION_DEBUG
-//App PRODUCTION - DEBUG
-//App PRODUCTION_DEBUG
-//XAuthUIKit PRODUCTION - DEBUG
-//XAuthUIKit PRODUCTION_DEBUG
