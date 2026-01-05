@@ -1,8 +1,5 @@
 
 BACKLOG:
-- swift format
-- SwiftGen
-
 - setup CICD menggunakan github runner
 - setup CICD menggunakan github self hosted
 - library TCA harus di masukkan juga kah di internal project yang external project (coba cari tahu apakah bisa di jadikan 1 saja agar versinya sama di setiap repo nya) namun kekurangannya adalah perubahannya sangat besar
@@ -14,4 +11,5 @@ BACKLOG:
 
 
 PROSES:
-
+CICD LOKAL satuan
+CICD LOKAL multiple
