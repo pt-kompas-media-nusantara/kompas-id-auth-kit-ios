@@ -82,9 +82,10 @@ clean:
 	@rm -f Package.resolved
 	@rm -f Podfile.lock
 	@rm -rf Pods
-	@rm -rf .build
-	@swift package clean
 	@echo "✅ Bersih."
+	# @rm -rf .build
+	# @swift package clean
+	
 
 .PHONY: super_clean
 super_clean:
@@ -94,7 +95,7 @@ super_clean:
 	@rm -f Package.resolved
 	@rm -f Podfile.lock
 	@rm -rf Pods
-	@rm -rf .build
-	@swift package clean
 	@rm -rf ~/Library/Developer/Xcode/DerivedData/*
 	@echo "✅ Bersih."
+	# @rm -rf .build
+	# @swift package clean

@@ -57,17 +57,6 @@ targets:
       Production Debug: Configs/xcconfig/Production-Debug.xcconfig
       Production Release: Configs/xcconfig/Production-Release.xcconfig
 
-    preCompileScripts:
-      - name: Run SwiftLint
-        basedOnDependencyAnalysis: false
-        script: |
-          export PATH="$PATH:/opt/homebrew/bin"
-          if which swiftlint >/dev/null; then
-            swiftlint lint --config .swiftlint.yml
-          else
-            echo "warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint"
-          fi
-
   ############
   # Tests
   ############

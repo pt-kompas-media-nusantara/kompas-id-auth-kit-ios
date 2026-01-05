@@ -54,16 +54,17 @@ targets:
       - package: Firebase
         product: FirebaseCrashlytics
 
-    preCompileScripts:
-      - name: Run SwiftLint
-        basedOnDependencyAnalysis: false # Supaya selalu jalan tiap build
-        script: |
-          export PATH="$PATH:/opt/homebrew/bin" # Path default Homebrew di Mac M1/M2/M3
-          if which swiftlint >/dev/null; then
-            swiftlint lint --config .swiftlint.yml
-          else
-            echo "warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint"
-          fi
+    buildPhases:
+      - runScriptPhases:
+          - name: SwiftLint
+            script: |
+              if [[ "$(uname -m)" == arm64 ]]; then
+                export PATH="/opt/homebrew/bin:$PATH"
+              fi
+              if which swiftlint >/dev/null; then
+                swiftlint
+              else
+                echo "warning: SwiftLint not installed, download from 
 
 schemes:
   # 1. Scheme Staging Debug

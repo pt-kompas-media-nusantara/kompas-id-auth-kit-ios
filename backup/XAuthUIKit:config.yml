@@ -14,33 +14,33 @@ targets:
   # Framework
   ############
   
-  XAuthKit:
-    name: XAuthKit
+  XAuthUIKit:
+    name: XAuthUIKit
     type: framework
     platform: iOS
 
     settings:
       DEFINES_MODULE: YES
       base:
-        INFOPLIST_FILE: XAuthKit/Configs/Info.plist
+        INFOPLIST_FILE: XAuthUIKit/Configs/Info.plist
         SWIFT_ACTIVE_COMPILATION_CONDITIONS: $(inherited)
         OTHER_SWIFT_FLAGS: $(inherited)
 
     # dependencies:
-      # - package: Kingfisher # nurirppan: tidak di pakai karna tidak ada thirdparty untuk UI
+    #   # Internal Dependencies
+    #   - target: XAuthKit
+    #   - target: XAuthCommunicationsKit
 
-    dependencies:
-      # Internal Dependencies
-      - target: XAuthUIKit
-      - target: XAuthCommunicationsKit
+    # dependencies:
+      # - package: Kingfisher # nurirppan: tidak di pakai karna tidak ada thirdparty untuk UI
     
     sources:
       - path: Sources
-        group: Modules/XAuthKit
+        group: Modules/XAuthUIKit
       - path: Resources
-        group: Modules/XAuthKit
+        group: Modules/XAuthUIKit
       - path: Configs/Info.plist
-        group: Modules/XAuthKit
+        group: Modules/XAuthUIKit
       - path: Configs/xcconfig
         group: App/Configs
 
@@ -49,18 +49,6 @@ targets:
       Staging Release: Configs/xcconfig/Staging-Release.xcconfig
       Production Debug: Configs/xcconfig/Production-Debug.xcconfig
       Production Release: Configs/xcconfig/Production-Release.xcconfig
-
-
-    preCompileScripts:
-      - name: Run SwiftLint
-        basedOnDependencyAnalysis: false
-        script: |
-          export PATH="$PATH:/opt/homebrew/bin"
-          if which swiftlint >/dev/null; then
-            swiftlint lint --config .swiftlint.yml
-          else
-            echo "warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint"
-          fi
   ############
   # Tests
   ############
