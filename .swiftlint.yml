@@ -32,7 +32,6 @@ disabled_rules:
   - trailing_whitespace # Biar Xcode aja yang handle trim whitespace
   - force_try # Kadang oke dipake buat parsing URL statis
   - force_cast # Kadang perlu buat UI casting
-  - line_length # Kita atur manual di bawah
   - identifier_name # Biar variabel pendek kayak 'x', 'y', 'id' gak kena warning
   - todo # Biar 'TODO:' di code gak dianggap warning (opsional)
   - type_name # Kadang nama type library luar aneh-aneh

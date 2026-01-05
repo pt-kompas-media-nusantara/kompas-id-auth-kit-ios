@@ -17,6 +17,8 @@ struct App: SwiftUI.App {
             HomeView()
                 .onAppear {
                     setupConfiguration()
+                    SwiftLintTest().triggerWarnings()
+                    SwiftLintTest().triggerError()
                 }
         }
     }
