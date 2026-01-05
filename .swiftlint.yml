@@ -18,7 +18,9 @@ excluded:
   - fastlane
   - .bundle
   - .build
-  - *.generated.swift # Abaikan file hasil generate XcodeGen/Mock
+  - "**/.build"
+  - "**/checkouts"
+  - "*.generated.swift" # Abaikan file hasil generate XcodeGen/Mock
   - DerivedData
 
 # ============================================
