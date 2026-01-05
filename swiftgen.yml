@@ -1,0 +1,72 @@
+# swiftgen.yml
+
+# ==========================================
+# 1. ASSETS (Colors & Images)
+# ==========================================
+xcassets:
+  
+  # A. SHARED COLORS (XAuthUIKit) -> PUBLIC
+  # Supaya bisa dipakai oleh App & Module lain
+  - inputs: XAuthUIKit/Resources/Colors.xcassets
+    outputs:
+      - templateName: swift5
+        output: XAuthUIKit/Sources/Generated/ColorAssets+Generated.swift
+        params:
+          enumName: AuthColors
+          forceProvidesNamespaces: true
+          accessControl: public
+
+  # B. SHARED IMAGES (XAuthUIKit) -> PUBLIC
+  # Supaya bisa dipakai oleh App & Module lain
+  - inputs: XAuthUIKit/Resources/Assets.xcassets
+    outputs:
+      - templateName: swift5
+        output: XAuthUIKit/Sources/Generated/AuthAssets+Generated.swift
+        params:
+          enumName: AuthAssets
+          forceProvidesNamespaces: true
+          accessControl: public
+
+  # C. APP SPECIFIC ASSETS (App) -> INTERNAL
+  # Cuma bisa dipakai di dalam App (LaunchScreen, AppIcon, dll)
+  - inputs: App/Resources/Assets.xcassets
+    outputs:
+      - templateName: swift5
+        output: App/Sources/Generated/AppAssets+Generated.swift
+        params:
+          enumName: AppAssets
+          forceProvidesNamespaces: true
+          accessControl: internal
+
+# # ==========================================
+# # 2. STRINGS / LOCALIZATION
+# # ==========================================
+# strings:
+#   - inputs: XAuthKit/Sources/Resources/en.lproj/Localizable.strings
+#     outputs:
+#       - templateName: swift5
+#         output: XAuthKit/Sources/Generated/Strings+Generated.swift
+#         params:
+#           enumName: AuthStrings
+#           accessControl: public
+
+
+
+
+# NOT FOUND
+  # - inputs: XAuthUIKit/Sources/Resources/en.lproj/Localizable.strings # Sesuaikan path bahasa
+  #   outputs:
+  #     - templateName: swift5
+  #       output: XAuthUIKit/Sources/Generated/Strings+Generated.swift
+  #       params:
+  #         enumName: AuthStrings
+
+# NOT FOUND
+## 2. Konfigurasi untuk XAuthKit (Module Logic - Localization/Strings)
+# strings:
+#   - inputs: XAuthKit/Sources/Resources/en.lproj/Localizable.strings # Sesuaikan path bahasa
+#     outputs:
+#       - templateName: swift5
+#         output: XAuthKit/Sources/Generated/Strings+Generated.swift
+#         params:
+#           enumName: AuthStrings

@@ -1,101 +1,121 @@
 # ===================================================================
-# MODE CEPAT: Update Project (Tanpa Download Ulang)
-# Gunakan ini kalau cuma nambah file Swift atau ubah setting Project.yml
+# 🛠 PROJECT CONFIGURATION & TOOLS
 # ===================================================================
+
+# Pastikan path homebrew terbaca (khusus Apple Silicon M1/M2/M3)
+export PATH := /opt/homebrew/bin:$(PATH)
+
+# ===================================================================
+# 🚀 MENU UTAMA (SHORTCUTS)
+# ===================================================================
+
+.PHONY: all
+all: init
+
+# 1. INIT (Jalanin ini saat pertama kali clone project)
+# Urutan: Cek Tools -> Install Ruby Gems -> SwiftGen -> XcodeGen -> SPM -> Pods
+.PHONY: init
+init: check_tools install_gems generate_resources generate_project resolve_spm install_pods
+	@echo "🎉  Setup Selesai! Silakan buka 'XAuth.xcworkspace'"
+
+# 2. UPDATE (Jalanin ini setiap nambah file baru / ganti config)
+# Urutan: SwiftGen -> XcodeGen
 .PHONY: update
-update:
-	@echo "⚡️ Mode Cepat: Regenerate Project Only..."
-	@xcodegen -s project.yml
-	@echo "✅ Project file (.xcodeproj) berhasil diperbarui!"
+update: check_tools generate_resources generate_project
+	@echo "✅  Project berhasil di-refresh!"
 
-
-# ===================================================================
-# MODE SEDANG
-# ===================================================================
+# 3. SUPER UPDATE (Kalau habis pull dari git dan ada perubahan library)
+# Urutan: Update -> SPM -> Pods Cepat
 .PHONY: super_update
-super_update: xcodegen_generate resolve_spm quick_pods
-	@echo "✅ Selesai! Proyek Anda siap."
-	@echo "   Buka file 'XAuth.xcworkspace'"
+super_update: update resolve_spm quick_pods
+	@echo "✅  Project & Library berhasil di-update!"
 
 # ===================================================================
-# Perintah Utama: Menginisialisasi seluruh proyek
-#
-# Cukup jalankan: make init_project
+# 🔍 QUALITY CONTROL (LINTER & FORMATTER)
 # ===================================================================
-.PHONY: init_project
-# URUTAN: xcodegen -> spm -> pods
-init_project: xcodegen_generate resolve_spm install_pods
-	@echo "✅ Selesai! Proyek Anda siap."
-	@echo "   Buka file 'XAuth.xcworkspace'"
+
+# Cek kerapian kode (Read-Only)
+.PHONY: lint
+lint:
+	@echo "🔍  Menjalankan SwiftLint..."
+	@swiftlint lint --config .swiftlint.yml
+
+# Perbaiki kerapian kode otomatis (Autocorrect)
+.PHONY: format
+format:
+	@echo "🧹  Memperbaiki format kode..."
+	@swiftlint --fix --config .swiftlint.yml
+	@echo "✨  Kode sudah rapi!"
 
 # ===================================================================
-# LANGKAH 1: Membuat file .xcodeproj
+# ⚙️ STEPS DETIL (JANGAN PANGGIL LANGSUNG KECUALI PERLU)
 # ===================================================================
-.PHONY: xcodegen_generate
-xcodegen_generate:
-	@echo "➡️  1/3: Membuat project dengan XcodeGen..."
-	# REVISI: Menghapus '--quiet' agar log XcodeGen terlihat
-	xcodegen -s project.yml
 
-# ===================================================================
-# LANGKAH 2: Mengunduh paket Swift Package Manager (SPM)
-# ===================================================================
+# 0. Cek apakah tools sudah terinstall
+.PHONY: check_tools
+check_tools:
+	@command -v swiftgen >/dev/null 2>&1 || { echo "❌ Error: SwiftGen belum terinstall. Jalanin 'brew install swiftgen'"; exit 1; }
+	@command -v xcodegen >/dev/null 2>&1 || { echo "❌ Error: XcodeGen belum terinstall. Jalanin 'brew install xcodegen'"; exit 1; }
+	@command -v swiftlint >/dev/null 2>&1 || { echo "❌ Error: SwiftLint belum terinstall. Jalanin 'brew install swiftlint'"; exit 1; }
+	@echo "✅  Tools siap..."
+
+# 1. Install Ruby Gems (CocoaPods, Bundler)
+.PHONY: install_gems
+install_gems:
+	@echo "💎  Checking Ruby Gems..."
+	@bundle check || bundle install
+
+# 2. Generate Resources (Gambar, Warna, String) via SwiftGen
+.PHONY: generate_resources
+generate_resources:
+	@echo "🎨  Generating Resources (SwiftGen)..."
+	@swiftgen config run --config swiftgen.yml
+
+# 3. Generate .xcodeproj via XcodeGen
+.PHONY: generate_project
+generate_project:
+	@echo "🛠  Generating Xcode Project (XcodeGen)..."
+	@xcodegen -s project.yml
+
+# 4. Resolve SPM (Swift Package Manager)
 .PHONY: resolve_spm
 resolve_spm:
-	@echo "➡️  2/3: Mengunduh dependencies SPM (Firebase, SwiftLint)..."
-	@echo "    (Proses ini mungkin lama saat pertama kali karena download repo SwiftLint)"
-	# REVISI: 
-	# 1. Menghapus '@' di depan perintah agar command aslinya terlihat
-	# 2. Mengganti '-quiet' menjadi '-verbose' agar kelihatan progress download-nya
-	xcodebuild -project XAuth.xcodeproj -scheme "XAuth Staging Debug" -resolvePackageDependencies -verbose
+	@echo "📦  Resolving SPM Dependencies..."
+	@xcodebuild -resolvePackageDependencies -workspace XAuth.xcworkspace -scheme XAuth -quiet || echo "⚠️  SPM Warning (bisa diabaikan jika baru init)"
 
-# ===================================================================
-# LANGKAH 3: Menginstall CocoaPods
-# ===================================================================
+# 5. Install CocoaPods (Full Update Repo - Lambat tapi Pasti)
 .PHONY: install_pods
 install_pods:
-	@echo "➡️  3/3: Menginstall dependencies CocoaPods..."
-	@bundle install
-	# Bagian ini sudah oke pakai --verbose
-	@bundle exec pod install --verbose --repo-update
+	@echo "🥥  Installing Pods (Repo Update)..."
+	@bundle exec pod install --repo-update
 
-
-# ===================================================================
-# Flag --repo-update itu memaksa CocoaPods mengecek server pusat (master specs) setiap kali jalan. Itu bisa makan waktu 1-5 menit sendiri.
-# ===================================================================
+# 6. Quick Pods (Tanpa Update Repo - Cepat)
 .PHONY: quick_pods
 quick_pods:
-	@echo "➡️  Update Pods (Tanpa update repo)..."
-	@bundle install
-	@bundle exec pod install	
-
-
+	@echo "🥥  Installing Pods (Quick)..."
+	@bundle exec pod install
 
 # ===================================================================
-# Perintah Tambahan
+# 🗑 CLEAN UP
 # ===================================================================
+
 .PHONY: clean
 clean:
-	@echo "🧹 Membersihkan file cache dan proyek lama..."
+	@echo "🗑  Membersihkan file project..."
 	@rm -rf *.xcodeproj
 	@rm -rf *.xcworkspace
 	@rm -f Package.resolved
 	@rm -f Podfile.lock
 	@rm -rf Pods
-	@echo "✅ Bersih."
-	# @rm -rf .build
-	# @swift package clean
-	
+	@echo "✨  Bersih. clean"
 
-.PHONY: super_clean
-super_clean:
-	@echo "🧹 Membersihkan file cache dan proyek lama..."
+.PHONY: supee_clean
+clean:
+	@echo "🗑  Membersihkan file project..."
 	@rm -rf *.xcodeproj
 	@rm -rf *.xcworkspace
 	@rm -f Package.resolved
 	@rm -f Podfile.lock
 	@rm -rf Pods
-	@rm -rf ~/Library/Developer/Xcode/DerivedData/*
-	@echo "✅ Bersih."
-	# @rm -rf .build
-	# @swift package clean
+	@rm -rf DerivedData
+	@echo "✨  Bersih. Silakan jalankan 'make init' ulang."

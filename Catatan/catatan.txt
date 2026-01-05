@@ -1,9 +1,6 @@
 
 BACKLOG:
-- swiftlint
 - swift format
-- .swift-version -> pakai ini juga
-- Mintfile -> sepertinya bagus jika pakai ini
 - SwiftGen
 
 - setup CICD menggunakan github runner

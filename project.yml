@@ -27,6 +27,7 @@ options:
 
 settings:
     IPHONEOS_DEPLOYMENT_TARGET: 16.0
+    SWIFT_VERSION: 6.1.2
 
 
 ############

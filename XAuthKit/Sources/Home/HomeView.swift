@@ -12,9 +12,7 @@ public struct HomeView: View {
             
             ButtonAuthKit()
             
-            Image("tts_coming_soon")
-                .resizable()
-                .frame(width: 40, height: 40, alignment: .center)
+            ComponentView()
         }
         
     }
