@@ -4,7 +4,7 @@ import XAuthKit
 @preconcurrency import KompasIdLibrary
 
 @MainActor
-final class LaunchAppUseCaseVM: ObservableObject {
+final class ILaunchAppUseCaseVM: ObservableObject {
     @Published private(set) var statusText: String = "Menunggu Aksi..."
     @Published private(set) var isExecuting: Bool = false
     @Published private(set) var logOutput: String = ""

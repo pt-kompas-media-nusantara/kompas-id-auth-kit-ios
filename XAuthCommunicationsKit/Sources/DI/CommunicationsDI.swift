@@ -20,4 +20,14 @@ extension Container {
     public var launchAppUseCase: Factory<LaunchAppUseCase> {
         self { KoinInjector().launchAppUseCase }
     }
+    
+    /// Menjembatani KMP Koin DI dengan iOS Factory DI untuk AuthAndSyncUseCase.
+    public var authAndSyncUseCase: Factory<AuthAndSyncUseCase> {
+        self { KoinInjector().authAndSyncUseCase }
+    }
+    
+    /// Menjembatani KMP Koin DI dengan iOS Factory DI untuk PersonalInfoUseCase.
+    public var personalInfoUseCase: Factory<PersonalInfoUseCase> {
+        self { KoinInjector().personalInfoUseCase }
+    }
 }

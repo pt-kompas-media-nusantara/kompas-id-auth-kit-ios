@@ -1,60 +1,24 @@
 import SwiftUI
 
-struct LaunchAppUseCaseView: View {
-    @StateObject private var viewModel = LaunchAppUseCaseVM()
+struct IAuthAndSyncUseCaseView: View {
+    @StateObject private var viewModel = IAuthAndSyncUseCaseVM()
     
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
                 // Header Deskripsi
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("Launch App Use Case")
+                    Text("IAuthAndSyncUseCase Test")
                         .font(.title2)
                         .fontWeight(.bold)
-                    Text("Use case ini bertanggung jawab atas sinkronisasi awal aplikasi, status force update, rekomendasi OS, dan status token pembelian App Store.")
+                    Text("Use case ini menyinkronkan status otentikasi lokal dengan server KMP secara langsung.")
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                 }
                 .padding(.horizontal)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 
-                // Card 1: Input Parameters (Dummy Data)
-                VStack(alignment: .leading, spacing: 12) {
-                    Text("Parameter Dummy")
-                        .font(.headline)
-                    Divider()
-                    
-                    VStack(alignment: .leading, spacing: 8) {
-                        HStack {
-                            Text("Platform:")
-                                .foregroundColor(.secondary)
-                            Spacer()
-                            Text("iOS")
-                                .fontWeight(.medium)
-                        }
-                        HStack {
-                            Text("Device Name:")
-                                .foregroundColor(.secondary)
-                            Spacer()
-                            Text("iPhone Simulator")
-                                .fontWeight(.medium)
-                        }
-                        HStack {
-                            Text("Env Configuration:")
-                                .foregroundColor(.secondary)
-                            Spacer()
-                            Text("ALL_PROD")
-                                .fontWeight(.medium)
-                        }
-                    }
-                    .font(.footnote)
-                }
-                .padding()
-                .background(Color(.secondarySystemBackground))
-                .cornerRadius(12)
-                .padding(.horizontal)
-                
-                // Card 2: Logs & Output
+                // Card: Logs & Output
                 VStack(alignment: .leading, spacing: 12) {
                     HStack {
                         Text("Log Eksekusi")
@@ -87,7 +51,7 @@ struct LaunchAppUseCaseView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(8)
                     }
-                    .frame(height: 150)
+                    .frame(height: 200)
                     .background(Color.black.opacity(0.05))
                     .cornerRadius(8)
                 }
@@ -102,7 +66,7 @@ struct LaunchAppUseCaseView: View {
                         await viewModel.execute()
                     }
                 }) {
-                    Text(viewModel.isExecuting ? "Menjalankan..." : "Jalankan Use Case")
+                    Text(viewModel.isExecuting ? "Menjalankan..." : "Sinkronisasikan Sesi")
                         .font(.headline)
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
@@ -117,7 +81,7 @@ struct LaunchAppUseCaseView: View {
             }
             .padding(.vertical)
         }
-        .navigationTitle("Launch App Test")
+        .navigationTitle("Auth & Sync Use Case")
         .navigationBarTitleDisplayMode(.inline)
     }
 }
