@@ -39,7 +39,7 @@ final class ILaunchAppUseCaseVM: ObservableObject {
                 uiDeviceName: deviceProvider.deviceName,
                 uiDeviceModel: deviceProvider.deviceModel,
                 uiDeviceSeries: deviceProvider.deviceSeries,
-                deviceTypeModel: .smartphone,
+                deviceTypeModel: deviceProvider.deviceType.toKmpDeviceType,
                 osVersion: BuildConfiguration.osVersion
             ),
             envConfigurationModel: EnvConfigurationModel(
@@ -73,3 +73,15 @@ private extension AppFlavorType {
         }
     }
 }
+
+private extension AppDeviceType {
+    var toKmpDeviceType: DeviceTypeModel {
+        switch self {
+        case .smartphone: return .smartphone
+        case .tablet: return .tablet
+        case .phablet: return .phablet
+        case .desktop: return .desktop
+        }
+    }
+}
+
