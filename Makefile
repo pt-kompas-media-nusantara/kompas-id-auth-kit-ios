@@ -3,7 +3,7 @@
 # ===================================================================
 
 # Pastikan path homebrew terbaca (khusus Apple Silicon M1/M2/M3)
-export PATH := /opt/homebrew/bin:$(PATH)
+export PATH := $(PATH):/opt/homebrew/bin
 
 # ===================================================================
 # 🚀 MENU UTAMA (SHORTCUTS)
@@ -81,7 +81,7 @@ generate_project:
 .PHONY: resolve_spm
 resolve_spm:
 	@echo "📦  Resolving SPM Dependencies..."
-	@xcodebuild -resolvePackageDependencies -workspace XAuth.xcworkspace -scheme XAuth -quiet || echo "⚠️  SPM Warning (bisa diabaikan jika baru init)"
+	@xcodebuild -resolvePackageDependencies -workspace XAuth.xcworkspace -scheme "XAuth Production Debug" -quiet || echo "⚠️  SPM Warning (bisa diabaikan jika baru init)"
 
 # 5. Install CocoaPods (Full Update Repo - Lambat tapi Pasti)
 .PHONY: install_pods
@@ -109,8 +109,8 @@ clean:
 	@rm -rf Pods
 	@echo "✨  Bersih. clean"
 
-.PHONY: supee_clean
-clean:
+.PHONY: super_clean
+super_clean:
 	@echo "🗑  Membersihkan file project..."
 	@rm -rf *.xcodeproj
 	@rm -rf *.xcworkspace
