@@ -60,6 +60,15 @@ graph TD
   * Penyimpanan aman token (Keychain wrapper).
 * **Aturan Penggunaan:** Modul ini menggabungkan model data dari `XAuthCommunicationsKit` dengan antarmuka dari `XAuthUIKit`.
 
+### 📱 4. Aplikasi Utama (`App`)
+* **Tanggung Jawab:** Target eksekutabel / aplikasi demo utama yang menggabungkan seluruh kit untuk presentasi visual.
+* **Isi Folder Pendukung:**
+  * **`App/Sources/App/`**: Konfigurasi global lifecycle dan inisialisasi framework luar.
+    * **[Bundle+App.swift](file:///Users/kompasdigital/Documents/work/kompas-id-auth-kit-ios/App/Sources/App/Bundle+App.swift)**: Convenience helper extension untuk akses bundle utama.
+    * **[FirebaseConfiguration.swift](file:///Users/kompasdigital/Documents/work/kompas-id-auth-kit-ios/App/Sources/App/FirebaseConfiguration.swift)**: Logika pemuatan berkas `GoogleService-Info.plist` secara dinamis dari bundle berdasarkan variabel build `GOOGLE_SERVICE_INFO_PLIST_NAME` (sangat berguna untuk pemisahan lingkungan Staging & Prod).
+  * **`App/Sources/Generated/`**: Sumber daya terjemahan kode otomatis oleh tools eksternal.
+    * **[AppAssets+Generated.swift](file:///Users/kompasdigital/Documents/work/kompas-id-auth-kit-ios/App/Sources/Generated/AppAssets+Generated.swift)**: Enum katalog aset visual type-safe (`AppAssets`) yang dikelola otomatis oleh **SwiftGen** untuk meminimalkan *hardcoded string literals* di aplikasi.
+
 ---
 
 ## 🔄 3. Alur Proses Otentikasi (Sequence Diagram)

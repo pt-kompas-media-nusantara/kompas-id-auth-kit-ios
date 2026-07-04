@@ -63,6 +63,22 @@ Buka berkas `.md` di Xcode, lalu aktifkan render markup otomatis:
 
 ---
 
+## 🎨 Pengelolaan Aset (SwiftGen)
+
+Untuk aset visual (seperti gambar, warna, dan ikon) pada target `App`, proyek ini menggunakan **SwiftGen** untuk menghasilkan kode secara otomatis guna menjamin keandalan tipe data (*type-safe*).
+
+* **Berkas Otomatis:** Berkas **[AppAssets+Generated.swift](file:///Users/kompasdigital/Documents/work/kompas-id-auth-kit-ios/App/Sources/Generated/AppAssets+Generated.swift)** dikelola sepenuhnya oleh generator.
+* **⚠️ PENTING:** **DILARANG KERAS** mengedit berkas `AppAssets+Generated.swift` secara manual karena seluruh perubahan akan otomatis tertimpa dan hilang setiap kali Anda menjalankan perintah otomatisasi `make update` atau `make build`.
+* **Cara Menambah Aset Baru:**
+  1. Masukkan gambar atau warna baru ke katalog aset Xcode (`.xcassets`).
+  2. Jalankan perintah otomatisasi di terminal:
+     ```bash
+     make update
+     ```
+  3. Gunakan aset baru secara aman tanpa *string literals* di dalam SwiftUI/UIKit menggunakan objek `AppAssets`.
+
+---
+
 ## 📂 Berkas Dokumentasi Utama
 * 📐 **[Panduan Arsitektur & Diagram Alur](Documentation/ARCHITECTURE_GUIDE.md)**
 * 💉 **[Panduan & Keputusan Dependency Injection](Documentation/DEPENDENCY_INJECTION.md)**
