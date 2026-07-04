@@ -39,7 +39,8 @@ let package = Package(
     //    Seluruh library luar (seperti Firebase) yang diunduh langsung dari repositori Git.
     dependencies: [
         .package(url: "https://github.com/firebase/firebase-ios-sdk.git", from: "12.6.0"),
-        .package(url: "https://github.com/SimplyDanny/SwiftLintPlugins", exact: "0.62.2")
+        .package(url: "https://github.com/SimplyDanny/SwiftLintPlugins", exact: "0.62.2"),
+        .package(url: "https://github.com/pt-kompas-media-nusantara/kompas-mobile-netdatalibrary.git", exact: "1.0.94")
     ],
     
     // 5. Target Modul Internal Proyek
@@ -57,7 +58,9 @@ let package = Package(
         // B. Target Komunikasi Data (XAuthCommunicationsKit) - Khusus untuk API request
         .target(
             name: "XAuthCommunicationsKit",
-            dependencies: [], // Bersih dari dependensi visual/UI
+            dependencies: [
+                .product(name: "NetDataLibrary", package: "NetDataLibrary")
+            ],
             path: "XAuthCommunicationsKit/Sources",
             plugins: [
                 .plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLintPlugins")

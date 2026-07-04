@@ -16,3 +16,8 @@ packages:
   SwiftLintPlugins:
     url: https://github.com/realm/SwiftLint.git
     version: 0.62.2
+
+  # Kompas Mobile Net Data Library untuk utilitas jaringan & otentikasi
+  NetDataLibrary:
+    url: https://github.com/pt-kompas-media-nusantara/kompas-mobile-netdatalibrary.git
+    version: 1.0.94

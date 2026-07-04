@@ -23,6 +23,10 @@ targets:
         # File info plist kustom khusus modul ini
         INFOPLIST_FILE: XAuthCommunicationsKit/Configs/Info.plist
 
+    dependencies:
+      - package: NetDataLibrary
+        product: NetDataLibrary
+
     # Pengaturan skema Xcode bawaan modul ini
     scheme:
       gatherCoverageData: true # Mengaktifkan report cakupan testing kode
