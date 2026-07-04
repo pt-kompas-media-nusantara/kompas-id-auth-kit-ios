@@ -5,32 +5,20 @@ import XAuthKit
 
 @MainActor
 final class IAuthUseCaseVM: ObservableObject {
-    @Published private(set) var statusText: String = "Menunggu Aksi..."
-    @Published private(set) var isExecuting: Bool = false
-    @Published private(set) var logOutput: String = ""
-    
-    // Suntikkan UseCase menggunakan Factory DI Container
     @Injected(\.authUseCase) private var authUseCase
+    
+    @Published var resultText: String = "Menunggu Aksi..."
+    @Published var isLoading: Bool = false
 
     /// Memeriksa status pengguna melalui purchase token menggunakan KMP AuthUseCase
-    func executeCheckUser() async {
-        isExecuting = true
-        statusText = "Memproses..."
-        logOutput = "Memanggil authUseCase.checkUserByPurchaseToken()...\n"
-        
+    func execute() async {
+        isLoading = true
         do {
-            // execute() adalah suspend function dari KMP yang dipetakan sebagai async/throws di Swift
             let result = try await authUseCase.checkUserByPurchaseToken()
-            
-            logOutput += "KMP AuthUseCase sukses!\n"
-            logOutput += "Hasil: \(result)\n"
-            statusText = "Sukses"
+            resultText = "KMP AuthUseCase sukses!\nHasil: \(result)"
         } catch {
-            logOutput += "Eror terjadi saat eksekusi:\n"
-            logOutput += "\(error.localizedDescription)\n"
-            statusText = "Gagal"
+            resultText = "Gagal: \(error.localizedDescription)"
         }
-        
-        isExecuting = false
+        isLoading = false
     }
 }

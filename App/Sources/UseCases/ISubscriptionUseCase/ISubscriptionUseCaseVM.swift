@@ -2,20 +2,14 @@ import Foundation
 
 @MainActor
 final class ISubscriptionUseCaseVM: ObservableObject {
-    @Published private(set) var statusText: String = "Menunggu Aksi..."
-    @Published private(set) var isExecuting: Bool = false
-    @Published private(set) var logOutput: String = ""
+    @Published var resultText: String = "Menunggu Aksi..."
+    @Published var isLoading: Bool = false
 
+    /// Simulasi verifikasi langganan
     func execute() async {
-        isExecuting = true
-        statusText = "Memproses..."
-        logOutput = "Menjalankan mock KMP ISubscriptionUseCase...\n"
-        
-        try? await Task.sleep(nanoseconds: 500_000_000)
-        
-        logOutput += "Sukses memverifikasi langganan aktif Kompas ID!\n"
-        logOutput += "Hasil: Success(SubscriptionStatus(isActive=true))\n"
-        statusText = "Sukses"
-        isExecuting = false
+        isLoading = true
+        try? await Task.sleep(nanoseconds: 300_000_000)
+        resultText = "Sukses memverifikasi langganan aktif Kompas ID!\nHasil: Success(SubscriptionStatus(isActive=true))"
+        isLoading = false
     }
 }

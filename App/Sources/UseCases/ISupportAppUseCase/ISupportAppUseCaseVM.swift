@@ -2,20 +2,14 @@ import Foundation
 
 @MainActor
 final class ISupportAppUseCaseVM: ObservableObject {
-    @Published private(set) var statusText: String = "Menunggu Aksi..."
-    @Published private(set) var isExecuting: Bool = false
-    @Published private(set) var logOutput: String = ""
+    @Published var resultText: String = "Menunggu Aksi..."
+    @Published var isLoading: Bool = false
 
+    /// Simulasi pemeriksaan update aplikasi
     func execute() async {
-        isExecuting = true
-        statusText = "Memproses..."
-        logOutput = "Menjalankan mock KMP ISupportAppUseCase...\n"
-        
-        try? await Task.sleep(nanoseconds: 500_000_000)
-        
-        logOutput += "Sukses memeriksa status force-update aplikasi!\n"
-        logOutput += "Hasil: Success(ForceUpdateStatus(needUpdate=false))\n"
-        statusText = "Sukses"
-        isExecuting = false
+        isLoading = true
+        try? await Task.sleep(nanoseconds: 300_000_000)
+        resultText = "Sukses memeriksa status force-update aplikasi!\nHasil: Success(ForceUpdateStatus(needUpdate=false))"
+        isLoading = false
     }
 }

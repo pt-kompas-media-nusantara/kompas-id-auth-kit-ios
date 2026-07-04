@@ -20,7 +20,7 @@ packages:
   # Kompas Mobile Net Data Library untuk utilitas jaringan & otentikasi
   NetDataLibrary:
     url: https://github.com/pt-kompas-media-nusantara/kompas-mobile-netdatalibrary.git
-    version: 1.0.94
+    version: 1.0.95-debug
 
   # Factory Dependency Injection library untuk Swift
   Factory:

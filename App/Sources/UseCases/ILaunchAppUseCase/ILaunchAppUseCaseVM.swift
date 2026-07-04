@@ -5,19 +5,14 @@ import XAuthKit
 
 @MainActor
 final class ILaunchAppUseCaseVM: ObservableObject {
-    @Published private(set) var statusText: String = "Menunggu Aksi..."
-    @Published private(set) var isExecuting: Bool = false
-    @Published private(set) var logOutput: String = ""
-    
-    // Suntikkan UseCase menggunakan Factory DI Container
     @Injected(\.launchAppUseCase) private var launchAppUseCase
+    
+    @Published var resultText: String = "Menunggu Aksi..."
+    @Published var isLoading: Bool = false
 
     /// Mengeksekusi use case peluncuran aplikasi (LaunchAppUseCase) dari KMP
     func execute() async {
-        isExecuting = true
-        statusText = "Memulai eksekusi..."
-        logOutput = "Parameter input disiapkan...\n"
-        
+        isLoading = true
         do {
             let dummyData = LaunchAppModel(
                 tokenAuthenticationModel: TokenAuthenticationModel(
@@ -44,21 +39,11 @@ final class ILaunchAppUseCaseVM: ObservableObject {
                 )
             )
             
-            logOutput += "Mengirim request ke KMP LaunchAppUseCase...\n"
-            statusText = "Memproses data..."
-            
-            // execute() adalah suspend function dari KMP yang dipetakan sebagai async/throws di Swift
             let result = try await launchAppUseCase.execute(data: dummyData)
-            
-            logOutput += "KMP LaunchAppUseCase sukses!\n"
-            logOutput += "Hasil: \(result)\n"
-            statusText = "Sukses"
+            resultText = "KMP LaunchAppUseCase sukses!\nHasil: \(result)"
         } catch {
-            logOutput += "Eror terjadi saat eksekusi:\n"
-            logOutput += "\(error.localizedDescription)\n"
-            statusText = "Gagal"
+            resultText = "Gagal: \(error.localizedDescription)"
         }
-        
-        isExecuting = false
+        isLoading = false
     }
 }

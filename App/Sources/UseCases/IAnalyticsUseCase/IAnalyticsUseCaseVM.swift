@@ -2,20 +2,14 @@ import Foundation
 
 @MainActor
 final class IAnalyticsUseCaseVM: ObservableObject {
-    @Published private(set) var statusText: String = "Menunggu Aksi..."
-    @Published private(set) var isExecuting: Bool = false
-    @Published private(set) var logOutput: String = ""
+    @Published var resultText: String = "Menunggu Aksi..."
+    @Published var isLoading: Bool = false
 
+    /// Simulasi pengiriman analitik event
     func execute() async {
-        isExecuting = true
-        statusText = "Memproses..."
-        logOutput = "Menjalankan mock KMP IAnalyticsUseCase...\n"
-        
-        try? await Task.sleep(nanoseconds: 500_000_000)
-        
-        logOutput += "Simulasi pengiriman event analitik berhasil!\n"
-        logOutput += "Hasil: Success(Unit)\n"
-        statusText = "Sukses"
-        isExecuting = false
+        isLoading = true
+        try? await Task.sleep(nanoseconds: 300_000_000)
+        resultText = "Simulasi pengiriman event analitik sukses!\nHasil: Success(Unit)"
+        isLoading = false
     }
 }

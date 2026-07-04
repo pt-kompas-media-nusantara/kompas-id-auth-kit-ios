@@ -18,40 +18,21 @@ struct ISupportAppUseCaseView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 
                 VStack(alignment: .leading, spacing: 12) {
-                    HStack {
-                        Text("Log Eksekusi")
-                            .font(.headline)
-                        Spacer()
-                        Text(viewModel.statusText)
-                            .font(.caption)
-                            .fontWeight(.bold)
-                            .foregroundColor(viewModel.statusText == "Sukses" ? .green : .blue)
-                            .padding(.horizontal, 8)
-                            .padding(.vertical, 4)
-                            .background(Color.secondary.opacity(0.1))
-                            .cornerRadius(8)
-                    }
+                    Text("Hasil Eksekusi")
+                        .font(.headline)
                     Divider()
                     
-                    if viewModel.isExecuting {
+                    if viewModel.isLoading {
                         HStack(spacing: 10) {
                             ProgressView()
                             Text("Memeriksa update...")
                                 .font(.footnote)
                                 .foregroundColor(.secondary)
                         }
-                        .padding(.vertical, 8)
+                    } else {
+                        Text(viewModel.resultText)
+                            .font(.system(.subheadline, design: .monospaced))
                     }
-                    
-                    ScrollView {
-                        Text(viewModel.logOutput.isEmpty ? "Belum ada pengecekan update dilakukan." : viewModel.logOutput)
-                            .font(.system(.caption, design: .monospaced))
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(8)
-                    }
-                    .frame(height: 150)
-                    .background(Color.black.opacity(0.05))
-                    .cornerRadius(8)
                 }
                 .padding()
                 .background(Color(.secondarySystemBackground))
@@ -63,15 +44,15 @@ struct ISupportAppUseCaseView: View {
                         await viewModel.execute()
                     }
                 }) {
-                    Text(viewModel.isExecuting ? "Memeriksa..." : "Periksa Mock Update")
+                    Text(viewModel.isLoading ? "Memeriksa..." : "Periksa Mock Update")
                         .font(.headline)
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
                         .padding()
-                        .background(viewModel.isExecuting ? Color.gray : Color.blue)
+                        .background(viewModel.isLoading ? Color.gray : Color.blue)
                         .cornerRadius(12)
                 }
-                .disabled(viewModel.isExecuting)
+                .disabled(viewModel.isLoading)
                 .padding(.horizontal)
                 
                 Spacer()

@@ -15,12 +15,12 @@ import PackageDescription
 let package = Package(
     // 1. Nama dari paket library koleksi Anda secara keseluruhan
     name: "XAuthKitCore",
-    
+
     // 2. Batasan platform iOS minimum yang didukung agar bisa menggunakan SDK ini
     platforms: [
-        .iOS(.v16) // Diselaraskan dengan deployment target iOS 16.0
+        .iOS(.v16)  // Diselaraskan dengan deployment target iOS 16.0
     ],
-    
+
     // 3. Produk (Library) yang diekspos keluar agar bisa di-import oleh aplikasi lain.
     //    Developer luar dapat mengimpor salah satu atau seluruh produk di bawah ini.
     products: [
@@ -32,56 +32,58 @@ let package = Package(
             targets: ["XAuthCommunicationsKit"]),
         .library(
             name: "XAuthKit",
-            targets: ["XAuthKit"])
+            targets: ["XAuthKit"]),
     ],
-    
+
     // 4. Dependensi Paket Eksternal (SPM packages dari pihak ketiga)
     //    Seluruh library luar (seperti Firebase) yang diunduh langsung dari repositori Git.
     dependencies: [
         .package(url: "https://github.com/firebase/firebase-ios-sdk.git", from: "12.6.0"),
         .package(url: "https://github.com/SimplyDanny/SwiftLintPlugins", exact: "0.62.2"),
-        .package(url: "https://github.com/pt-kompas-media-nusantara/kompas-mobile-netdatalibrary.git", exact: "1.0.94"),
-        .package(url: "https://github.com/hmlongco/Factory.git", exact: "3.2.1")
+        .package(
+            url: "https://github.com/pt-kompas-media-nusantara/kompas-mobile-netdatalibrary.git",
+            exact: "1.0.95-debug"),
+        .package(url: "https://github.com/hmlongco/Factory.git", exact: "3.2.1"),
     ],
-    
+
     // 5. Target Modul Internal Proyek
     //    Mendefinisikan setiap folder modul, dependensi internal/eksternalnya, serta plugin.
     targets: [
         // A. Target UI (XAuthUIKit) - Khusus untuk visual komponen & tema
         .target(
             name: "XAuthUIKit",
-            dependencies: [], // Bersih dari dependensi luar untuk efisiensi
+            dependencies: [],  // Bersih dari dependensi luar untuk efisiensi
             path: "XAuthUIKit/Sources",
             plugins: [
                 .plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLintPlugins")
             ]
-        ),        
+        ),
         // B. Target Komunikasi Data (XAuthCommunicationsKit) - Khusus untuk API request
         .target(
             name: "XAuthCommunicationsKit",
             dependencies: [
                 .product(name: "NetDataLibrary", package: "NetDataLibrary"),
-                .product(name: "FactoryKit", package: "Factory")
+                .product(name: "FactoryKit", package: "Factory"),
             ],
             path: "XAuthCommunicationsKit/Sources",
             plugins: [
                 .plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLintPlugins")
             ]
-        ),        
+        ),
         // C. Target Orkestrator/Core (XAuthKit) - Logika bisnis & penggabung modul UI/Comm
         .target(
             name: "XAuthKit",
             dependencies: [
-                "XAuthUIKit",             // Membutuhkan target UI
+                "XAuthUIKit",  // Membutuhkan target UI
                 "XAuthCommunicationsKit",  // Membutuhkan target API
-                .product(name: "FactoryKit", package: "Factory")
+                .product(name: "FactoryKit", package: "Factory"),
             ],
             path: "XAuthKit/Sources",
             plugins: [
                 .plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLintPlugins")
             ]
-        )
-        
+        ),
+
         // CATATAN: Target aplikasi utama 'App' tidak dimasukkan di sini,
         // karena berkas ini hanya untuk mendistribusikan library (SDK).
     ]
