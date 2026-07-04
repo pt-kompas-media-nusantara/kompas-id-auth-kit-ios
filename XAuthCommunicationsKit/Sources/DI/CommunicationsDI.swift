@@ -1,5 +1,6 @@
 import FactoryKit
 import Foundation
+import KompasIdLibrary
 
 extension Container {
     // Registrasikan ModelRepository ke Container secara publik
@@ -7,5 +8,11 @@ extension Container {
     // Implementasinya (ModelRepositoryImpl) tetap tersembunyi sebagai internal modul.
     public var modelRepository: Factory<ModelRepository> {
         self { ModelRepositoryImpl() }
+    }
+    
+    /// Menjembatani KMP Koin DI dengan iOS Factory DI.
+    /// Menyediakan instance `AuthUseCase` secara transparan tanpa mengekspos detail pencarian Koin ke modul visual.
+    public var authUseCase: Factory<AuthUseCase> {
+        self { KoinInjector().authUseCase }
     }
 }

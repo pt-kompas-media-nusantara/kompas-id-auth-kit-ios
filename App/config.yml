@@ -58,6 +58,8 @@ targets:
         product: FirebaseCrashlytics
       - package: Factory
         product: FactoryKit
+      - package: NetDataLibrary
+        product: NetDataLibrary
 
     # Script pre-compile kustom khusus target aplikasi utama
     preCompileScripts:
