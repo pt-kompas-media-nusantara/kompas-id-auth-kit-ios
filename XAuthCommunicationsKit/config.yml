@@ -1,12 +1,10 @@
-############
-# Configs 
-############
-
-configs:
-  Staging Debug: debug
-  Production Debug: debug
-  Staging Release: release
-  Production Release: release
+# ===================================================================
+# 📡 XAuthCommunicationsKit Module Configuration
+# ===================================================================
+# Modul ini bertanggung jawab atas integrasi jaringan (API Call,
+# HTTP networking, serialization data json, dan endpoints).
+# Modul ini berdiri sendiri dan tidak memiliki UI atau dependensi bisnis.
+# ===================================================================
 
 targets:
 
@@ -16,32 +14,25 @@ targets:
 
   XAuthCommunicationsKit:
     name: XAuthCommunicationsKit
-    type: framework
-    platform: iOS
+    # Menggunakan template dari project.yml untuk menghindari penulisan platform/type/script SwiftLint
+    templates:
+      - CommonFramework
 
     settings:
-      DEFINES_MODULE: YES
       base:
+        # File info plist kustom khusus modul ini
         INFOPLIST_FILE: XAuthCommunicationsKit/Configs/Info.plist
-        SWIFT_ACTIVE_COMPILATION_CONDITIONS: $(inherited)
-        OTHER_SWIFT_FLAGS: $(inherited)
 
-    # dependencies:
-    #   # Internal Dependencies
-    #   - target: XAuthKit
-    #   - target: XAuthUIKit
-
+    # Pengaturan skema Xcode bawaan modul ini
     scheme:
-      gatherCovergageData: true
+      gatherCoverageData: true # Mengaktifkan report cakupan testing kode
       testTargets:
         - name: XAuthCommunicationsKit_Tests
-          parallelizable: true
-          randomExecutionOrder: true
-
-    # dependencies:
-      # - package: Kingfisher
+          parallelizable: true     # Menjalankan test secara paralel demi kecepatan
+          randomExecutionOrder: true # Mengacak urutan pengetesan untuk menguji kerapian state testing
     
     sources:
+      # Sumber berkas kode dan aset modul ini
       - path: Sources
         group: Modules/XAuthCommunicationsKit
       - path: Resources
@@ -51,40 +42,33 @@ targets:
       - path: Configs/xcconfig
         group: App/Configs
 
+    # Menggunakan xcconfig file eksternal untuk konfigurasi flag build per skema
     configFiles:
       Staging Debug: Configs/xcconfig/Staging-Debug.xcconfig
       Staging Release: Configs/xcconfig/Staging-Release.xcconfig
       Production Debug: Configs/xcconfig/Production-Debug.xcconfig
       Production Release: Configs/xcconfig/Production-Release.xcconfig
 
-    preCompileScripts:
-      - name: Run SwiftLint
-        basedOnDependencyAnalysis: false
-        script: |
-          export PATH="$PATH:/opt/homebrew/bin"
-          if which swiftlint >/dev/null; then
-            swiftlint lint --config .swiftlint.yml
-          else
-            echo "warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint"
-          fi
-
   ############
-  # Tests
+  # Tests Target
   ############
 
   XAuthCommunicationsKit_Tests:
     name: XAuthCommunicationsKit_Tests
-    type: bundle.unit-test
+    type: bundle.unit-test # Tipe modul berupa Unit Test Bundle
     platform: iOS
     settings:
       INFOPLIST_FILE: XAuthCommunicationsKit/Configs/Info-Test.plist
         
     sources:
+      # Sumber berkas Unit Tests
       - path: Tests
         group: Modules/XAuthCommunicationsKit
     dependencies:
+      # Unit test bergantung pada modul framework utama yang akan di-test
       - target: XAuthCommunicationsKit
 
+    # Skema tersendiri untuk menjalankan test bundle ini
     scheme:
       testTargets:
         - XAuthCommunicationsKit_Tests

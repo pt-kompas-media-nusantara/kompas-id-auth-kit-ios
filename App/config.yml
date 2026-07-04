@@ -1,18 +1,19 @@
-configs:
-  Staging Debug: debug
-  Production Debug: debug
-  Staging Release: release
-  Production Release: release
-
+# ===================================================================
+# 📱 XAuth App Target Configuration
+# ===================================================================
+# Berkas ini mendefinisikan target utama aplikasi iOS (XAuth.app)
+# beserta skema-skema eksekusi (Staging/Production Debug & Release).
+# ===================================================================
 
 targets:
 
   XAuth:
-    type: application
+    type: application # Tipe target berupa aplikasi iOS utama
     platform: iOS
     deploymentTarget: 16.0
 
     sources:
+      # Berkas kode, Info.plist, GoogleServices, Entitlements dan xcconfig
       - path: Sources
         group: App
       - path: Resources
@@ -27,9 +28,11 @@ targets:
         group: App/Configs
 
     resources:
+      # Aset katalog (Gambar, warna, ikon aplikasi)
       - path: Resources/Assets.xcassets
       - path: Resources/Colors.xcassets
 
+    # Menggunakan xcconfig file eksternal untuk konfigurasi build settings
     configFiles:
       Staging Debug: Configs/xcconfig/Staging-Debug.xcconfig
       Staging Release: Configs/xcconfig/Staging-Release.xcconfig
@@ -43,30 +46,33 @@ targets:
         OTHER_SWIFT_FLAGS: $(inherited)
 
     dependencies:
-      # Internal Dependencies
+      # Internal Target Dependencies (Modul kit pendukung)
       - target: XAuthKit
       - target: XAuthUIKit
       - target: XAuthCommunicationsKit
 
-      # SPM dependencies
+      # Swift Package Manager (SPM) Dependencies dari packages.yml
       - package: Firebase
         product: FirebaseAnalytics
       - package: Firebase
         product: FirebaseCrashlytics
 
+    # Script pre-compile kustom khusus target aplikasi utama
     preCompileScripts:
       - name: Run SwiftLint
-        basedOnDependencyAnalysis: false # Supaya selalu jalan tiap build
+        basedOnDependencyAnalysis: false # Selalu dijalankan setiap kali kompilasi build berlangsung
         script: |
-          export PATH="$PATH:/opt/homebrew/bin" # Path default Homebrew di Mac M1/M2/M3
+          export PATH="$PATH:/opt/homebrew/bin"
           if which swiftlint >/dev/null; then
             swiftlint lint --config .swiftlint.yml
           else
             echo "warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint"
           fi
 
+# Skema Xcode utama yang dapat dipilih oleh developer di menu Xcode Scheme
 schemes:
-  # 1. Scheme Staging Debug
+
+  # 1. Scheme Staging Debug (Untuk uji coba lokal internal dengan server Staging)
   XAuth Staging Debug:
     build:
       targets:
@@ -74,7 +80,7 @@ schemes:
     run:
       config: Staging Debug
       commandLineArguments:
-        -FIRAnalyticsDebugEnabled: true
+        -FIRAnalyticsDebugEnabled: true # Memaksa log Firebase Analytics langsung dikirim saat run
     test:
       config: Staging Debug
     profile:
@@ -84,7 +90,7 @@ schemes:
     archive:
       config: Staging Debug
 
-  # 2. Scheme Production Debug
+  # 2. Scheme Production Debug (Untuk uji coba lokal internal dengan server Production)
   XAuth Production Debug:
     build:
       targets:
@@ -102,7 +108,7 @@ schemes:
     archive:
       config: Production Debug
 
-  # 3. Scheme Staging Release
+  # 3. Scheme Staging Release (Untuk pembuatan build rilis staging)
   XAuth Staging Release:
     build:
       targets:
@@ -118,7 +124,7 @@ schemes:
     archive:
       config: Staging Release
 
-  # 4. Scheme Production Release
+  # 4. Scheme Production Release (Untuk pembuatan build rilis production ke App Store)
   XAuth Production Release:
     build:
       targets:
@@ -133,4 +139,3 @@ schemes:
       config: Production Release
     archive:
       config: Production Release
-    

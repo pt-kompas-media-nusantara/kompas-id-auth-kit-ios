@@ -1,15 +1,18 @@
-
-# In this file we include all the package that we will use in our project.
-# Remember that it doesn't matter if this file will be local (if you want to use Carthage)
-# our using SwiftPackageManager
+# ===================================================================
+# 📦 XcodeGen Packages Dependency Configuration
+# ===================================================================
+# Berkas ini mendefinisikan seluruh external package dependencies
+# menggunakan Swift Package Manager (SPM) untuk proyek ini.
+# ===================================================================
 
 packages:
 
+  # Firebase iOS SDK untuk Analytics, Crashlytics, dll.
   Firebase:
     url: https://github.com/firebase/firebase-ios-sdk.git
     version: 12.6.0
 
+  # SwiftLint Plugins untuk analisis kualitas kode static analyzer.
   SwiftLintPlugins:
     url: https://github.com/realm/SwiftLint.git
     version: 0.62.2
-

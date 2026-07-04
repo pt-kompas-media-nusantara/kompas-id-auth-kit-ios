@@ -1,13 +1,11 @@
-############
-# Configs
-############
+# ===================================================================
+# 🎨 XAuthUIKit Module Configuration
+# ===================================================================
+# Modul ini bertanggung jawab atas UI, komponen visual, transisi,
+# dan seluruh asset visual (Fonts, Colors, Images) otentikasi.
+# Modul ini dilarang mengurus logika bisnis core secara mandiri.
+# ===================================================================
 
-configs:
-  Staging Debug: debug
-  Production Debug: debug
-  Staging Release: release
-  Production Release: release
-  
 targets:
 
   ############
@@ -16,25 +14,21 @@ targets:
   
   XAuthUIKit:
     name: XAuthUIKit
-    type: framework
-    platform: iOS
+    # Menggunakan template dari project.yml untuk menghindari penulisan platform/type/script SwiftLint
+    templates:
+      - CommonFramework
 
     settings:
-      DEFINES_MODULE: YES
       base:
+        # File info plist kustom khusus modul ini
         INFOPLIST_FILE: XAuthUIKit/Configs/Info.plist
-        SWIFT_ACTIVE_COMPILATION_CONDITIONS: $(inherited)
-        OTHER_SWIFT_FLAGS: $(inherited)
 
+    # Catatan: Modul UI tidak memiliki dependensi balik ke modul bisnis untuk mencegah circular dependencies.
     # dependencies:
-    #   # Internal Dependencies
     #   - target: XAuthKit
-    #   - target: XAuthCommunicationsKit
-
-    # dependencies:
-      # - package: Kingfisher # nurirppan: tidak di pakai karna tidak ada thirdparty untuk UI
     
     sources:
+      # Sumber berkas kode dan aset modul ini
       - path: Sources
         group: Modules/XAuthUIKit
       - path: Resources
@@ -44,22 +38,9 @@ targets:
       - path: Configs/xcconfig
         group: App/Configs
 
+    # Menggunakan xcconfig file eksternal untuk konfigurasi flag build per skema
     configFiles:
       Staging Debug: Configs/xcconfig/Staging-Debug.xcconfig
       Staging Release: Configs/xcconfig/Staging-Release.xcconfig
       Production Debug: Configs/xcconfig/Production-Debug.xcconfig
       Production Release: Configs/xcconfig/Production-Release.xcconfig
-
-    preCompileScripts:
-      - name: Run SwiftLint
-        basedOnDependencyAnalysis: false
-        script: |
-          export PATH="$PATH:/opt/homebrew/bin"
-          if which swiftlint >/dev/null; then
-            swiftlint lint --config .swiftlint.yml
-          else
-            echo "warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint"
-          fi
-  ############
-  # Tests
-  ############

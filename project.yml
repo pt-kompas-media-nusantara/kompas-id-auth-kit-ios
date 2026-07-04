@@ -1,43 +1,70 @@
-# 
-# Main file specification. 
-# 
-# In this file we will include:
-# - Base min XcodeGen version configuration
-# - Base iOS deploymentTarget
-# - Name of our base Project
-# - All the yaml files that we want to import when Xcodegen start parsing. 
-#   The final yaml will include all the yml references from here.
-# - ... other base options that could be useful
+# ===================================================================
+# 🆔 XAuth XcodeGen Root Project Configuration
+# ===================================================================
+# Berkas ini adalah konfigurasi utama untuk XcodeGen. XcodeGen membaca
+# berkas ini untuk membuat berkas `XAuth.xcodeproj` secara otomatis.
+#
+# Cara Menjalankan & Membuat Ulang Project:
+#   1. Jalankan `make` atau `make init` untuk setup awal lengkap.
+#   2. Jalankan `make update` jika ada perubahan pada berkas ini atau turunannya.
+# ===================================================================
 
-
-############
-## Project 
+# Nama project Xcode yang akan dibuat (XAuth.xcodeproj)
 name: XAuth
 
-
-############
-## Options
+# Opsi konfigurasi XcodeGen global
 options:
-  minimumXcodeGenVersion: 2.44.1
-  generateEmptyDirectories: true
+  minimumXcodeGenVersion: 2.44.1 # Mencegah penggunaan versi lama yang tidak kompatibel
+  generateEmptyDirectories: true  # Membuat folder kosong di Xcode jika folder fisik ada
 
+# Konfigurasi Build Configurations (Skema/Environment) secara terpusat.
+# Diterapkan ke semua target dalam proyek.
+configs:
+  Staging Debug: debug
+  Production Debug: debug
+  Staging Release: release
+  Production Release: release
 
 #############
 ## Settings
-
+#############
+# Global Build Settings untuk semua target di dalam project Xcode
 settings:
     IPHONEOS_DEPLOYMENT_TARGET: 16.0
     SWIFT_VERSION: 6.1.2
 
+###################
+## Target Templates
+###################
+# Template target untuk mencegah duplikasi baris konfigurasi pada anak target (DRY)
+targetTemplates:
+  CommonFramework:
+    type: framework
+    platform: iOS
+    settings:
+      DEFINES_MODULE: YES # Mengaktifkan modularisasi module agar bisa di-import modul lain
+      base:
+        SWIFT_ACTIVE_COMPILATION_CONDITIONS: $(inherited)
+        OTHER_SWIFT_FLAGS: $(inherited)
+    # Langkah build phase kustom yang dijalankan sebelum target dikompilasi
+    preCompileScripts:
+      - name: Run SwiftLint
+        basedOnDependencyAnalysis: false
+        script: |
+          export PATH="$PATH:/opt/homebrew/bin"
+          if which swiftlint >/dev/null; then
+            swiftlint lint --config .swiftlint.yml
+          else
+            echo "warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint"
+          fi
 
 ############
 ## Imports
-
+############
+# Memasukkan/mengimpor modul eksternal dan anak target lainnya ke dalam konfigurasi utama ini
 include:
-  - packages.yml  
-  - XAuthKit/config.yml
-  - XAuthUIKit/config.yml
-  - XAuthCommunicationsKit/config.yml  
-  - App/config.yml # ini wajib di akhir karna modulenya dulu yang di genere baru root nya
-  
-
+  - packages.yml                  # Daftar Swift Package Manager (SPM) dependency
+  - XAuthKit/config.yml           # Konfigurasi target Core Business Logic Modul
+  - XAuthUIKit/config.yml          # Konfigurasi target UI & Component Modul
+  - XAuthCommunicationsKit/config.yml # Konfigurasi target Network & API Modul
+  - App/config.yml                # Konfigurasi target Utama Aplikasi (Wajib di akhir karena bergantung pada modul di atas)
