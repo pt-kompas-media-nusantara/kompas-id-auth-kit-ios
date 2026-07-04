@@ -7,7 +7,6 @@ final class HomeViewModel: ObservableObject {
     @Published private(set) var appVersion: String = ""
     @Published private(set) var osVersion: String = ""
     @Published private(set) var flavorName: String = ""
-    @Published var visitCount: Int = 0
 
     init() {
         // Panggil properti tersentralisasi yang murni dari BuildConfiguration (Domain Layer)
@@ -16,9 +15,6 @@ final class HomeViewModel: ObservableObject {
         self.flavorName = BuildConfiguration.flavorDisplayName
     }
     
-    func incrementVisit() {
-        visitCount += 1
-    }
 }
 
 struct HomeView: View {
@@ -68,14 +64,6 @@ struct HomeView: View {
                                     .foregroundColor(.green)
                             }
                             
-                            HStack {
-                                Text("Jumlah Kunjungan:")
-                                    .foregroundColor(.secondary)
-                                Spacer()
-                                Text("\(viewModel.visitCount)x")
-                                    .fontWeight(.bold)
-                                    .foregroundColor(.orange)
-                            }
                         }
                         .font(.subheadline)
                     }
@@ -177,9 +165,6 @@ struct HomeView: View {
                 .padding(.vertical)
             }
             .navigationTitle("XAuth Dashboard")
-            .onAppear {
-                viewModel.incrementVisit()
-            }
         }
     }
 }
