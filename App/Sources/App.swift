@@ -17,7 +17,7 @@ struct App: SwiftUI.App {
 
     var body: some Scene {
         WindowGroup {
-            DashboardView()
+            RootView()
                 .onAppear {
                     setupConfiguration()
                     setupDidFinishLaunchingWithOptions(
