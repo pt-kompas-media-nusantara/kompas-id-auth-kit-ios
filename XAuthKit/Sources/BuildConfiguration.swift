@@ -89,4 +89,31 @@ public struct BuildConfiguration {
             return .production // Fallback paling aman
         }
     }
+    
+    // 6. Dapatkan versi OS menggunakan Foundation ProcessInfo (Bebas UIKit)
+    public static var osVersion: String {
+        let version = ProcessInfo.processInfo.operatingSystemVersion
+        return "\(version.majorVersion).\(version.minorVersion).\(version.patchVersion)"
+    }
+    
+    // 7. Dapatkan versi aplikasi (Short Version + Build Number) dari Bundle Info
+    public static var appVersion: String {
+        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0.0"
+        let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "1"
+        return "\(version) (\(build))"
+    }
+    
+    // 8. Dapatkan nama flavor deskriptif
+    public static var flavorDisplayName: String {
+        switch currentFlavor {
+        case .development:
+            return "Development (Staging Debug)"
+        case .uat:
+            return "UAT (Staging Release)"
+        case .production:
+            return "Production (Production Release)"
+        case .diagnostic:
+            return "Diagnostic (Production Debug)"
+        }
+    }
 }

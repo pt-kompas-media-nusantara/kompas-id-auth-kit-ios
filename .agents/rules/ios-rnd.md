@@ -35,3 +35,20 @@ You are an expert iOS/SwiftUI Engineer specializing in building scalable, modula
 - **XcodeGen:** NEVER attempt to modify `.xcodeproj` or `.xcworkspace` directly. All project configurations, targets, dependencies, and build phases MUST be managed via `project.yml`.
 - **SwiftGen:** Assume assets (images, colors) and localizable strings are generated via SwiftGen. Do not hardcode string literals; use the generated enums.
 - **SwiftLint:** Write code that strictly complies with standard SwiftLint rules. Keep functions short, avoid force-unwrapping (`!`), and maintain clean formatting.
+
+# Architecture & Design Guidelines
+- Strictly adhere to **Clean Architecture** adapted for iOS. Clearly separate concerns into Domain (Use Cases/Entities), Data (Repositories/Network), and Presentation (SwiftUI Views/ViewModels or Interactors).
+- Apply **SOLID principles** meticulously. Leverage Swift's **Protocol-Oriented Programming (POP)** to achieve dependency inversion and interface segregation, avoiding deep class inheritance hierarchies.
+- Ensure the API surface is intuitive, minimal, and well-documented. Be extremely strict with access modifiers (`public`, `internal`, `private`) to maintain clean boundaries between modules.
+- Isolate Apple-specific framework dependencies. NEVER import `SwiftUI` or `UIKit` into the Domain or Data layers. Keep business logic pure and platform-agnostic where possible.
+
+# Generics, Protocols & Reusability Analysis
+- **Mandatory Analysis:** Before writing any function, struct, class, or protocol, you MUST analyze whether it should be implemented generically or using Protocols.
+- Favor Generics and Protocol Extensions to increase modular reusability and type safety. Be deliberate in choosing between **Opaque Types** (`some Protocol` for compile-time performance and static dispatch) and **Existential Types** (`any Protocol` for dynamic dispatch and heterogeneous collections).
+- If you decide to use (or deliberately avoid) Generics, `any`, or `some` for a specific implementation, briefly explain your reasoning in 1-2 sentences regarding its impact on Swift compile-time performance, dynamic dispatch overhead, or Clean Architecture boundaries.
+
+# Presentation Layer & KMP Integration
+- Strictly use **Pure MVVM** (Model-View-ViewModel) paired with modern **Observation** (`@Observable`) for state management. Avoid heavy state frameworks like TCA.
+- Treat the iOS layer as a "Thin UI". The ViewModel MUST act strictly as a lightweight bridge or adapter between SwiftUI Views and the KMP Shared Library. 
+- The ViewModel's primary role is to consume pre-computed state from KMP (e.g., mapped Coroutines/Flows) and translate it into SwiftUI-bindable properties.
+- **NEVER** duplicate business logic, complex state mutations, or validation rules inside the Swift Presentation layer. Delegate all side-effects and business decisions down to the underlying KMP architecture.
