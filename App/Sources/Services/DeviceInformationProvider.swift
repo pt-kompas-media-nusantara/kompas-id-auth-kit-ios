@@ -63,10 +63,13 @@ public struct SystemDeviceInformationProvider: DeviceInformationProvider {
             return .desktop
         case .mac:
             return .desktop
+        case .vision:
+            return .desktop
         case .unspecified:
             return .phablet
         @unknown default:
             return .phablet
         }
+
     }
 }
