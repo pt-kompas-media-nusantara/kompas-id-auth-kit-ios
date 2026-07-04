@@ -1,7 +1,7 @@
-import Foundation
 import FactoryKit
-import XAuthKit
+import Foundation
 @preconcurrency import KompasIdLibrary
+import XAuthKit
 
 @MainActor
 final class ILaunchAppUseCaseVM: ObservableObject {
@@ -28,12 +28,12 @@ final class ILaunchAppUseCaseVM: ObservableObject {
     /// Mengeksekusi use case peluncuran aplikasi (LaunchAppUseCase) dari KMP
     func execute() async {
         isLoading = true
-        
+
         let mappedConfig = configMapper.map(BuildConfiguration.currentFlavor)
-        
+
         let accessToken = tokenStorage.getAccessToken() ?? ""
         let refreshToken = tokenStorage.getRefreshToken() ?? ""
-        
+
         let dummyData = LaunchAppModel(
             tokenAuthenticationModel: TokenAuthenticationModel(
                 accessToken: accessToken,
@@ -70,8 +70,8 @@ final class ILaunchAppUseCaseVM: ObservableObject {
     }
 }
 
-private extension AppFlavorType {
-    var toKmpFlavor: FlavorsTypeModel {
+extension AppFlavorType {
+    fileprivate var toKmpFlavor: FlavorsTypeModel {
         switch self {
         case .allCloud: return .allCloud
         case .cloudApiary: return .cloudApiary
@@ -81,8 +81,8 @@ private extension AppFlavorType {
     }
 }
 
-private extension AppDeviceType {
-    var toKmpDeviceType: DeviceTypeModel {
+extension AppDeviceType {
+    fileprivate var toKmpDeviceType: DeviceTypeModel {
         switch self {
         case .smartphone: return .smartphone
         case .tablet: return .tablet
@@ -91,4 +91,3 @@ private extension AppDeviceType {
         }
     }
 }
-
