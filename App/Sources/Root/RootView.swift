@@ -8,7 +8,7 @@ struct RootView: View {
     @StateObject private var viewModel = RootVM()
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $viewModel.router.path) {
             ScrollView {
                 VStack(spacing: 20) {
                     // CARD 1: Informasi Sistem & Build (Terpusat)
@@ -68,7 +68,7 @@ struct RootView: View {
                     .cornerRadius(12)
                     .padding(.horizontal)
                     
-                    // CARD 2: Menu Aksi (KMP Use Case Playgrounds)
+                    // CARD 2: Menu Aksi (KMP Use Case Playgrounds via Programmatic Router)
                     VStack(alignment: .leading, spacing: 12) {
                         Text("KMP Use Case Playground")
                             .font(.headline)
@@ -76,7 +76,7 @@ struct RootView: View {
                             .padding(.horizontal)
                         
                         Group {
-                            NavigationLink(destination: IAuthUseCaseView()) {
+                            Button(action: { viewModel.navigate(to: .auth) }) {
                                 HStack {
                                     Image(systemName: "person.badge.shield.checkmark")
                                         .font(.title3)
@@ -91,8 +91,9 @@ struct RootView: View {
                                 .background(Color(.tertiarySystemBackground))
                                 .cornerRadius(10)
                             }
+                            .buttonStyle(PlainButtonStyle())
                             
-                            NavigationLink(destination: ILaunchAppUseCaseView()) {
+                            Button(action: { viewModel.navigate(to: .launchApp) }) {
                                 HStack {
                                     Image(systemName: "arrow.triangle.2.circlepath.circle")
                                         .font(.title3)
@@ -107,8 +108,9 @@ struct RootView: View {
                                 .background(Color(.tertiarySystemBackground))
                                 .cornerRadius(10)
                             }
+                            .buttonStyle(PlainButtonStyle())
                             
-                            NavigationLink(destination: IAuthAndSyncUseCaseView()) {
+                            Button(action: { viewModel.navigate(to: .authAndSync) }) {
                                 HStack {
                                     Image(systemName: "arrow.clockwise.icloud")
                                         .font(.title3)
@@ -123,8 +125,9 @@ struct RootView: View {
                                 .background(Color(.tertiarySystemBackground))
                                 .cornerRadius(10)
                             }
+                            .buttonStyle(PlainButtonStyle())
                             
-                            NavigationLink(destination: IPersonalInfoUseCaseView()) {
+                            Button(action: { viewModel.navigate(to: .personalInfo) }) {
                                 HStack {
                                     Image(systemName: "person.text.rectangle")
                                         .font(.title3)
@@ -139,8 +142,9 @@ struct RootView: View {
                                 .background(Color(.tertiarySystemBackground))
                                 .cornerRadius(10)
                             }
+                            .buttonStyle(PlainButtonStyle())
                             
-                            NavigationLink(destination: IAnalyticsUseCaseView()) {
+                            Button(action: { viewModel.navigate(to: .analytics) }) {
                                 HStack {
                                     Image(systemName: "chart.bar")
                                         .font(.title3)
@@ -155,10 +159,11 @@ struct RootView: View {
                                 .background(Color(.tertiarySystemBackground))
                                 .cornerRadius(10)
                             }
+                            .buttonStyle(PlainButtonStyle())
                         }
                         
                         Group {
-                            NavigationLink(destination: IArticlesUseCaseView()) {
+                            Button(action: { viewModel.navigate(to: .articles) }) {
                                 HStack {
                                     Image(systemName: "doc.text")
                                         .font(.title3)
@@ -173,8 +178,9 @@ struct RootView: View {
                                 .background(Color(.tertiarySystemBackground))
                                 .cornerRadius(10)
                             }
+                            .buttonStyle(PlainButtonStyle())
                             
-                            NavigationLink(destination: ISettingsUseCaseView()) {
+                            Button(action: { viewModel.navigate(to: .settings) }) {
                                 HStack {
                                     Image(systemName: "gearshape")
                                         .font(.title3)
@@ -189,8 +195,9 @@ struct RootView: View {
                                 .background(Color(.tertiarySystemBackground))
                                 .cornerRadius(10)
                             }
+                            .buttonStyle(PlainButtonStyle())
                             
-                            NavigationLink(destination: ISubscriptionUseCaseView()) {
+                            Button(action: { viewModel.navigate(to: .subscription) }) {
                                 HStack {
                                     Image(systemName: "creditcard")
                                         .font(.title3)
@@ -205,8 +212,9 @@ struct RootView: View {
                                 .background(Color(.tertiarySystemBackground))
                                 .cornerRadius(10)
                             }
+                            .buttonStyle(PlainButtonStyle())
                             
-                            NavigationLink(destination: ISupportAppUseCaseView()) {
+                            Button(action: { viewModel.navigate(to: .supportApp) }) {
                                 HStack {
                                     Image(systemName: "exclamationmark.shield")
                                         .font(.title3)
@@ -221,8 +229,9 @@ struct RootView: View {
                                 .background(Color(.tertiarySystemBackground))
                                 .cornerRadius(10)
                             }
+                            .buttonStyle(PlainButtonStyle())
                             
-                            NavigationLink(destination: ISupportSystemUseCaseView()) {
+                            Button(action: { viewModel.navigate(to: .supportSystem) }) {
                                 HStack {
                                     Image(systemName: "cpu")
                                         .font(.title3)
@@ -237,6 +246,7 @@ struct RootView: View {
                                 .background(Color(.tertiarySystemBackground))
                                 .cornerRadius(10)
                             }
+                            .buttonStyle(PlainButtonStyle())
                         }
                     }
                     .padding(.horizontal)
@@ -264,6 +274,10 @@ struct RootView: View {
             .navigationTitle("XAuth Dashboard")
             .task {
                 viewModel.loadRepositoryData()
+            }
+            // Deklarasikan koordinasi tujuan rute di luar layout ScrollView utama
+            .navigationDestination(for: AppRoute.self) { route in
+                viewModel.router.view(for: route)
             }
         }
     }

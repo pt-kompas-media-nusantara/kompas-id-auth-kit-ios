@@ -6,6 +6,7 @@ import XAuthKit
 @MainActor
 final class IAuthUseCaseVM: ObservableObject {
     @Injected(\.authUseCase) private var authUseCase
+    @Injected(\.appRouter) private var router: AppRouter
     
     @Published var resultText: String = "Menunggu Aksi..."
     @Published var isLoading: Bool = false
@@ -16,6 +17,9 @@ final class IAuthUseCaseVM: ObservableObject {
         do {
             let result = try await authUseCase.checkUserByPurchaseToken()
             resultText = "KMP AuthUseCase sukses!\nHasil: \(result)"
+            
+            // Demo navigasi dari VM ke Articles setelah verifikasi berhasil
+            router.navigate(to: .articles)
         } catch {
             resultText = "Gagal: \(error.localizedDescription)"
         }
