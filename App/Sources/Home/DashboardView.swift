@@ -5,7 +5,7 @@ import FactoryKit
 import XAuthCommunicationsKit
 
 @MainActor
-final class HomeViewModel: ObservableObject {
+final class DashboardViewModel: ObservableObject {
     @Published private(set) var appVersion: String = ""
     @Published private(set) var osVersion: String = ""
     @Published private(set) var flavorName: String = ""
@@ -33,8 +33,8 @@ final class HomeViewModel: ObservableObject {
     }
 }
 
-struct HomeView: View {
-    @StateObject private var viewModel = HomeViewModel()
+struct DashboardView: View {
+    @StateObject private var viewModel = DashboardViewModel()
     
     var body: some View {
         NavigationStack {
@@ -119,7 +119,7 @@ struct HomeView: View {
                                 Spacer()
                                 Image(systemName: "chevron.right")
                                     .foregroundColor(.secondary)
-                            }
+                             }
                             .padding()
                             .background(Color(.tertiarySystemBackground))
                             .cornerRadius(10)

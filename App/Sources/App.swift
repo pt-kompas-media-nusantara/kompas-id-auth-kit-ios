@@ -1,4 +1,4 @@
-import KompasIdLibrary
+@preconcurrency import KompasIdLibrary
 import SwiftUI
 @_exported import XAuthKit
 
@@ -17,7 +17,7 @@ struct App: SwiftUI.App {
 
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            LaunchAppView()
                 .onAppear {
                     setupConfiguration()
                     setupDidFinishLaunchingWithOptions(

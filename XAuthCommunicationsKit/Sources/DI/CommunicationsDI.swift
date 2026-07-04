@@ -1,6 +1,6 @@
 import FactoryKit
 import Foundation
-import KompasIdLibrary
+@preconcurrency import KompasIdLibrary
 
 extension Container {
     // Registrasikan ModelRepository ke Container secara publik
@@ -14,5 +14,10 @@ extension Container {
     /// Menyediakan instance `AuthUseCase` secara transparan tanpa mengekspos detail pencarian Koin ke modul visual.
     public var authUseCase: Factory<AuthUseCase> {
         self { KoinInjector().authUseCase }
+    }
+    
+    /// Menjembatani KMP Koin DI dengan iOS Factory DI untuk LaunchAppUseCase.
+    public var launchAppUseCase: Factory<LaunchAppUseCase> {
+        self { KoinInjector().launchAppUseCase }
     }
 }

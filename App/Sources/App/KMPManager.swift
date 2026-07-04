@@ -1,6 +1,7 @@
-import KompasIdLibrary
+@preconcurrency import KompasIdLibrary
 import SwiftUI
 import FactoryKit
+import XAuthKit
 
 @MainActor
 final class KMPManager {

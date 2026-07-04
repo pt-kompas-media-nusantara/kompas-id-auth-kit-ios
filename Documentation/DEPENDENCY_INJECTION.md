@@ -76,11 +76,11 @@ extension Container {
 ### Langkah 2: Suntikkan Dependensi (Inject)
 Di modul konsumen (misal di ViewModel aplikasi utama `App`), suntikkan menggunakan property wrapper `@Injected`:
 ```swift
-// Di dalam App/Sources/Home/HomeView.swift
+// Di dalam App/Sources/Home/DashboardView.swift
 import FactoryKit
 import XAuthCommunicationsKit
 
-class HomeViewModel: ObservableObject {
+class DashboardViewModel: ObservableObject {
     // Otomatis ter-resolve ke ModelRepositoryImpl
     @Injected(\.modelRepository) private var modelRepository
 }
@@ -115,7 +115,7 @@ final class AuthViewModelTests: XCTestCase {
     
     func testLoadData() async throws {
         // ViewModel otomatis akan menggunakan MockModelRepository
-        let viewModel = HomeViewModel()
+        let viewModel = DashboardViewModel()
         viewModel.loadRepositoryData()
         
         // Verifikasi hasil mock...
