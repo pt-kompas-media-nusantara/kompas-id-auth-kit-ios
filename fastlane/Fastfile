@@ -8,26 +8,37 @@
 # For a list of all available plugins, check out
 #
 #     https://docs.fastlane.tools/plugins/available-plugins
-#
+# 
 
 # Uncomment the line if you want fastlane to automatically update itself
-# update_fastlane
+
+
+# NOTE : 
+# CT : Continuous Test
+# CD : Continuous Deployment
+# CI : Continuous Integration
+# CA : Continuous Analysis
+# GH : Github
+# FS : Fastlane
+# STG : Stagging / Development
+# PRD : Production / Release
+# TF : Testlight
+# FD : Firebase Distribition
+# IPA : IPA File
+# APP : APP File
 
 Dir["#{File.dirname(__FILE__)}/*.rb"].each do |file|
   import file
 end
 
-# if File.exist?(".env.secret")
-#   Dotenv.load(".env.secret")
-# end
-
 # Gunakan .overload, BUKAN .load
-if File.exist?(".env.secret")
-  # "overload" artinya: Timpa nilai yang sudah ada di memori dengan yang ada di file ini
-  Dotenv.overload(".env.secret") 
+secret_env_path = File.expand_path(".env.secret", File.dirname(__FILE__))
+if File.exist?(secret_env_path)
+  Dotenv.overload(secret_env_path) 
 end
 
 default_platform(:ios)
+
 
 platform :ios do
 
@@ -51,6 +62,7 @@ TEMP_KEYCHAIN_USER = ENV["TEMP_KEYCHAIN_USER"]
 GIT_AUTHORIZATION = ENV["GIT_AUTHORIZATION"]
 GITHUB_API_TOKEN = ENV["GITHUB_API_TOKEN"]
 
+
 # SYSTEM PROJECT
 TARGET_BY = ENV["TARGET_BY"]
 TYPE_MATCH_APPSTORE = ENV["TYPE_MATCH_APPSTORE"]
@@ -68,14 +80,15 @@ DEPLOYMENT_TYPES = ENV["DEPLOYMENT_TYPES"]
 # RELEASE
 DEVELOPER_APP_ID = ENV["DEVELOPER_APP_ID"]
 DEVELOPER_APP_IDENTIFIER = ENV["DEVELOPER_APP_IDENTIFIER"]
-PROVISIONING_PROFILE_SPECIFIER_APPSTORE = ENV["PROVISIONING_PROFILE_SPECIFIER_APPSTORE"]
 DEVELOPER_APP_IDENTIFIERS_DEFAULT = ENV["DEVELOPER_APP_IDENTIFIERS_DEFAULT"]
 
+# SCHEMES
 STAGING_DEBUG_SCHEME = ENV["STAGING_DEBUG_SCHEME"]
 STAGING_RELEASE_SCHEME = ENV["STAGING_RELEASE_SCHEME"]
 PRODUCTION_DEBUG_SCHEME = ENV["PRODUCTION_DEBUG_SCHEME"]
 PRODUCTION_RELEASE_SCHEME = ENV["PRODUCTION_RELEASE_SCHEME"]
 
+# BUILD CONFIGURATIONS
 STAGING_DEBUG_CONFIGURATION = ENV["STAGING_DEBUG_CONFIGURATION"]
 STAGING_RELEASE_CONFIGURATION = ENV["STAGING_RELEASE_CONFIGURATION"]
 PRODUCTION_DEBUG_CONFIGURATION = ENV["PRODUCTION_DEBUG_CONFIGURATION"]
@@ -91,3 +104,5 @@ GITHUB_VERSION_NUMBER = ENV["GITHUB_VERSION_NUMBER"]
 GITHUB_NOTE = ENV["GITHUB_NOTE"]
 
 end
+  
+

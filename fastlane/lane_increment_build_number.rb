@@ -3,55 +3,14 @@ default_platform(:ios)
 platform :ios do
 
   # START =============================================================
-
+  # load VERSION_NUMBER: 3.52.0
   desc "lane_get_version_number_from_xcode"
   lane :lane_get_version_number_from_xcode do
-    selected_configuration = lane_context[:SELECTED_CONFIGURATION]
-
     get_version_number(
       xcodeproj: XCODEPROJ_APP,
-      target: TARGET_BY,
-      configuration: selected_configuration
+      target: TARGET_BY
     )
     puts "save VERSION_NUMBER: #{lane_context[SharedValues::VERSION_NUMBER]}"
-  end
-    
-  desc "bundle exec fastlane lane_get_version_number"
-  lane :lane_get_version_manually_from_xcconfig do  
-    # 1. Tentukan lokasi file "source" Anda
-    config_path = File.join(__dir__, "..", "App/Configs/xcconfig/Share-Common.xcconfig")
-    full_path = File.expand_path(config_path)
-    
-    # 2. Pastikan file-nya ada
-    unless File.exist?(full_path)
-      UI.user_error!("File Common.xcconfig tidak ditemukan di: #{full_path}")
-      next nil # 'next' di sini sama dengan 'return'
-    end
-    
-    UI.message("Membaca manual dari: #{config_path}...")
-    
-    version_number = nil
-    
-    # 3. Baca file baris per baris
-    File.foreach(full_path) do |line|
-      # 4. Cari baris yang kita inginkan
-      if line.include?("MARKETING_VERSION")
-        # Jika ketemu (misal: "MARKETING_VERSION = 1.0.1")
-        # Ambil nilainya (bagian setelah "=")
-        version_number = line.split("=").last.strip
-        break # Keluar dari loop karena sudah ketemu
-      end
-    end
-    
-    # 5. Kembalikan nilainya
-    if version_number
-      UI.success("Berhasil menemukan versi secara manual: #{version_number}")
-      lane_context[SharedValues::VERSION_NUMBER] = version_number
-      next version_number
-    else
-      UI.user_error!("Tidak bisa menemukan 'MARKETING_VERSION' di dalam #{config_path}")
-      next nil
-    end
   end
 
   desc "bundle exec fastlane lane_get_version_number"
@@ -104,7 +63,6 @@ platform :ios do
   # START =============================================================
   desc "lane_increment_build_number"
   lane :lane_increment_build_number do
-    # nurirppan: disini apakah kodenya sudah benar atau harus di set versinya di xcconfig
 
     context_build_number = lane_context[SharedValues::LATEST_TESTFLIGHT_BUILD_NUMBER]
 
@@ -119,7 +77,7 @@ platform :ios do
   lane :lane_get_increment_build_number do
       build_number = lane_context[SharedValues::BUILD_NUMBER]
       
-      puts "load BUILD_NUMBER: #{build_number}"
+      puts "build_number: #{build_number}"
 
       if !GITHUB_DEPLOYMENT_TYPE.to_s.strip.empty?
         sh("echo FASTLANE_BUILD_NUMBER=#{build_number} >> $GITHUB_ENV")
@@ -180,14 +138,14 @@ platform :ios do
   # START =============================================================
   desc "Get Latest Build Number From Testflight and Increament It"
   lane :increment_build_number_from_latest_testflight_auto do    
-    lane_get_version_manually_from_xcconfig
+    lane_get_version_number_from_xcode
     lane_latest_testflight_build_number
     lane_increment_build_number
   end
 
   desc "Get Latest Build Number From Testflight and Increament It"
   lane :multi_increment_build_number_from_latest_testflight_auto do    
-    lane_get_version_manually_from_xcconfig
+    lane_get_version_number_from_xcode
     lane_latest_testflight_build_number
     lane_multi_increment_build_number
   end

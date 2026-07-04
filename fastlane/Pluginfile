@@ -2,4 +2,6 @@
 #
 # Ensure this file is checked in to source control!
 
+gem 'fastlane-plugin-lizard'
 gem 'fastlane-plugin-remove_git_tag', git: 'https://github.com/Marker-Digital/RemoveGitTag'
+

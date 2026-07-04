@@ -15,6 +15,22 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 ## iOS
 
+### ios exec_build_app_to_gdrive_by_github
+
+```sh
+[bundle exec] fastlane ios exec_build_app_to_gdrive_by_github
+```
+
+bundle exec fastlane exec_build_app_to_gdrive_by_github
+
+### ios exec_build_app_release_app_by_github
+
+```sh
+[bundle exec] fastlane ios exec_build_app_release_app_by_github
+```
+
+bundle exec fastlane exec_build_app_release_app_by_github
+
 ### ios exec_build_ipa
 
 ```sh
@@ -39,21 +55,77 @@ bundle exec fastlane exec_multi_build_ipa
 
 fastlane exec_clear_cache_pods
 
-### ios exec_create_tag_release
+### ios exec_code_coverage_slather_by_all_runner
 
 ```sh
-[bundle exec] fastlane ios exec_create_tag_release
+[bundle exec] fastlane ios exec_code_coverage_slather_by_all_runner
 ```
 
-bundle exec fastlane exec_create_tag_release
+bundle exec fastlane exec_code_coverage_slather_by_all_runner
 
-### ios exec_delete_bad_release
+### ios exec_code_coverage_xcov_by_all_runner
 
 ```sh
-[bundle exec] fastlane ios exec_delete_bad_release
+[bundle exec] fastlane ios exec_code_coverage_xcov_by_all_runner
 ```
 
-bundle exec fastlane exec_delete_bad_release
+bundle exec fastlane exec_code_coverage_xcov_by_all_runner
+
+### ios exec_extract_coverage_by_all_runner
+
+```sh
+[bundle exec] fastlane ios exec_extract_coverage_by_all_runner
+```
+
+Extract coverage for Kompas.id.app
+
+### ios exec_extract_coverage_by_local
+
+```sh
+[bundle exec] fastlane ios exec_extract_coverage_by_local
+```
+
+Extract coverage for Kompas.id.app
+
+### ios exec_swiftlint_by_all_runner
+
+```sh
+[bundle exec] fastlane ios exec_swiftlint_by_all_runner
+```
+
+bundle exec fastlane exec_swiftlint_by_all_runner
+
+### ios exec_sonar_scanner
+
+```sh
+[bundle exec] fastlane ios exec_sonar_scanner
+```
+
+bundle exec fastlane exec_sonar_scanner
+
+### ios exec_unit_tests_by_all_runner
+
+```sh
+[bundle exec] fastlane ios exec_unit_tests_by_all_runner
+```
+
+bundle exec fastlane exec_unit_tests_by_all_runner
+
+### ios exec_unit_tests_by_local
+
+```sh
+[bundle exec] fastlane ios exec_unit_tests_by_local
+```
+
+bundle exec fastlane exec_unit_tests_by_local
+
+### ios exec_upload_code_coverage_to_sonar
+
+```sh
+[bundle exec] fastlane ios exec_upload_code_coverage_to_sonar
+```
+
+bundle exec fastlane exec_upload_code_coverage_to_sonar
 
 ### ios load_app_store_connect_api_key
 
@@ -134,14 +206,6 @@ bundle exec fastlane lane_get_gym
 ```
 
 lane_get_version_number_from_xcode
-
-### ios lane_get_version_manually_from_xcconfig
-
-```sh
-[bundle exec] fastlane ios lane_get_version_manually_from_xcconfig
-```
-
-bundle exec fastlane lane_get_version_number
 
 ### ios lane_get_version_number
 
@@ -271,6 +335,14 @@ Setup match certs for all selected app identifiers
 
 Get provisioning profile info per group
 
+### ios lane_multi_deployment
+
+```sh
+[bundle exec] fastlane ios lane_multi_deployment
+```
+
+Build all configurations in serial using gym and deploy
+
 ### ios lane_add_notes
 
 ```sh
@@ -286,6 +358,22 @@ lane_add_notes
 ```
 
 lane_get_notes
+
+### ios setup_produce
+
+```sh
+[bundle exec] fastlane ios setup_produce
+```
+
+Create new iOS apps on App Store Connect and Apple Developer Portal using your command line
+
+### ios remove_automation_folder_by_local
+
+```sh
+[bundle exec] fastlane ios remove_automation_folder_by_local
+```
+
+
 
 ### ios lane_select_deployment_type
 

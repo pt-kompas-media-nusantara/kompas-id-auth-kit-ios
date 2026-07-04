@@ -3,15 +3,6 @@ default_platform(:ios)
 platform :ios do
 
   # START =============================================================  
-    # gym load export_method: app-store
-    # gym load version_number: 1.0.1
-    # gym load build_number: 8
-    # gym load currentProvisioningProfile: {"id.kompas.app.auth"=>"match AppStore id.kompas.app.auth"}
-    # gym load developer_app_id: 6753935761
-    # gym load selected_configuration: Staging Debug
-    # gym load selected_scheme: XAuth Staging
-
-    # /Users/kompasdigital/Documents/work/kompas-id-auth-kit-ios/automation/gym/1.0.1_8/derived_data_path/Build
   desc "Gym Configuration for Github"
   lane :load_gym_configuration do
 
@@ -24,10 +15,9 @@ platform :ios do
     selected_scheme = lane_context[:SELECTED_SCHEME]
 
     gym(
-      configuration: selected_configuration,
+      configuration: selected_configuration, # Debug / Release
       workspace: WORKSPACE_APP,
       scheme: selected_scheme,
-      skip_package_dependencies_resolution: true, # karena Makefile sudah melakukannya
       export_method: "#{export_method}",
       silent: true,
       clean: true,

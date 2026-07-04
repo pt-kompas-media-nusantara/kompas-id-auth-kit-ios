@@ -68,15 +68,23 @@ platform :ios do
 
 end
 
+
 # OUTPUT
-# App Identifier 1: id.kompas.app.auth
-# save SELECTED_CONFIGURATION_KEY: DEBUG_CONFIGURATION
-# save SELECTED_CONFIGURATION: Staging Debug
-# save SELECTED_SCHEME: XAuth Staging
-# save CONFIGURATION_GROUP: DEFAULT
-# save APP_IDENTIFIERS: id.kompas.app.auth
-# save APP_IDENTIFIERS: ["id.kompas.app.auth"]
-# save DEVELOPER_APP_ID: 6753935761
+# App Identifier 1: id.kompas.app
+# App Identifier 2: id.kompas.app.NotificationServices
+# App Identifier 3: id.kompas.app.PushTemplateExtension
+# selected_value: Release
+# selected_key: RELEASE_CONFIGURATION
+# group_suffix: DEFAULT
+# identifier_values: ["id.kompas.app", "id.kompas.app.NotificationServices", "id.kompas.app.PushTemplateExtension"]
+
+# App Identifier 1: id.kompas.app
+# App Identifier 2: id.kompas.app.NotificationServices
+# App Identifier 3: id.kompas.app.PushTemplateExtension
+# selected_value: DQA_ID
+# selected_key: DEBUG_CONFIGURATION_QA_ID
+# group_suffix: DEFAULT
+# identifier_values: ["id.kompas.app", "id.kompas.app.NotificationServices", "id.kompas.app.PushTemplateExtension"]
 def lane_select_app_identifiers_by_configuration
   if GITHUB_DEPLOYMENT_TYPE.to_s.strip.empty?
     lane_context[:SELECTED_CONFIGURATIONS] = CONFIGURATIONS
@@ -85,15 +93,14 @@ def lane_select_app_identifiers_by_configuration
   end
 
   selected_configurations = lane_context[:SELECTED_CONFIGURATIONS]
-  
   # Load daftar configuration dan group dari ENV
   config_keys = selected_configurations.to_s.split(",")
   known_groups = CONFIGURATION_GROUPS.to_s.split(",")
 
-  # Bangun peta: { "Staging Debug" => "DEBUG_CONFIGURATION", "Production Release" => "RELEASE_CONFIGURATION" }
+  # Bangun peta: { "Debug" => "DEBUG_CONFIGURATION", ... }
   config_map = config_keys.to_h { |key| [ENV[key], key] }
 
-  # Pilih configuration disini
+  # Pilih configuration
   selected_value = ""
   selected_key = ""
   if GITHUB_DEPLOYMENT_TYPE.to_s.strip.empty?
@@ -101,23 +108,9 @@ def lane_select_app_identifiers_by_configuration
   else
     selected_value = config_map.keys.first
   end
-  selected_key = config_map[selected_value] # selected_key akan berisi "DEBUG_CONFIGURATION" atau "RELEASE_CONFIGURATION"
+  selected_key = config_map[selected_value]
 
-  # 'selected_key' berisi "DEBUG_CONFIGURATION"
-  # Kita perlu mengubahnya menjadi "DEBUG_SCHEME" untuk mengambil nama scheme
-  
-  # 1. Buat nama key untuk scheme-nya
-  scheme_key = selected_key.gsub("CONFIGURATION", "SCHEME")
-  
-  # 2. Ambil value scheme dari ENV (Contoh: ENV["DEBUG_SCHEME"] -> "XAuth Staging")
-  selected_scheme_value = ENV[scheme_key]
-
-  # 3. Validasi (jaga-jaga)
-  if selected_scheme_value.nil? || selected_scheme_value.empty?
-    UI.user_error!("Tidak bisa menemukan value untuk scheme key: '#{scheme_key}' dari .env")
-  end
-
-  # Temukan suffix group berdasarkan key, misalnya "DEFAULT"
+  # Temukan suffix group berdasarkan key, misalnya "_KID"
   group_suffix = known_groups.find { |suffix| selected_key.include?(suffix) } || "DEFAULT"
 
   # Ambil daftar nama ENV key untuk group tersebut
@@ -128,7 +121,7 @@ def lane_select_app_identifiers_by_configuration
 
   # Ambil value dari ENV
   identifier_keys = group_keys_csv.split(",")
-  identifier_values = identifier_keys.map { |key| ENV[key] } # Akan mengambil nilai dari DEVELOPER_APP_IDENTIFIER
+  identifier_values = identifier_keys.map { |key| ENV[key] }
 
   # Tampilkan hasil
   identifier_values.each_with_index do |val, i|
@@ -137,32 +130,32 @@ def lane_select_app_identifiers_by_configuration
 
   # Ambil APP ID
   app_id_key = "DEVELOPER_APP_ID_#{group_suffix}"
-  app_id = ENV[app_id_key] || DEVELOPER_APP_ID # Akan mengambil nilai DEVELOPER_APP_ID
+  app_id = ENV[app_id_key] || DEVELOPER_APP_ID
 
   if app_id.nil? || app_id.empty?
     UI.user_error!("No App ID found for group '#{group_suffix}' (expected ENV key: #{app_id_key} or fallback to DEVELOPER_APP_ID)")
   end
 
+  # Buat nama key untuk scheme-nya
+  scheme_key = selected_key.gsub("CONFIGURATION", "SCHEME")
+  selected_scheme_value = ENV[scheme_key]
+
+  if selected_scheme_value.nil? || selected_scheme_value.empty?
+    UI.user_error!("Tidak bisa menemukan value untuk scheme key: '#{scheme_key}' dari .env")
+  end
 
   # Simpan ke lane_context
   lane_context[:SELECTED_CONFIGURATION_KEY] = selected_key
-  lane_context[:SELECTED_CONFIGURATION] = selected_value # Ini adalah nama konfigurasi, mis: "Staging Debug"
-  
-  # --- PERBAIKAN DI SINI ---
-  lane_context[:SELECTED_SCHEME] = selected_scheme_value # Ini adalah nama scheme, mis: "XAuth Staging"
-  # -------------------------
-
+  lane_context[:SELECTED_CONFIGURATION] = selected_value
+  lane_context[:SELECTED_SCHEME] = selected_scheme_value
   lane_context[:CONFIGURATION_GROUP] = group_suffix
   lane_context[:APP_IDENTIFIERS] = identifier_values
   lane_context[:APP_IDENTIFIER] = identifier_values[0]
   lane_context[:DEVELOPER_APP_ID] = app_id
 
-  # --- LOGGING JUGA DIPERBAIKI (Tertukar) ---
   puts "save SELECTED_CONFIGURATION_KEY: #{selected_key}"
   puts "save SELECTED_CONFIGURATION: #{selected_value}"
   puts "save SELECTED_SCHEME: #{selected_scheme_value}"
-  # ---------------------------------------------
-  
   puts "save CONFIGURATION_GROUP: #{group_suffix}"
   puts "save APP_IDENTIFIERS: #{identifier_values[0]}"
   puts "save APP_IDENTIFIERS: #{identifier_values}"
