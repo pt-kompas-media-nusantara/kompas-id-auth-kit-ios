@@ -8,13 +8,13 @@ final class ILaunchAppUseCaseVM: ObservableObject {
     @Published var resultText: String = "Menunggu Aksi..."
     @Published var isLoading: Bool = false
 
-    private let launchAppUseCase: LaunchAppUseCase
+    private let launchAppUseCase: any ILaunchAppUseCase
     private let deviceProvider: DeviceInformationProvider
     private let configMapper: EnvConfigurationMapper
     private let tokenStorage: TokenStorage
 
     init(
-        launchAppUseCase: LaunchAppUseCase = Container.shared.launchAppUseCase(),
+        launchAppUseCase: any ILaunchAppUseCase = Container.shared.launchAppUseCase(),
         deviceProvider: DeviceInformationProvider = Container.shared.deviceInformationProvider(),
         configMapper: EnvConfigurationMapper = Container.shared.envConfigurationMapper(),
         tokenStorage: TokenStorage = Container.shared.tokenStorage()
@@ -39,7 +39,6 @@ final class ILaunchAppUseCaseVM: ObservableObject {
                 accessToken: accessToken,
                 refreshToken: refreshToken
             ),
-
             deviceInfoModel: DeviceInfoModel(
                 platform: .ios,
                 uiDeviceSystemName: deviceProvider.systemName,
@@ -91,3 +90,4 @@ extension AppDeviceType {
         }
     }
 }
+
