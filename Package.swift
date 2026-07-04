@@ -1,14 +1,28 @@
 // swift-tools-version:5.9
+// ===================================================================
+// 📦 Swift Package Manager (SPM) Manifest - XAuthKitCore
+// ===================================================================
+// Berkas ini berfungsi sebagai "KTP/Manifest" resmi agar library SDK ini
+// bisa di-import oleh aplikasi iOS lain menggunakan Swift Package Manager.
+//
+// CATATAN DEVELOPER:
+//   - Berkas ini HANYA dibaca oleh aplikasi integrator luar saat mengunduh SDK.
+//   - Pembangunan lokal & aplikasi demo dikelola menggunakan XcodeGen (project.yml).
+// ===================================================================
+
 import PackageDescription
 
-// Ini adalah "KTP" untuk library Anda saat dilihat dari luar
 let package = Package(
-    name: "XAuthKitCore", // Nama koleksi library Anda
+    // 1. Nama dari paket library koleksi Anda secara keseluruhan
+    name: "XAuthKitCore",
+    
+    // 2. Batasan platform iOS minimum yang didukung agar bisa menggunakan SDK ini
     platforms: [
-        .iOS(.v16) // Ambil dari settings: IPHONES_DEPLOYMENT_TARGET: 16.0 [project.yml]
+        .iOS(.v16) // Diselaraskan dengan deployment target iOS 16.0
     ],
     
-    // Ini adalah produk (library) yang bisa diimpor proyek lain
+    // 3. Produk (Library) yang diekspos keluar agar bisa di-import oleh aplikasi lain.
+    //    Developer luar dapat mengimpor salah satu atau seluruh produk di bawah ini.
     products: [
         .library(
             name: "XAuthUIKit",
@@ -21,44 +35,40 @@ let package = Package(
             targets: ["XAuthKit"])
     ],
     
-    // Masukkan SEMUA dependency SPM Anda di sini
-    // (Firebase, dll. dari 'packages.yml')
+    // 4. Dependensi Paket Eksternal (SPM packages dari pihak ketiga)
+    //    Seluruh library luar (seperti Firebase) yang diunduh langsung dari repositori Git.
     dependencies: [
         .package(url: "https://github.com/firebase/firebase-ios-sdk.git", from: "12.6.0"),
         .package(url: "https://github.com/SimplyDanny/SwiftLintPlugins", exact: "0.62.2")
-        // ... tambahkan yang lain jika ada
     ],
     
-    // Ini adalah definisi "target" library Anda
+    // 5. Target Modul Internal Proyek
+    //    Mendefinisikan setiap folder modul, dependensi internal/eksternalnya, serta plugin.
     targets: [
+        // A. Target UI (XAuthUIKit) - Khusus untuk visual komponen & tema
         .target(
             name: "XAuthUIKit",
-            dependencies: [], // Jika XAuthUIKit butuh Firebase, tambahkan di sini
+            dependencies: [], // Bersih dari dependensi luar untuk efisiensi
             path: "XAuthUIKit/Sources",
             plugins: [
                 .plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLintPlugins")
             ]
-            // Kita tidak perlu .process("Resources")
-            // jika 'Resources' ada di dalam 'Sources'
         ),        
+        // B. Target Komunikasi Data (XAuthCommunicationsKit) - Khusus untuk API request
         .target(
             name: "XAuthCommunicationsKit",
-            dependencies: [
-                // Contoh jika CommCore butuh Firebase & XAuthUIKit
-                // .product(name: "FirebaseAnalytics", package: "firebase-ios-sdk"),
-                // .target(name: "XAuthUIKit")
-            ],
+            dependencies: [], // Bersih dari dependensi visual/UI
             path: "XAuthCommunicationsKit/Sources",
             plugins: [
                 .plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLintPlugins")
             ]
         ),        
+        // C. Target Orkestrator/Core (XAuthKit) - Logika bisnis & penggabung modul UI/Comm
         .target(
             name: "XAuthKit",
             dependencies: [
-                // Contoh jika CommCore butuh Firebase & XAuthKit
-                // .product(name: "FirebaseAnalytics", package: "firebase-ios-sdk"),
-                // .target(name: "XAuthKit")
+                "XAuthUIKit",             // Membutuhkan target UI
+                "XAuthCommunicationsKit"  // Membutuhkan target API
             ],
             path: "XAuthKit/Sources",
             plugins: [
@@ -66,7 +76,7 @@ let package = Package(
             ]
         )
         
-        // Kita TIDAK memasukkan 'App' di sini,
-        // karena 'App' BUKAN library.
+        // CATATAN: Target aplikasi utama 'App' tidak dimasukkan di sini,
+        // karena berkas ini hanya untuk mendistribusikan library (SDK).
     ]
 )
