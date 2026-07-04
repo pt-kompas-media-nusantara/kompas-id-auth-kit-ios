@@ -40,7 +40,8 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/firebase/firebase-ios-sdk.git", from: "12.6.0"),
         .package(url: "https://github.com/SimplyDanny/SwiftLintPlugins", exact: "0.62.2"),
-        .package(url: "https://github.com/pt-kompas-media-nusantara/kompas-mobile-netdatalibrary.git", exact: "1.0.94")
+        .package(url: "https://github.com/pt-kompas-media-nusantara/kompas-mobile-netdatalibrary.git", exact: "1.0.94"),
+        .package(url: "https://github.com/hmlongco/Factory.git", exact: "3.2.1")
     ],
     
     // 5. Target Modul Internal Proyek
@@ -59,7 +60,8 @@ let package = Package(
         .target(
             name: "XAuthCommunicationsKit",
             dependencies: [
-                .product(name: "NetDataLibrary", package: "NetDataLibrary")
+                .product(name: "NetDataLibrary", package: "NetDataLibrary"),
+                .product(name: "FactoryKit", package: "Factory")
             ],
             path: "XAuthCommunicationsKit/Sources",
             plugins: [
@@ -71,7 +73,8 @@ let package = Package(
             name: "XAuthKit",
             dependencies: [
                 "XAuthUIKit",             // Membutuhkan target UI
-                "XAuthCommunicationsKit"  // Membutuhkan target API
+                "XAuthCommunicationsKit",  // Membutuhkan target API
+                .product(name: "FactoryKit", package: "Factory")
             ],
             path: "XAuthKit/Sources",
             plugins: [

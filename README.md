@@ -42,8 +42,28 @@ Untuk panduan lebih lanjut mengenai struktur dan konfigurasi XcodeGen, lu bisa m
 
 ### Kloning Repository
 
-Gunakan perintah berikut untuk mengkloning proyek ini:
-
-```bash
 git clone [https://github.com/pt-kompas-media-nusantara/kompas-id-auth-kit-ios.git](https://github.com/pt-kompas-media-nusantara/kompas-id-auth-kit-ios.git)
+
+---
+
+## 📖 Cara Membaca Dokumentasi (Live Preview)
+
+Proyek ini dilengkapi dengan panduan arsitektur dan sistem modular lengkap di folder `Documentation/` dalam format Markdown (`.md`). Agar lebih mudah dibaca lengkap dengan grafik dan tabel, Anda dapat membuka **Live Preview** bawaan IDE secara lokal:
+
+### 1. Di VS Code (Antigravity IDE)
+Buka berkas dokumentasi, lalu gunakan opsi berikut:
+* **Shortcut Preview Tab:** Tekan **`Cmd + Shift + V`** (macOS).
+* **Shortcut Side-by-Side (Berdampingan):** Tekan **`Cmd + K`**, lalu lepas dan tekan **`V`**.
+* **Menggunakan Tombol UI:** Klik tombol **"Open Preview to the Side"** di pojok kanan atas editor tab (ikon kertas terbagi dengan kaca pembesar).
+
+### 2. Di Xcode (Xcode 15+)
+Buka berkas `.md` di Xcode, lalu aktifkan render markup otomatis:
+* **Lewat Menu Bar:** Pilih menu **`Editor`** -> **`Show Rendered Markup`**.
+* **Lewat File Navigator:** Klik kanan berkas `.md` di sidebar Xcode, pilih **`Open As`** -> **`Rendered Documentation`**.
+
+---
+
+## 📂 Berkas Dokumentasi Utama
+* 📐 **[Panduan Arsitektur & Diagram Alur](Documentation/ARCHITECTURE_GUIDE.md)**
+* 💉 **[Panduan & Keputusan Dependency Injection](Documentation/DEPENDENCY_INJECTION.md)**
 

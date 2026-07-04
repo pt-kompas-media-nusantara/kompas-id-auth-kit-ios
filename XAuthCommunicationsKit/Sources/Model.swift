@@ -1,11 +1,11 @@
 
 import Foundation
 
-public struct Model {
+public struct Model: Sendable {
     
     public init(value: Int) {
         self.value = value
     }
     
-    let value: Int
+    public let value: Int
 }

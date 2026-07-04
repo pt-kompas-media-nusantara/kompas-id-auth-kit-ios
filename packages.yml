@@ -21,3 +21,8 @@ packages:
   NetDataLibrary:
     url: https://github.com/pt-kompas-media-nusantara/kompas-mobile-netdatalibrary.git
     version: 1.0.94
+
+  # Factory Dependency Injection library untuk Swift
+  Factory:
+    url: https://github.com/hmlongco/Factory.git
+    version: 3.2.1

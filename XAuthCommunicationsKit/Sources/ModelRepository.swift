@@ -1,6 +1,6 @@
 
 import Foundation
 
-public protocol ModelRepository {
+public protocol ModelRepository: Sendable {
     func data() async throws -> Model
 }

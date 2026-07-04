@@ -27,6 +27,8 @@ targets:
       # Modul internal pendukung yang dibutuhkan oleh modul ini
       - target: XAuthUIKit
       - target: XAuthCommunicationsKit
+      - package: Factory
+        product: FactoryKit
     
     sources:
       # Sumber berkas kode dan aset modul ini
