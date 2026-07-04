@@ -16,4 +16,10 @@ extension Container {
     public var envConfigurationMapper: Factory<EnvConfigurationMapper> {
         self { DefaultEnvConfigurationMapper() }
     }
+
+    /// Registrasi TokenStorage
+    public var tokenStorage: Factory<TokenStorage> {
+        self { KeychainTokenStorage() }
+    }
 }
+

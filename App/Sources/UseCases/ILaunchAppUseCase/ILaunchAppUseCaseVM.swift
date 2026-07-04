@@ -11,15 +11,18 @@ final class ILaunchAppUseCaseVM: ObservableObject {
     private let launchAppUseCase: LaunchAppUseCase
     private let deviceProvider: DeviceInformationProvider
     private let configMapper: EnvConfigurationMapper
+    private let tokenStorage: TokenStorage
 
     init(
         launchAppUseCase: LaunchAppUseCase = Container.shared.launchAppUseCase(),
         deviceProvider: DeviceInformationProvider = Container.shared.deviceInformationProvider(),
-        configMapper: EnvConfigurationMapper = Container.shared.envConfigurationMapper()
+        configMapper: EnvConfigurationMapper = Container.shared.envConfigurationMapper(),
+        tokenStorage: TokenStorage = Container.shared.tokenStorage()
     ) {
         self.launchAppUseCase = launchAppUseCase
         self.deviceProvider = deviceProvider
         self.configMapper = configMapper
+        self.tokenStorage = tokenStorage
     }
 
     /// Mengeksekusi use case peluncuran aplikasi (LaunchAppUseCase) dari KMP
@@ -28,11 +31,15 @@ final class ILaunchAppUseCaseVM: ObservableObject {
         
         let mappedConfig = configMapper.map(BuildConfiguration.currentFlavor)
         
+        let accessToken = tokenStorage.getAccessToken() ?? ""
+        let refreshToken = tokenStorage.getRefreshToken() ?? ""
+        
         let dummyData = LaunchAppModel(
             tokenAuthenticationModel: TokenAuthenticationModel(
-                accessToken: "",
-                refreshToken: ""
+                accessToken: accessToken,
+                refreshToken: refreshToken
             ),
+
             deviceInfoModel: DeviceInfoModel(
                 platform: .ios,
                 uiDeviceSystemName: deviceProvider.systemName,
