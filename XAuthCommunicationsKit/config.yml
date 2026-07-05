@@ -29,14 +29,7 @@ targets:
       - package: Factory
         product: FactoryKit
 
-    # Pengaturan skema Xcode bawaan modul ini
-    scheme:
-      gatherCoverageData: true # Mengaktifkan report cakupan testing kode
-      testTargets:
-        - name: XAuthCommunicationsKit_Tests
-          parallelizable: true     # Menjalankan test secara paralel demi kecepatan
-          randomExecutionOrder: true # Mengacak urutan pengetesan untuk menguji kerapian state testing
-    
+
     sources:
       # Sumber berkas kode dan aset modul ini
       - path: Sources
@@ -55,27 +48,3 @@ targets:
       Production Debug: Configs/xcconfig/Production-Debug.xcconfig
       Production Release: Configs/xcconfig/Production-Release.xcconfig
 
-  ############
-  # Tests Target
-  ############
-
-  XAuthCommunicationsKit_Tests:
-    name: XAuthCommunicationsKit_Tests
-    type: bundle.unit-test # Tipe modul berupa Unit Test Bundle
-    platform: iOS
-    settings:
-      INFOPLIST_FILE: XAuthCommunicationsKit/Configs/Info-Test.plist
-        
-    sources:
-      # Sumber berkas Unit Tests
-      - path: Tests
-        group: Modules/XAuthCommunicationsKit
-    dependencies:
-      # Unit test bergantung pada modul framework utama yang akan di-test
-      - target: XAuthCommunicationsKit
-
-    # Skema tersendiri untuk menjalankan test bundle ini
-    scheme:
-      testTargets:
-        - XAuthCommunicationsKit_Tests
-      gatherCoverageData: true

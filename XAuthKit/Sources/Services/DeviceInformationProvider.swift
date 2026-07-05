@@ -1,4 +1,5 @@
 import UIKit
+import Foundation
 
 /// Library-agnostic representation of device interface idioms.
 public enum AppDeviceType: Sendable {

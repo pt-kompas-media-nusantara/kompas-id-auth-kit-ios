@@ -1,11 +1,10 @@
 import Foundation
 import FactoryKit
 import XAuthKit
-@preconcurrency import KompasIdLibrary
 
 @MainActor
 final class IAuthAndSyncUseCaseVM: ObservableObject {
-    @Injected(\.authAndSyncUseCase) private var authAndSyncUseCase
+    @Injected(\.authAndSyncService) private var authAndSyncService
     
     @Published var resultText: String = "Menunggu Aksi..."
     @Published var isLoading: Bool = false
@@ -14,8 +13,8 @@ final class IAuthAndSyncUseCaseVM: ObservableObject {
     func execute() async {
         isLoading = true
         do {
-            let result = try await authAndSyncUseCase.loginByPurchaseToken()
-            resultText = "KMP AuthAndSyncUseCase sukses!\nHasil: \(result)"
+            let result = try await authAndSyncService.loginByPurchaseToken()
+            resultText = result
         } catch {
             resultText = "Gagal: \(error.localizedDescription)"
         }

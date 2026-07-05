@@ -1,6 +1,5 @@
 import FactoryKit
 import Foundation
-@preconcurrency import KompasIdLibrary
 import XAuthKit
 
 @MainActor
@@ -35,30 +34,21 @@ final class IAuthUseCaseVM: ObservableObject {
     @Published var verifyOtp: String = "isi"
     @Published var verifyPhone: String = "isi"
 
-    private let authUseCase: any IAuthUseCase
+    private let authService: any AuthService
 
     init(
-        authUseCase: any IAuthUseCase = Container.shared.authUseCase(),
+        authService: any AuthService = Container.shared.authService()
     ) {
-        self.authUseCase = authUseCase
+        self.authService = authService
     }
 
     func checkRegisteredUser() async {
         isLoading = true
         resultText = "Memeriksa pengguna terdaftar..."
         do {
-            let result = try await authUseCase.checkRegisteredUser(
+            let result = try await authService.checkRegisteredUser(
                 type: checkType, value: checkValue)
-            resultText = "Sukses: \(result)"
-            if let success = result as? ResultsSuccess<CheckRegisteredUserModel> {
-                // success.value is your CheckRegisteredUserModel
-                print("\(success)")
-            } else if let failure = result as? ResultsError<NetworkError> {
-                // failure.error is your NetworkError
-                let networkError = failure.error
-                // → handle error
-                // throw NetworkRequestError.badRequest ini cara handlenya gimana
-            }
+            resultText = result
         } catch {
             resultText = "Gagal: \(error.localizedDescription)"
         }
@@ -69,8 +59,8 @@ final class IAuthUseCaseVM: ObservableObject {
         isLoading = true
         resultText = "Memeriksa pengguna dengan purchase token..."
         do {
-            let result = try await authUseCase.checkUserByPurchaseToken()
-            resultText = "Sukses: \(result)"
+            let result = try await authService.checkUserByPurchaseToken()
+            resultText = result
         } catch {
             resultText = "Gagal: \(error.localizedDescription)"
         }
@@ -81,8 +71,8 @@ final class IAuthUseCaseVM: ObservableObject {
         isLoading = true
         resultText = "Memproses login Apple..."
         do {
-            let result = try await authUseCase.loginByApple(accessTokenByApple: appleToken)
-            resultText = "Sukses: \(result)"
+            let result = try await authService.loginByApple(appleToken: appleToken)
+            resultText = result
         } catch {
             resultText = "Gagal: \(error.localizedDescription)"
         }
@@ -93,9 +83,9 @@ final class IAuthUseCaseVM: ObservableObject {
         isLoading = true
         resultText = "Memproses login email..."
         do {
-            let result = try await authUseCase.loginByEmail(
+            let result = try await authService.loginByEmail(
                 email: emailInput, password: passwordInput)
-            resultText = "Sukses: \(result)"
+            resultText = result
         } catch {
             resultText = "Gagal: \(error.localizedDescription)"
         }
@@ -106,9 +96,9 @@ final class IAuthUseCaseVM: ObservableObject {
         isLoading = true
         resultText = "Memproses login Google..."
         do {
-            let result = try await authUseCase.loginByGoogle(
-                accessTokenByGoogle: googleToken, state: googleState)
-            resultText = "Sukses: \(result)"
+            let result = try await authService.loginByGoogle(
+                googleToken: googleToken, state: googleState)
+            resultText = result
         } catch {
             resultText = "Gagal: \(error.localizedDescription)"
         }
@@ -119,8 +109,8 @@ final class IAuthUseCaseVM: ObservableObject {
         isLoading = true
         resultText = "Memproses login dengan purchase token..."
         do {
-            let result = try await authUseCase.loginByPurchaseToken()
-            resultText = "Sukses: \(result)"
+            let result = try await authService.loginByPurchaseToken()
+            resultText = result
         } catch {
             resultText = "Gagal: \(error.localizedDescription)"
         }
@@ -131,8 +121,8 @@ final class IAuthUseCaseVM: ObservableObject {
         isLoading = true
         resultText = "Memproses logout..."
         do {
-            let result = try await authUseCase.postLogout()
-            resultText = "Sukses: \(result)"
+            let result = try await authService.postLogout()
+            resultText = result
         } catch {
             resultText = "Gagal: \(error.localizedDescription)"
         }
@@ -143,8 +133,8 @@ final class IAuthUseCaseVM: ObservableObject {
         isLoading = true
         resultText = "Memproses penyegaran token..."
         do {
-            let result = try await authUseCase.postRefreshToken()
-            resultText = "Sukses: \(result)"
+            let result = try await authService.postRefreshToken()
+            resultText = result
         } catch {
             resultText = "Gagal: \(error.localizedDescription)"
         }
@@ -155,10 +145,10 @@ final class IAuthUseCaseVM: ObservableObject {
         isLoading = true
         resultText = "Memproses pendaftaran..."
         do {
-            let result = try await authUseCase.registerForm(
+            let result = try await authService.registerForm(
                 email: regEmail, firstName: regFirstName, lastName: regLastName,
                 password: regPassword)
-            resultText = "Sukses: \(result)"
+            resultText = result
         } catch {
             resultText = "Gagal: \(error.localizedDescription)"
         }
@@ -169,9 +159,9 @@ final class IAuthUseCaseVM: ObservableObject {
         isLoading = true
         resultText = "Mengirim OTP..."
         do {
-            let result = try await authUseCase.sendOTP(
-                flag: Int32(otpFlag), phoneNumber: otpPhone, countryCode: otpCountry)
-            resultText = "Sukses: \(result)"
+            let result = try await authService.sendOTP(
+                flag: otpFlag, phoneNumber: otpPhone, countryCode: otpCountry)
+            resultText = result
         } catch {
             resultText = "Gagal: \(error.localizedDescription)"
         }
@@ -182,9 +172,9 @@ final class IAuthUseCaseVM: ObservableObject {
         isLoading = true
         resultText = "Memverifikasi OTP..."
         do {
-            let result = try await authUseCase.verifyOTP(
+            let result = try await authService.verifyOTP(
                 countryCode: verifyCountry, otp: verifyOtp, phoneNumber: verifyPhone)
-            resultText = "Sukses: \(result)"
+            resultText = result
         } catch {
             resultText = "Gagal: \(error.localizedDescription)"
         }

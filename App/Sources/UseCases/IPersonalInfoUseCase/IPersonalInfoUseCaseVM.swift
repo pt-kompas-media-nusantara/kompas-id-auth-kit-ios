@@ -1,11 +1,10 @@
 import Foundation
 import FactoryKit
 import XAuthKit
-@preconcurrency import KompasIdLibrary
 
 @MainActor
 final class IPersonalInfoUseCaseVM: ObservableObject {
-    @Injected(\.personalInfoUseCase) private var personalInfoUseCase
+    @Injected(\.personalInfoService) private var personalInfoService
     
     @Published var resultText: String = "Menunggu Aksi..."
     @Published var isLoading: Bool = false
@@ -14,8 +13,8 @@ final class IPersonalInfoUseCaseVM: ObservableObject {
     func execute() async {
         isLoading = true
         do {
-            let result = try await personalInfoUseCase.fetchUserDataParallely()
-            resultText = "KMP PersonalInfoUseCase sukses!\nHasil: \(result)"
+            let result = try await personalInfoService.fetchUserDataParallely()
+            resultText = result
         } catch {
             resultText = "Gagal: \(error.localizedDescription)"
         }

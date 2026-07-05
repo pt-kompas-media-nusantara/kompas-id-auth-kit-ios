@@ -30,4 +30,43 @@ extension Container {
     public var personalInfoUseCase: Factory<IPersonalInfoUseCase> {
         self { KoinInjector().personalInfoUseCase }
     }
+
+    // MARK: - Infrastructure Services
+    
+    public var deviceInformationProvider: Factory<DeviceInformationProvider> {
+        self { SystemDeviceInformationProvider() }
+    }
+
+    public var envConfigurationMapper: Factory<EnvConfigurationMapper> {
+        self { DefaultEnvConfigurationMapper() }
+    }
+
+    public var tokenStorage: Factory<TokenStorage> {
+        self { KeychainTokenStorage() }
+    }
+
+    // MARK: - Wrapper Services
+    
+    public var launchAppService: Factory<LaunchAppService> {
+        self {
+            LaunchAppServiceImpl(
+                launchAppUseCase: self.launchAppUseCase(),
+                deviceProvider: self.deviceInformationProvider(),
+                configMapper: self.envConfigurationMapper(),
+                tokenStorage: self.tokenStorage()
+            )
+        }
+    }
+
+    public var authService: Factory<AuthService> {
+        self { AuthServiceImpl(authUseCase: self.authUseCase()) }
+    }
+
+    public var authAndSyncService: Factory<AuthAndSyncService> {
+        self { AuthAndSyncServiceImpl(authAndSyncUseCase: self.authAndSyncUseCase()) }
+    }
+
+    public var personalInfoService: Factory<PersonalInfoService> {
+        self { PersonalInfoServiceImpl(personalInfoUseCase: self.personalInfoUseCase()) }
+    }
 }

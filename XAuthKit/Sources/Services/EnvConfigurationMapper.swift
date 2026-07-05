@@ -1,4 +1,4 @@
-import XAuthKit
+import Foundation
 
 /// Intermediate enum representing KMP Flavors without importing the KMP library.
 public enum AppFlavorType: Sendable {
