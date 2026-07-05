@@ -77,6 +77,7 @@ let package = Package(
                 "XAuthUIKit",  // Membutuhkan target UI
                 "XAuthCommunicationsKit",  // Membutuhkan target API
                 .product(name: "FactoryKit", package: "Factory"),
+                .product(name: "NetDataLibrary", package: "NetDataLibrary"),
             ],
             path: "XAuthKit/Sources",
             plugins: [

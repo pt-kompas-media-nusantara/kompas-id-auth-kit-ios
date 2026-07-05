@@ -57,7 +57,7 @@ final class IAuthUseCaseVM: ObservableObject {
                 // failure.error is your NetworkError
                 let networkError = failure.error
                 // → handle error
-                throw NetworkRequestError.badRequest ini cara handlenya gimana
+                // throw NetworkRequestError.badRequest ini cara handlenya gimana
             }
         } catch {
             resultText = "Gagal: \(error.localizedDescription)"

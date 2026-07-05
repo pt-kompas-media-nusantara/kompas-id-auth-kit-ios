@@ -2,7 +2,6 @@ import SwiftUI
 import XAuthKit
 import XAuthUIKit
 import FactoryKit
-import XAuthCommunicationsKit
 
 struct RootView: View {
     @StateObject private var viewModel = RootVM()

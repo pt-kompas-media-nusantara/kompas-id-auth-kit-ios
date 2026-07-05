@@ -29,6 +29,8 @@ targets:
       - target: XAuthCommunicationsKit
       - package: Factory
         product: FactoryKit
+      - package: NetDataLibrary
+        product: NetDataLibrary
     
     sources:
       # Sumber berkas kode dan aset modul ini
@@ -47,3 +49,28 @@ targets:
       Staging Release: Configs/xcconfig/Staging-Release.xcconfig
       Production Debug: Configs/xcconfig/Production-Debug.xcconfig
       Production Release: Configs/xcconfig/Production-Release.xcconfig
+
+  ############
+  # Tests Target
+  ############
+
+  XAuthKit_Tests:
+    name: XAuthKit_Tests
+    type: bundle.unit-test # Tipe modul berupa Unit Test Bundle
+    platform: iOS
+    settings:
+      INFOPLIST_FILE: XAuthKit/Configs/Info-Test.plist
+        
+    sources:
+      # Sumber berkas Unit Tests
+      - path: Tests
+        group: Modules/XAuthKit
+    dependencies:
+      # Unit test bergantung pada modul framework utama yang akan di-test
+      - target: XAuthKit
+
+    # Skema tersendiri untuk menjalankan test bundle ini
+    scheme:
+      testTargets:
+        - XAuthKit_Tests
+      gatherCoverageData: true

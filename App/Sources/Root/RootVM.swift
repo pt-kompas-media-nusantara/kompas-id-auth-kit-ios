@@ -1,7 +1,6 @@
 import Foundation
 import Combine
 import FactoryKit
-import XAuthCommunicationsKit
 import XAuthKit
 
 @MainActor

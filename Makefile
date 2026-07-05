@@ -103,9 +103,9 @@ format: ## Merapikan format kode Swift secara otomatis (Autocorrect)
 	@echo "$(GREEN)✨ Kode sudah rapi sesuai dengan style guide!$(RESET)"
 
 .PHONY: test
-test: ## Menjalankan unit tests menggunakan scheme XAuthCommunicationsKit_Tests (Device: $(TEST_DEVICE))
+test: ## Menjalankan unit tests menggunakan scheme XAuthKit_Tests (Device: $(TEST_DEVICE))
 	@echo "$(CYAN)🧪 Menjalankan Unit Tests di simulator '$(TEST_DEVICE)' (ID: $(TEST_DEVICE_ID))...$(RESET)"
-	@xcodebuild test -workspace XAuth.xcworkspace -scheme "XAuthCommunicationsKit_Tests" -destination "platform=iOS Simulator,id=$(TEST_DEVICE_ID)" -quiet || { echo "$(RED)❌ Unit Tests Gagal!$(RESET)"; exit 1; }
+	@xcodebuild test -workspace XAuth.xcworkspace -scheme "XAuthKit_Tests" -destination "platform=iOS Simulator,id=$(TEST_DEVICE_ID)" -quiet || { echo "$(RED)❌ Unit Tests Gagal!$(RESET)"; exit 1; }
 	@echo "$(GREEN)✅ Semua Unit Tests Lulus!$(RESET)"
 
 # ===================================================================
