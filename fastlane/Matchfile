@@ -1,11 +1,13 @@
 require 'dotenv'
 require 'base64'
 
-dotenv_path = File.expand_path(".env", File.dirname(__FILE__))
+# Gunakan fallback path relatif terhadap Dir.pwd karena __FILE__ tidak reliabel saat di-eval oleh Fastlane
+dotenv_path = File.exist?(".env") ? ".env" : File.join(Dir.pwd, "fastlane", ".env")
 Dotenv.load(dotenv_path) if File.exist?(dotenv_path)
 
-secret_path = File.expand_path(".env.secret", File.dirname(__FILE__))
+secret_path = File.exist?(".env.secret") ? ".env.secret" : File.join(Dir.pwd, "fastlane", ".env.secret")
 Dotenv.overload(secret_path) if File.exist?(secret_path)
+
 
 git_url("https://github.com/pt-kompas-media-nusantara/kompas-id-auth-kit-ios-certificated")
 storage_mode("git")
