@@ -8,10 +8,7 @@ final class RootVM: ObservableObject {
     @Published private(set) var appVersion: String = ""
     @Published private(set) var osVersion: String = ""
     @Published private(set) var flavorName: String = ""
-    @Published private(set) var repositoryValue: String = "Loading..."
-    
     // Injeksi dependensi
-    @Injected(\.modelRepository) private var modelRepository
     @Injected(\.appRouter) var router: AppRouter
     
     private var cancellables = Set<AnyCancellable>()
@@ -30,17 +27,6 @@ final class RootVM: ObservableObject {
                 self?.objectWillChange.send()
             }
             .store(in: &cancellables)
-    }
-    
-    func loadRepositoryData() {
-        Task {
-            do {
-                let model = try await modelRepository.data()
-                self.repositoryValue = "\(model.value)"
-            } catch {
-                self.repositoryValue = "Error: \(error.localizedDescription)"
-            }
-        }
     }
     
     /// Memicu navigasi halaman dari ViewModel ke rute tertentu

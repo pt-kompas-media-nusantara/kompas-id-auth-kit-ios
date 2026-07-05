@@ -50,13 +50,6 @@ struct RootView: View {
                                     .foregroundColor(.green)
                             }
                             
-                            HStack {
-                                Text("Repository Value (Factory):")
-                                    .foregroundColor(.secondary)
-                                Spacer()
-                                Text(viewModel.repositoryValue)
-                                    .fontWeight(.bold)
-                                    .foregroundColor(.blue)
                             }
                             
                         }
@@ -271,9 +264,7 @@ struct RootView: View {
                 .padding(.vertical)
             }
             .navigationTitle("XAuth Dashboard")
-            .task {
-                viewModel.loadRepositoryData()
-            }
+            
             // Deklarasikan koordinasi tujuan rute di luar layout ScrollView utama
             .navigationDestination(for: AppRoute.self) { route in
                 viewModel.router.view(for: route)

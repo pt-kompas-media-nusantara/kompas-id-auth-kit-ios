@@ -3,13 +3,6 @@ import Foundation
 @preconcurrency import KompasIdLibrary
 
 extension Container {
-    // Registrasikan ModelRepository ke Container secara publik
-    // agar modul lain yang mengimpor Factory & XAuthKit bisa me-resolve.
-    // Implementasinya (ModelRepositoryImpl) tetap tersembunyi sebagai internal modul.
-    public var modelRepository: Factory<ModelRepository> {
-        self { ModelRepositoryImpl() }
-    }
-    
     /// Menjembatani KMP Koin DI dengan iOS Factory DI.
     /// Menyediakan instance `AuthUseCase` secara transparan tanpa mengekspos detail pencarian Koin ke modul visual.
     public var authUseCase: Factory<IAuthUseCase> {
