@@ -49,9 +49,6 @@ struct RootView: View {
                                     .fontWeight(.bold)
                                     .foregroundColor(.green)
                             }
-                            
-                            }
-                            
                         }
                         .font(.subheadline)
                     }
