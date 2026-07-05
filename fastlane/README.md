@@ -519,6 +519,14 @@ send_to_logger_lane_get_increment_build_number
 
 send_to_logger_lane_get_gym
 
+### ios nuke_distribution
+
+```sh
+[bundle exec] fastlane ios nuke_distribution
+```
+
+Nuke distribution certificates and profiles on developer portal and git storage
+
 ----
 
 This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.
