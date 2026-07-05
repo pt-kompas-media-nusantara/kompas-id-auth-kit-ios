@@ -1,12 +1,16 @@
+require 'dotenv'
+dotenv_path = File.expand_path(".env", File.dirname(__FILE__))
+Dotenv.load(dotenv_path) if File.exist?(dotenv_path)
+
+secret_path = File.expand_path(".env.secret", File.dirname(__FILE__))
+Dotenv.overload(secret_path) if File.exist?(secret_path)
+
 git_url("https://github.com/pt-kompas-media-nusantara/kompas-id-auth-kit-ios-certificated")
-
-
 storage_mode("git")
-
 type("appstore") # The default type, can be: appstore, adhoc, enterprise or development, atau distribution
-
 app_identifier(["id.kompas.app.auth"])
 username("nurirppan@gmail.com") # Your Apple Developer Portal username
+
 
 # git_url("git@github.com:pt-kompas-media-nusantara/kompas-id-ios-certificated.git")
 # git_url("https://github.com/pt-kompas-media-nusantara/kompas-id-ios-certificated.git")

@@ -359,6 +359,14 @@ lane_add_notes
 
 lane_get_notes
 
+### ios nuke_distribution
+
+```sh
+[bundle exec] fastlane ios nuke_distribution
+```
+
+Nuke distribution certificates and profiles on developer portal and git storage
+
 ### ios setup_produce
 
 ```sh
@@ -518,14 +526,6 @@ send_to_logger_lane_get_increment_build_number
 ```
 
 send_to_logger_lane_get_gym
-
-### ios nuke_distribution
-
-```sh
-[bundle exec] fastlane ios nuke_distribution
-```
-
-Nuke distribution certificates and profiles on developer portal and git storage
 
 ----
 
