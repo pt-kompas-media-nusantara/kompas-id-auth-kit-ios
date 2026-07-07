@@ -13,7 +13,7 @@ platform :ios do
       type: TYPE_MATCH_APPSTORE,
       app_identifier: identifier_values,
       git_basic_authorization: Base64.strict_encode64(GIT_AUTHORIZATION),
-      readonly: false, # jika masa sertifikat habis valuenya adalah false agar ter generate certificate yang baru, setelah itu ubah ke true lagi agar tidak selalu generate certificate yang baru (di set ke false jika certificate yang di git sudah di hapus)
+      readonly: true, # jika masa sertifikat habis valuenya adalah false agar ter generate certificate yang baru, setelah itu ubah ke true lagi agar tidak selalu generate certificate yang baru (di set ke false jika certificate yang di git sudah di hapus)
       keychain_name: TEMP_KEYCHAIN_USER,
       keychain_password: TEMP_KEYCHAIN_PASSWORD,
       api_key: api_key
@@ -55,7 +55,7 @@ platform :ios do
         type: TYPE_MATCH_APPSTORE,
         app_identifier: app_identifiers,
         git_basic_authorization: Base64.strict_encode64(GIT_AUTHORIZATION),
-        readonly: false, # true atau false(renew)
+        readonly: true, # true atau false(renew)
         keychain_name: TEMP_KEYCHAIN_USER,
         keychain_password: TEMP_KEYCHAIN_PASSWORD,
         api_key: api_key
